@@ -14,25 +14,22 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 
 -------
 
-### Most of this library 👍 :
+## Most of this library 👍 :
 - Light library ( all the variables are slight statement )
 - Very convenient to use ( only one line call Dispath, IsIphone etc...)
 
 
-#####Todo ☕️ :
+##Todo ☕️ :
 
 ☑️ Message UI
 
--------
 
-##### Installation 📲 :
+## Installation 📲 :
 
 - Download EasyHelper
 - Import in your projet targe EasyHelper
 
--------
-
-##### Usage :
+## Usage :
 
 - Add in your file.swift at the header "import EasyHelper"
 
