@@ -1,6 +1,9 @@
-# EasyHelper
-EasyHelper is a simple library to help you with your development
+<h2 align="center">
+    EasyHelper
+</h2>
 -------
+EasyHelper is a simple library to help you with your development
+
 #####Most of this library 👍🏼 :
 
 * Light library ( all the variables are slight statement )
