@@ -8,6 +8,7 @@
 
 import SpriteKit
 public extension UIRectCorner {
+    
     public static func setByTuple(sideTake:(topLeft:Bool,topRight:Bool,bottomRight:Bool,bottomLeft:Bool)) -> UIRectCorner {
         var  corner : UIRectCorner = UIRectCorner.AllCorners
         switch sideTake {

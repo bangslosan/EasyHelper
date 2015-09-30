@@ -9,7 +9,8 @@
 /**
 *  Struct Dispath
 */
-public struct EasyDispath {
+public typealias EasyDispath = EHDispath
+public struct EHDispath {
     /// GlobalMainQueue Dispatch
     public static var GlobalMainQueue: dispatch_queue_t {
         get {
@@ -60,7 +61,8 @@ public struct EasyDispath {
 /**
 *  Struc for Async Call
 */
-public struct EasyAsync {
+public typealias EasyAsync = EHAsync
+public struct EHAsync {
     
     /**
     Async Background
@@ -74,7 +76,7 @@ public struct EasyAsync {
     */
     public static func GlobalBackgroundQueue(delay:Double,closure: () -> Void) {
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, EasyDispath.GlobalBackgroundQueue, closure)
+        dispatch_after(delayTime, EHDispath.GlobalBackgroundQueue, closure)
     }
     /**
     Async backgound
@@ -86,7 +88,7 @@ public struct EasyAsync {
     Utilisez quand aucune interaction utilisateur et ne sont pas sensibles au facteur temps.
     */
     public static func GlobalBackgroundQueue(closure: () -> Void) {
-        dispatch_async(EasyDispath.GlobalBackgroundQueue,closure)
+        dispatch_async(EHDispath.GlobalBackgroundQueue,closure)
     }
     /**
     Async UserInteractiveQueue
@@ -102,7 +104,7 @@ public struct EasyAsync {
     */
     public static func GlobalUserInteractiveQueue(delay:Double,closure: () -> Void) {
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, EasyDispath.GlobalUserInteractiveQueue, closure)
+        dispatch_after(delayTime, EHDispath.GlobalUserInteractiveQueue, closure)
     }
     /**
     Async UserInteractiveQueue
@@ -116,7 +118,7 @@ public struct EasyAsync {
     Le montant total des travaux effectués dans cette classe lors de l'exécution doit être petite.
     */
     public static func GlobalUserInteractiveQueue(closure: () -> Void) {
-        dispatch_async(EasyDispath.GlobalUserInteractiveQueue,closure)
+        dispatch_async(EHDispath.GlobalUserInteractiveQueue,closure)
     }
     
     /**
@@ -129,7 +131,7 @@ public struct EasyAsync {
     */
     public static func GlobalMainQueue(delay:Double,closure: () -> Void) {
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, EasyDispath.GlobalMainQueue, closure)
+        dispatch_after(delayTime, EHDispath.GlobalMainQueue, closure)
     }
     /**
     Async GlobalMainQueue
@@ -139,7 +141,7 @@ public struct EasyAsync {
     Description : Queue principal
     */
     public static func GlobalMainQueue(closure: () -> Void) {
-        dispatch_async(EasyDispath.GlobalMainQueue,closure)
+        dispatch_async(EHDispath.GlobalMainQueue,closure)
     }
     /**
     Async UserInitiatedQueue
@@ -154,7 +156,7 @@ public struct EasyAsync {
     */
     public static func GlobalUserInitiatedQueue(delay:Double,closure: () -> Void) {
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, EasyDispath.GlobalUserInitiatedQueue, closure)
+        dispatch_after(delayTime, EHDispath.GlobalUserInitiatedQueue, closure)
     }
     /**
     Async GlobalUserInitiatedQueue
@@ -167,7 +169,7 @@ public struct EasyAsync {
     Pour des tâches requises pour poursuivre l'interaction de l'utilisateur.
     */
     public static func GlobalUserInitiatedQueue(closure: () -> Void) {
-        dispatch_async(EasyDispath.GlobalUserInitiatedQueue,closure)
+        dispatch_async(EHDispath.GlobalUserInitiatedQueue,closure)
     }
     
     /**
@@ -183,7 +185,7 @@ public struct EasyAsync {
     */
     public static func GlobalUtilityQueue(delay:Double,closure: () -> Void) {
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, EasyDispath.GlobalUtilityQueue, closure)
+        dispatch_after(delayTime, EHDispath.GlobalUtilityQueue, closure)
     }
     /**
     Async GlobalUtilityQueue
@@ -196,7 +198,7 @@ public struct EasyAsync {
     Cette classe est conçu pour être économe en énergie
     */
     public static func GlobalUtilityQueue(closure: () -> Void) {
-        dispatch_async(EasyDispath.GlobalUtilityQueue,closure)
+        dispatch_async(EHDispath.GlobalUtilityQueue,closure)
     }
     
 }

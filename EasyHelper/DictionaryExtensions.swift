@@ -14,15 +14,15 @@ extension Dictionary {
     static func loadJSONFromBundle(filename: String) throws ->  Dictionary<String, AnyObject>? {
         
         guard let path = NSBundle.mainBundle().pathForResource(filename, ofType: "json")  else {
-            throw EasyError.PathForResource("[EasyHelper][loadJSONFromBundle] (pathForResource) File : '\(filename).json'")
+            throw EHError.PathForResource("[EasyHelper][loadJSONFromBundle] (pathForResource) File : '\(filename).json'")
         }
         
         guard let data = try? NSData(contentsOfFile: path, options: NSDataReadingOptions()) else {
-            throw EasyError.NSData("[EasyHelper][loadJSONFromBundle] (NSData) Could not load file : '\(filename)'")
+            throw EHError.NSData("[EasyHelper][loadJSONFromBundle] (NSData) Could not load file : '\(filename)'")
         }
 
         guard let jsonDict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? [String : AnyObject] else {
-            throw EasyError.JSON("[EasyHelper][loadJSONFromBundle] (NSJSONSerialization) Level file '\(filename)' is not valid JSON")
+            throw EHError.JSON("[EasyHelper][loadJSONFromBundle] (NSJSONSerialization) Level file '\(filename)' is not valid JSON")
         }
         
         return jsonDict

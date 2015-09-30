@@ -9,7 +9,17 @@
 import Foundation
 
 public extension Double {
-    var isInteger:Bool { return self == Double(Int(self)) }
+    
+    /// Int to String
+    public var toString:String {
+        get {
+            
+            return self.description
+            //String(self)
+        }
+    }
+    
+    var isInteger:Bool { return floor(self) == self }
     /**
     Returns a random floating point number between 0.0 and 1.0, inclusive.
     By DaRkDOG
@@ -25,12 +35,14 @@ public extension Double {
     :param: lower number Double
     :param: upper number Double
     :return: random number Double
-    By DaRkDOG
     */
     public static func random(min: Double, max: Double) -> Double {
         return Double.random * (max - min) + min
     }
-    
+}
+
+// MARK: - Date
+public extension Double {
     /// Int to Seconde
     var second: NSTimeInterval {
         get {

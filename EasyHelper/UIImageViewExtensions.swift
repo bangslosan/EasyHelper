@@ -12,7 +12,7 @@ extension UIImageView {
 
     func round() throws {
         guard  (self.image != nil) else {
-            EasyError.Nil("[EasyHelper][round] UIImageView not have image ")
+            EHError.Nil("[EasyHelper][round] UIImageView not have image ")
             return
         }
         self.layer.cornerRadius = self.frame.size.width / 2

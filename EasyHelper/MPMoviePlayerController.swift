@@ -15,7 +15,7 @@ extension MPMoviePlayerController {
         var moviePlayer:MPMoviePlayerController
         
         guard let url:NSURL = NSURL(string: url) else {
-            throw EasyError.NSURL("[EasyHelper][PlayVideo] Error NSURL")
+            throw EHError.NSURL("[EasyHelper][PlayVideo] Error NSURL")
         }
         
         moviePlayer = MPMoviePlayerController(contentURL: url)

@@ -38,7 +38,7 @@ public extension UIImage {
     public class func addTextToImage(image:UIImage, label:UILabel,pointof: CGPoint) throws -> UIImage {
         
         guard let textLabel = label.text else {
-            throw EasyError.Nil("[EasyHelper][addTextToImage] Label haven't text")
+            throw EHError.Nil("[EasyHelper][addTextToImage] Label haven't text")
         }
         
         let dict:NSDictionary = [
@@ -63,10 +63,10 @@ public extension UIImage {
     */
     public static func screenshot(opaque:Bool = false) throws ->  UIImage {
         guard let keyWindowV = UIApplication.sharedApplication().keyWindow else {
-            throw EasyError.Nil("[EasyHelper][screenShot] Nil object keyWindow")
+            throw EHError.Nil("[EasyHelper][screenShot] Nil object keyWindow")
         }
         guard let context = UIGraphicsGetCurrentContext() else {
-            throw EasyError.Nil("[EasyHelper][screenShot] Nil object UIGraphicsGetCurrentContext")
+            throw EHError.Nil("[EasyHelper][screenShot] Nil object UIGraphicsGetCurrentContext")
         }
         
         let layer = keyWindowV.layer

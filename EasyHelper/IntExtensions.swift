@@ -21,7 +21,8 @@ public extension Int {
     /// Int to String
     public var toString:String {
         get {
-            return String(self)
+            return self.description
+            //String(self)
         }
     }
     /**
@@ -96,6 +97,4 @@ public extension Int {
             return (self.day * 5)
         }
     }
-    
-    
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum EasyError: ErrorType {
+enum EHError: ErrorType {
     case Nil(String)
     case PathForResource(String)
     case NSData(String)

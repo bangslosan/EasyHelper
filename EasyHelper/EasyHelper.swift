@@ -8,6 +8,8 @@
 
 //(UIScreen.mainScreen().nativeBounds.size.width / UIScreen.mainScreen().nativeScale)
 import SystemConfiguration
+
+public typealias EH = EasyHelper
 public class EasyHelper {
     
     /**
