@@ -24,19 +24,27 @@ func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
     return CGPoint(x: point.x / scalar, y: point.y / scalar)
 }
 
-#if !(arch(x86_64) || arch(arm64))
+/*#if !(arch(x86_64) || arch(arm64))
     func sqrt(a: CGFloat) -> CGFloat {
         return CGFloat(sqrtf(Float(a)))
     }
-#endif
+#endif*/
 
 extension CGPoint {
     /// Length
-    var length:CGFloat { return sqrt(self.x*self.x + self.y*self.y) }
+    var length:CGFloat {
+        get {
+            return sqrt(self.x * self.x + self.y * self.y)
+        }
+    }
     
     /// Description
     var normalized:CGPoint { return self / self.length }
 
     /// CGPoint to CGAffineTransform
-    var toCGAffineTransform:CGAffineTransform { return CGAffineTransformMakeTranslation(self.x, self.y) }
+    var toCGAffineTransform:CGAffineTransform {
+        get {
+          return CGAffineTransformMakeTranslation(self.x, self.y)
+        }
+    }
 }

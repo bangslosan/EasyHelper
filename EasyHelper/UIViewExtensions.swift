@@ -7,16 +7,8 @@
 //
 
 import UIKit
+// MARK: - UIView Extension Classical
 public extension UIView {
-    
-    func scrollToPage(scrollView: UIScrollView, page: Int, animated: Bool) {
-        var frame: CGRect = scrollView.frame
-        frame.origin.x = frame.size.width * CGFloat(page);
-        frame.origin.y = 0;
-        scrollView.scrollRectToVisible(frame, animated: animated)
-        
-        
-    }
     /// X position
     public var x:CGFloat {
         get {
@@ -59,7 +51,17 @@ public extension UIView {
             self.frame.size.height = newValue
         }
     }
+    /**
+    Remove allSubView
+    */
+    public func removeAllSubViews() {
+        for subView :AnyObject in self.subviews { subView.removeFromSuperview() }
+    }
     
+}
+
+// MARK: - UIView Extension Animate
+public extension UIView {
     /**
     Set Rotation 360 on View
     
@@ -77,14 +79,6 @@ public extension UIView {
         }
         
         self.layer.addAnimation(rotateAnimation, forKey: nil)
-    }
-    
-    
-    /**
-        Remove allSubView
-    */
-    public func removeAllSubViews() {
-        for subView :AnyObject in self.subviews { subView.removeFromSuperview() }
     }
     /**
     Fade In
@@ -106,7 +100,23 @@ public extension UIView {
             self.alpha = alpha
             }, completion: completion)
     }
+    /**
+    Scrool to page
     
+    - parameter scrollView: UIScrollView
+    - parameter page:       Int
+    - parameter animated:   Bool
+    */
+    func scrollToPage(scrollView: UIScrollView, page: Int, animated: Bool) {
+        var frame: CGRect = scrollView.frame
+        frame.origin.x = frame.size.width * CGFloat(page);
+        frame.origin.y = 0;
+        scrollView.scrollRectToVisible(frame, animated: animated)
+        
+    }
+}
 
-    
+// MARK: - UIView Extension Other
+public extension UIView {
+
 }

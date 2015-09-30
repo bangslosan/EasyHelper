@@ -11,7 +11,7 @@ import MediaPlayer
 
 extension MPMoviePlayerController {
     
-    func test(url:String) throws {
+   /* func test(url:String) throws {
         var moviePlayer:MPMoviePlayerController
         
         guard let url:NSURL = NSURL(string: url) else {
@@ -25,5 +25,5 @@ extension MPMoviePlayerController {
         moviePlayer.fullscreen = true
         
         moviePlayer.controlStyle = MPMovieControlStyle.Embedded
-    }
+    }*/
 }

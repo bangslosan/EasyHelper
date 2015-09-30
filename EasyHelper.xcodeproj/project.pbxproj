@@ -22,7 +22,7 @@
 		884922021BBBDF3700EA150A /* EasyDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E51BBBDF3700EA150A /* EasyDispatch.swift */; settings = {ASSET_TAGS = (); }; };
 		884922031BBBDF3700EA150A /* EasyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E61BBBDF3700EA150A /* EasyError.swift */; settings = {ASSET_TAGS = (); }; };
 		884922041BBBDF3700EA150A /* EasyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E71BBBDF3700EA150A /* EasyHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		884922051BBBDF3700EA150A /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E81BBBDF3700EA150A /* File.swift */; settings = {ASSET_TAGS = (); }; };
+		884922051BBBDF3700EA150A /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E81BBBDF3700EA150A /* UIAlertController.swift */; settings = {ASSET_TAGS = (); }; };
 		884922061BBBDF3700EA150A /* FloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E91BBBDF3700EA150A /* FloatExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		884922071BBBDF3700EA150A /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921EA1BBBDF3700EA150A /* IntExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		884922081BBBDF3700EA150A /* MPMoviePlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921EB1BBBDF3700EA150A /* MPMoviePlayerController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -72,7 +72,7 @@
 		884921E51BBBDF3700EA150A /* EasyDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyDispatch.swift; sourceTree = "<group>"; };
 		884921E61BBBDF3700EA150A /* EasyError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyError.swift; sourceTree = "<group>"; };
 		884921E71BBBDF3700EA150A /* EasyHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyHelper.swift; sourceTree = "<group>"; };
-		884921E81BBBDF3700EA150A /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		884921E81BBBDF3700EA150A /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		884921E91BBBDF3700EA150A /* FloatExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtensions.swift; sourceTree = "<group>"; };
 		884921EA1BBBDF3700EA150A /* IntExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
 		884921EB1BBBDF3700EA150A /* MPMoviePlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPMoviePlayerController.swift; sourceTree = "<group>"; };
@@ -140,8 +140,7 @@
 				8849221E1BBBE31000EA150A /* CoreGraphics */,
 				8849221D1BBBE2FD00EA150A /* SequenceType */,
 				8849221C1BBBE2E600EA150A /* UI */,
-				884921E81BBBDF3700EA150A /* File.swift */,
-				884921EB1BBBDF3700EA150A /* MPMoviePlayerController.swift */,
+				887221EB1BBC79C2009B3438 /* Wait to add */,
 				8849218A1BBBDE2700EA150A /* EasyHelper.h */,
 				8849218C1BBBDE2700EA150A /* Info.plist */,
 			);
@@ -165,6 +164,7 @@
 		8849221C1BBBE2E600EA150A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				884921E81BBBDF3700EA150A /* UIAlertController.swift */,
 				884921F61BBBDF3700EA150A /* UIViewExtensions.swift */,
 				884921F11BBBDF3700EA150A /* UIColorExtensions.swift */,
 				884921F21BBBDF3700EA150A /* UIImageExtensions.swift */,
@@ -264,6 +264,14 @@
 				884922231BBBE43E00EA150A /* TestNumber.swift */,
 			);
 			name = Numbers;
+			sourceTree = "<group>";
+		};
+		887221EB1BBC79C2009B3438 /* Wait to add */ = {
+			isa = PBXGroup;
+			children = (
+				884921EB1BBBDF3700EA150A /* MPMoviePlayerController.swift */,
+			);
+			name = "Wait to add";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,7 +399,7 @@
 				884922021BBBDF3700EA150A /* EasyDispatch.swift in Sources */,
 				884922111BBBDF3700EA150A /* UILabelExtensions.swift in Sources */,
 				8849220E1BBBDF3700EA150A /* UIColorExtensions.swift in Sources */,
-				884922051BBBDF3700EA150A /* File.swift in Sources */,
+				884922051BBBDF3700EA150A /* UIAlertController.swift in Sources */,
 				884922101BBBDF3700EA150A /* UIImageViewExtensions.swift in Sources */,
 				884921F91BBBDF3700EA150A /* BoolExtensions.swift in Sources */,
 				884922131BBBDF3700EA150A /* UIViewExtensions.swift in Sources */,

@@ -76,7 +76,8 @@ extension CGFloat {
     */
     public static var random:CGFloat {
         get {
-            return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+            
+            return CGFloat(Float.random)
         }
         
     }

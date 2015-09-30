@@ -161,7 +161,7 @@ public extension String {
         return dateFormatter.dateFromString(self)
     }
 }
-// MARK: - Extensions String / Integer
+// MARK: - Extensions String / Numbers
 public extension String {
     /** 
     String to Int
