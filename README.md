@@ -1,9 +1,9 @@
-<h3 align="center">
+<h2 align="center">
     EasyHelper
-</h3>
-<h5 align="center">
+</h2>
+<h4 align="center">
     EasyHelper is a simple library to help you in your development Swift
-</h5>
+</h4>
 
 -------
 
@@ -35,7 +35,7 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 
 -------
 
-##### Features :
+## Features :
 
 
 
