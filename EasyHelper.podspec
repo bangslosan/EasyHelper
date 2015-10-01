@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "EasyHelper"
-  s.version      = "0.0.2"
-  s.summary      = "EasyHelper is a simple library to help you in your development Swift."
+  s.version      = "0.0.1"
+  s.summary      = "EasyHelper is a simple library to help you in your development Swift"
 
   s.description  = <<-DESC
                    A longer description of EasyHelper in Markdown format.
@@ -56,7 +56,7 @@ Pod::Spec.new do |s|
   s.author             = { "DaRkD0G" => "postmaster@yannickstephan.com" }
   # Or just: s.author    = "DaRkD0G"
   # s.authors            = { "DaRkD0G" => "postmaster@yannickstephan.com" }
-  s.social_media_url   = "http://twitter.com/DaRkD0G"
+  # s.social_media_url   = "http://twitter.com/DaRkD0G"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -64,11 +64,11 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  s.platform     = :ios
+    s.platform     = :ios
   # s.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "7.0"
+  # s.ios.deployment_target = "5.0"
   # s.osx.deployment_target = "10.7"
   # s.watchos.deployment_target = "2.0"
 
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/DaRkD0G/EasyHelper.git", :tag => "0.0.2" }
+  s.source       = { :git => "https://github.com/DaRkD0G/EasyHelper.git", :tag => "0.0.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,7 +90,8 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{swift}"
+  s.source_files  = 'EasyHelper'
+  # "Classes", "Classes/**/*.{swift}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
