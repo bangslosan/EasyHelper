@@ -15,4 +15,5 @@ enum EHError: ErrorType {
     case NSData(String)
     case NSURL(String)
     case JSON(String)
+    case NSDictionary(String) 
 }

@@ -9,23 +9,57 @@ import Foundation
 
 
 extension Dictionary {
+    /**
+    Loads a JSON file from the app bundle into a new dictionary
     
-    // Loads a JSON file from the app bundle into a new dictionary
-    static func loadJSONFromBundle(filename: String) throws ->  Dictionary<String, AnyObject>? {
+    - parameter filename: File name
+    
+    - throws: EHError : PathForResource / NSData / JSON
+    
+    - returns: Dictionary<String, AnyObject>
+    */
+    static func loadJSONFromBundle(filename: String) throws ->  Dictionary<String, AnyObject> {
         
         guard let path = NSBundle.mainBundle().pathForResource(filename, ofType: "json")  else {
-            throw EHError.PathForResource("[EasyHelper][loadJSONFromBundle] (pathForResource) File : '\(filename).json'")
-        }
-        
-        guard let data = try? NSData(contentsOfFile: path, options: NSDataReadingOptions()) else {
-            throw EHError.NSData("[EasyHelper][loadJSONFromBundle] (NSData) Could not load file : '\(filename)'")
+            throw EHError.Nil("[EasyHelper][loadJSONFromBundle][->pathForResource] The file could not be located\nFile : '\(filename).json'")
         }
 
-        guard let jsonDict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? [String : AnyObject] else {
-            throw EHError.JSON("[EasyHelper][loadJSONFromBundle] (NSJSONSerialization) Level file '\(filename)' is not valid JSON")
+        guard let data = try? NSData(contentsOfFile: path, options:.DataReadingUncached)   else {
+           throw EHError.NSData("[EasyHelper][loadJSONFromBundle][->NSData] The absolute path of the file not find\nFile : '\(filename)'")
+        }
+
+        guard let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? Dictionary<String, AnyObject> else {
+            throw EHError.JSON("[EasyHelper][loadJSONFromBundle][->NSJSONSerialization]Error.InvalidJSON Level file '\(filename)' is not valid JSON")
         }
         
         return jsonDict
 
+    }
+    
+    /**
+    Load a Plist file from the app bundle into a new dictionary
+    
+    :param: File name
+    :return: Dictionary<String, AnyObject>?
+    */
+    /**
+    Load a Plist file from the app bundle into a new dictionary
+    
+    - parameter filename: File name
+    
+    - throws: EHError : Nil
+    
+    - returns: Dictionary<String, AnyObject>
+    */
+    static func loadPlistFromBundle(filename: String) throws -> Dictionary<String, AnyObject> {
+        
+        guard let path = NSBundle.mainBundle().pathForResource(filename, ofType: "plist")  else {
+            throw EHError.Nil("[EasyHelper][loadPlistFromBundle] (pathForResource) The file could not be located\nFile : '\(filename).plist'")
+        }
+        guard let plistDict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject> else {
+            throw EHError.Nil("[EasyHelper][loadPlistFromBundle] (NSDictionary) There is a file error or if the contents of the file are an invalid representation of a dictionary. File : '\(filename)'.plist")
+        }
+        
+        return plistDict
     }
 }
