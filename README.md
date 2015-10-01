@@ -4,7 +4,9 @@
 <h4 align="center">
     EasyHelper is a simple library to help you in your development Swift
 </h4>
-
+```ruby
+pod 'EasyHelper', :git => 'https://github.com/DaRkD0G/EasyHelper.git'
+```
 -------
 
 [![Twitter: @YannickSteph](https://img.shields.io/badge/contact-@YannickSteph-blue.svg?style=flat)](https://twitter.com/YannickSteph)
