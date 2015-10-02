@@ -40,6 +40,8 @@
 		8849221A1BBBDF3F00EA150A /* TestNSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884922161BBBDF3F00EA150A /* TestNSDateExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		8849221B1BBBDF3F00EA150A /* TestStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884922171BBBDF3F00EA150A /* TestStringExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		884922241BBBE43E00EA150A /* TestNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884922231BBBE43E00EA150A /* TestNumber.swift */; settings = {ASSET_TAGS = (); }; };
+		886086061BBE6A4C00ABCF58 /* SequenceTypeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886086051BBE6A4C00ABCF58 /* SequenceTypeExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		8860860B1BBE6C0500ABCF58 /* TestSequenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860860A1BBE6C0500ABCF58 /* TestSequenceType.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		884922161BBBDF3F00EA150A /* TestNSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNSDateExtensions.swift; sourceTree = "<group>"; };
 		884922171BBBDF3F00EA150A /* TestStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestStringExtensions.swift; sourceTree = "<group>"; };
 		884922231BBBE43E00EA150A /* TestNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNumber.swift; sourceTree = "<group>"; };
+		886086051BBE6A4C00ABCF58 /* SequenceTypeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTypeExtensions.swift; sourceTree = "<group>"; };
+		8860860A1BBE6C0500ABCF58 /* TestSequenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSequenceType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,7 @@
 		884921951BBBDE2700EA150A /* EasyHelperTests */ = {
 			isa = PBXGroup;
 			children = (
+				886086071BBE6BDE00ABCF58 /* SequenceType */,
 				884922281BBBE78C00EA150A /* Numbers */,
 				884922271BBBE77B00EA150A /* String */,
 				884922261BBBE77600EA150A /* NS */,
@@ -178,6 +183,7 @@
 		8849221D1BBBE2FD00EA150A /* SequenceType */ = {
 			isa = PBXGroup;
 			children = (
+				886086051BBE6A4C00ABCF58 /* SequenceTypeExtensions.swift */,
 				884921E31BBBDF3700EA150A /* DictionaryExtensions.swift */,
 				884921DB1BBBDF3700EA150A /* ArrayExtensions.swift */,
 				884921ED1BBBDF3700EA150A /* SetExtensions.swift */,
@@ -266,6 +272,14 @@
 			name = Numbers;
 			sourceTree = "<group>";
 		};
+		886086071BBE6BDE00ABCF58 /* SequenceType */ = {
+			isa = PBXGroup;
+			children = (
+				8860860A1BBE6C0500ABCF58 /* TestSequenceType.swift */,
+			);
+			name = SequenceType;
+			sourceTree = "<group>";
+		};
 		887221EB1BBC79C2009B3438 /* Wait to add */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +350,7 @@
 				TargetAttributes = {
 					884921861BBBDE2700EA150A = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 35AB7NVN6H;
 					};
 					884921901BBBDE2700EA150A = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -392,6 +407,7 @@
 				8849220D1BBBDF3700EA150A /* StringExtensions.swift in Sources */,
 				884922041BBBDF3700EA150A /* EasyHelper.swift in Sources */,
 				884921FA1BBBDF3700EA150A /* CALayerExtensions.swift in Sources */,
+				886086061BBE6A4C00ABCF58 /* SequenceTypeExtensions.swift in Sources */,
 				884921FC1BBBDF3700EA150A /* CGPointExtensions.swift in Sources */,
 				884921FB1BBBDF3700EA150A /* CGFloatExtensions.swift in Sources */,
 				884922071BBBDF3700EA150A /* IntExtensions.swift in Sources */,
@@ -415,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8860860B1BBE6C0500ABCF58 /* TestSequenceType.swift in Sources */,
 				8849221B1BBBDF3F00EA150A /* TestStringExtensions.swift in Sources */,
 				884922181BBBDF3F00EA150A /* Test.swift in Sources */,
 				884922191BBBDF3F00EA150A /* TestEasyDispath.swift in Sources */,
@@ -527,6 +544,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -546,6 +564,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

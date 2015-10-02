@@ -19,4 +19,13 @@ extension Bool {
             return Int.random(0, max: 1) == 1
         }
     }
+    /**
+    Toggle bool
+    
+    - returns: !(Self Bool)
+    */
+    mutating func toggle() -> Bool {
+        self = !self
+        return self
+    }
 }

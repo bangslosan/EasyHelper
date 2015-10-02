@@ -7,74 +7,30 @@
 //
 
 import Foundation
-public extension SequenceType where Generator.Element == String {
-    /**
-    Count characters each cell of the array
-    
-    - returns: [Int] Array of count characters by cell in the array
-    */
-    public func countByCharactersInArray() -> [Int] {
-        return self.map{$0.characters.count}
-    }
-    /**
-    Apprend all string after by after
-    
-    - returns: String
-    */
-    public func appendAll() -> String  {
-        return String( self.map{$0.characters}.reduce(String.CharacterView(), combine: {$0 + $1}))
-    }
-    /**
-    Array of String, find in array if has prefix String
-    
-    :param: ignoreCase True find lowercaseString
-    :param: target        String find
-    
-    :returns: Array of String find
-    */
-    public func containsPrefix(ignoreCase:Bool,var target: String) -> [String] {
-        
-        let values = self.filter({
-                var val = $0
-            
-                if ignoreCase {
-                    val = val.lowercaseString
-                    target = target.lowercaseString
-                }
-                
-            return val.hasPrefix(target) ?  true :  false
-            
-        })
-        
-        return values
-    }
-    /**
-    Array of String, find in array if has suffix String
-    
-    :param: ignoreCase True find lowercaseString
-    :param: target        String find
-    
-    :returns: Array of String find
-    */
-    public func containsSuffix(ignoreCase:Bool,var target: String) -> [String] {
-        
-        let values = self.filter({
-            var val = $0
-            
-            if ignoreCase {
-                val = val.lowercaseString
-                target = target.lowercaseString
-            }
-            
-            return val.hasSuffix(target) ?  true :  false
-            
-        })
-        
-        return values
-    }
-}
-
+// MARK: - Classical
 public extension Array {
+ /**
+    Creates an array with the elements at indexes in the given list of integers.
+    
+    :param: first First index
+    :param: second Second index
+    :param: rest Rest of indexes
+    :returns: Array with the items at the specified indexes
+    */
+    public subscript (first: Int, second: Int, rest: Int...) -> Array {
+        return ([first, second] + rest).map { self[$0] }
+    }
+    /**
+    Gets the object at the specified index, if it exists.
+    
+    :param: index
+    :returns: Object at index in self
+    */
+    func get (index: Int) -> Element? {
+        
+        return index >= 0 && index < count ? self[index] : nil
+        
+    }
     /**
     Contains an objet in array
     
@@ -82,7 +38,7 @@ public extension Array {
     
     :returns: Bool
     */
-    func contains<T where T : Equatable>(obj: T) -> Bool {
+    func contains<T where T : Equatable>(obj: T) -> Bool {        
         return self.filter({$0 as? T == obj}).count > 0
     }
     /**
@@ -96,8 +52,65 @@ public extension Array {
         let values =  self.filter({$0 as? T == obj})
         return (values.count > 0) ? values : nil
     }
-
+    /**
+    Checks if test returns true for all the elements in self
+    
+    :param: test Function to call for each element
+    :returns: True if test returns true for all the elements in self
+    */
+    func forEachBySorts (test: (Element) -> Bool) -> Bool {
+        for item in self {
+            if test(item) {
+                return false
+            }
+        }
+        return true
+    }
+    /**
+    Opposite of filter.
+    
+    :param: exclude Function invoked to test elements for the exclusion from the array
+    :returns: Filtered array
+    */
+    func forEachByReject (exclude: (Element -> Bool)) -> Array {
+        
+        return filter {
+            return !exclude($0)
+        }
+    }
+    /**
+    Converts the array to a dictionary with the keys supplied via the keySelector.
+    
+    :param: keySelector
+    :returns: A dictionary
+    */
+    func toDictionary <U> (keySelector:(Element) -> U) -> [U: Element] {
+        var result: [U: Element] = [:]
+        for item in self {
+            result[keySelector(item)] = item
+        }
+        return result
+    }
+    
+    /**
+    Converts the array to a dictionary with keys and values supplied via the transform function.
+    
+    :param: transform
+    :returns: A dictionary
+    */
+    func toDictionary <K, V> (transform: (Element) -> (key: K, value: V)?) -> [K: V] {
+        var result: [K: V] = [:]
+        for item in self {
+            if let entry = transform(item) {
+                result[entry.key] = entry.value
+            }
+        }
+        
+        return result
+    }
 }
+
+
 // MARK: - File
 public extension Array {
     /**

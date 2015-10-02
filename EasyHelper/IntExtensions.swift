@@ -58,6 +58,25 @@ public extension Int {
             //Int(arc4random_uniform(UInt32(max - min + 1))) + min }
     }
     
+    
+    /**
+    Checks if a number is even. (pair)
+    
+    :returns: true if self is even
+    */
+    func isEven () -> Bool {
+        return (self % 2) == 0
+    }
+    
+    /**
+    Checks if a number is odd. (impair)
+    
+    :returns: true if self is odd
+    */
+    func isOdd () -> Bool {
+        return !isEven()
+    }
+    
 }
 // MARK: - Date
 public extension Int {

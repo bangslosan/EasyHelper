@@ -6,8 +6,21 @@
 //  Copyright (c) 2015 DaRk-_-D0G. All rights reserved.
 //
 import Foundation
-
-
+// MARK: - Classical
+public extension Dictionary {
+    /**
+    Contains an objet in array
+    
+    :param: obj T Obj research
+    
+    :returns: Bool
+    */
+    func contains<T where T : Equatable>(obj: T) -> Bool {
+        return self.filter({$0 as? T == obj}).count > 0
+    }
+    
+}
+// MARK: - File
 extension Dictionary {
     /**
     Loads a JSON file from the app bundle into a new dictionary

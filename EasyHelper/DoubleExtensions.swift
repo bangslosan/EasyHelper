@@ -29,7 +29,6 @@ public extension Double {
             return Double(arc4random()) / 0xFFFFFFFF
         }
     }
-    
     /**
     Create a random num Double
     :param: lower number Double

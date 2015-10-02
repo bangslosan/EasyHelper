@@ -9,22 +9,14 @@
 
 
 extension Set {
-    /**
-    Map
-    
-    :param: transform
-    
-    :returns:
 
-    func map<U>(transform: (Element) -> U) -> Set<U> {
-        return Set<U>(lazy(self).map(transform))
-    } */
     /**
     Remove Element pass in param
     
     :param: newElements Element deletes to Set
     */
     mutating func removeElements(elements: Element...) {
+        
         for el in elements {
             self.remove(el)
         }

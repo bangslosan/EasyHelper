@@ -114,6 +114,28 @@ public extension UIView {
         scrollView.scrollRectToVisible(frame, animated: animated)
         
     }
+    
+    /*
+
+- (void)shakeVertically
+{
+CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.y"];
+
+animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+animation.duration = 0.5;
+animation.values = @[@(-12), @(12), @(-8), @(8), @(-4), @(4), @(0) ];
+
+[self.layer addAnimation:animation forKey:@"shake"];
+}
+
+*/
+    public func shakeVertically() {
+        let animation:CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.translation.y")
+        
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.duration = 0.5
+        animation.values = [(-12), (12), (-8), (8), (-4), (4), (0) ]
+    }
 }
 
 // MARK: - UIView Extension Other
