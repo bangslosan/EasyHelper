@@ -8,22 +8,76 @@
 
 import Foundation
 
+/// ############################################################ ///
+///                       To ( Convert )                         ///
+/// ############################################################ ///
+
+// MARK: - Classical
 public extension Float {
+    /* --------------------------------------------------------------------------- */
+    /*                              Convert Numbers                                */
+    /* --------------------------------------------------------------------------- */
     /// Int to String
     public var toString:String {
         get {
-            
             return self.description
-            //String(self)
         }
     }
-    
-    var isInteger:Bool { return floor(self) == self }
-
-    /**
-    Returns a random floating point number between 0.0 and 1.0, inclusive.
-    By DaRkDOG
-    */
+    /// Float to CGFloat
+    public var toCGFloat:CGFloat {
+        get {
+            return CGFloat(self)
+        }
+        
+    }
+    /// Float to Int
+    public var toInt:Int {
+        get {
+            return Int(self)
+        }
+        
+    }
+    /// Float to Double
+    public var toDouble:Double {
+        get {
+            return Double(self)
+        }
+        
+    }
+    /* --------------------------------------------------------------------------- */
+    /*                              Radians Degrees                                */
+    /* --------------------------------------------------------------------------- */
+    /// Converts an angle in degrees to radians.
+    public var toDegreesToRadians:CGFloat {
+        get {
+            return CGFloat(M_PI) * self.toCGFloat / 180.0
+        }
+    }
+    /// Converts an angle in radians to degrees.
+    public var toRadiansToDegrees:CGFloat {
+        get {
+            return self.toCGFloat * 180.0 / CGFloat(M_PI)
+        }
+    }
+}
+/// ############################################################ ///
+///                        Is ( Tested )                         ///
+/// ############################################################ ///
+// MARK: - Is tested
+public extension Float {
+    /// Is Integer
+    public var isInt:Bool {
+        get {
+            return floor(self) == self
+        }
+    }
+}
+/// ############################################################ ///
+///                         Random                               ///
+/// ############################################################ ///
+// MARK: - Random
+public extension Float {
+    /// Returns a random floating point number between 0.0 and 1.0, inclusive.
     public static var random:Float {
         get {
             return Float(arc4random()) / 0xFFFFFFFF
@@ -31,18 +85,19 @@ public extension Float {
     }
     /**
     Create a random num Float
-    :param: lower number Float
-    :param: upper number Float
-    :return: random number Float
-    By DaRkDOG
+    
+    - parameter min: Float
+    - parameter max: Float
+    
+    - returns: Float
     */
     public static func random(min min: Float, max: Float) -> Float {
         return Float.random * (max - min) + min
     }
-    
-    
 }
-
+/// ############################################################ ///
+///                           Date                               ///
+/// ############################################################ ///
 // MARK: - Date
 public extension Float {
     /// Int to Seconde

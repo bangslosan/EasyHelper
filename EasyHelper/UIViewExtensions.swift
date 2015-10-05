@@ -65,43 +65,58 @@ public extension UIView {
 
 // MARK: - UIView Extension Animate
 public extension UIView {
-    /**
-    Set Rotation 360 on View
-    
-    :param: duration   Duration
-    :param: completion When If Completed
-    */
-    public func applyFotate360Degrees(duration: CFTimeInterval = 1.0, completion: (() -> ())) {
-        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        rotateAnimation.fromValue = 0.0
-        rotateAnimation.toValue = CGFloat(M_PI * 2.0)
-        rotateAnimation.duration = duration
-        rotateAnimation.delegate = self
-        CATransaction.setCompletionBlock { () -> Void in
-            completion()
-        }
-        
-        self.layer.addAnimation(rotateAnimation, forKey: nil)
-    }
+
     /**
     Fade In
     
-    :returns: Completion when finished
+    - parameter duration:      NSTimeInterval
+    - parameter delay:         NSTimeInterval
+    - parameter alpha:         CGFloat
+    - parameter completionEnd: (() -> ())? When animation is finished
     */
-    public func applyFadeIn(duration: NSTimeInterval = 1.0, delay: NSTimeInterval = 0.0, alpha: CGFloat = 1.0, completion: ((Bool) -> Void)) {
-        UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.alpha = 1.0
-            }, completion: completion)
+    public func applyFadeIn(
+        
+        duration: NSTimeInterval = 1.0,
+        delay: NSTimeInterval = 0.0,
+        alpha: CGFloat = 1,
+        completionEnd: (() -> ())? = nil) {
+            
+            let animation = CABasicAnimation(keyPath:"opacity")
+            animation.beginTime = CACurrentMediaTime() + delay;
+            animation.duration = duration
+            animation.fromValue = 0
+            animation.toValue = alpha
+            animation.fillMode = kCAFillModeBoth
+            
+            CATransaction.setCompletionBlock(completionEnd)
+            
+            self.layer.addAnimation(animation, forKey:"animateOpacity")
     }
     /**
     Fade Out
     
-    :returns: Completion when finished
+    - parameter duration:      NSTimeInterval
+    - parameter delay:         NSTimeInterval
+    - parameter alpha:         CGFloat
+    - parameter completionEnd: (() -> ())? When animation is finished
     */
-    public func applyFadeOut(duration: NSTimeInterval = 1.0, delay: NSTimeInterval = 0.0, alpha: CGFloat = 1.0, completion: (Bool) -> Void) {
-        UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.alpha = alpha
-            }, completion: completion)
+    public func applyFadeOut(
+        
+        duration: NSTimeInterval = 1.0,
+        delay: NSTimeInterval = 0.0,
+        alpha: CGFloat = 0,
+        completionEnd: (() -> ())? = nil) {
+            
+            let animation = CABasicAnimation(keyPath:"opacity")
+            animation.beginTime = CACurrentMediaTime() + delay;
+            animation.duration = duration
+            animation.fromValue = 1
+            animation.toValue = alpha
+            animation.fillMode = kCAFillModeBoth
+            
+            CATransaction.setCompletionBlock(completionEnd)
+            
+            self.layer.addAnimation(animation, forKey:"animateOpacity")
     }
     /**
     Scrool to page
@@ -118,17 +133,36 @@ public extension UIView {
         
     }
     
-
-    public func applyRotateToAngle(angle:CGFloat, duration:NSTimeInterval, direction:UIViewContentMode,repeatCount:Float,autoReverse:Bool) {
-        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        
-        rotationAnimation.toValue = (direction == UIViewContentMode.Right ? angle : -angle)
-        rotationAnimation.duration = duration
-        rotationAnimation.autoreverses = autoReverse
-        rotationAnimation.repeatCount = repeatCount
-        rotationAnimation.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
-        
-        self.layer.addAnimation(rotationAnimation,forKey:"transform.rotation.z")
+    /**
+    Set Rotation 360 on View
+    
+    :param: duration   Duration
+    :param: completion When If Completed
+    */
+    public func applyRotateToAngle(
+        angle:CGFloat,
+        duration:NSTimeInterval,
+        direction:UIViewContentMode,
+        repeatCount:Float = 0,
+        autoReverse:Bool = false,
+        completionEnd: (() -> ())
+        ) {
+            
+            
+            
+            let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+            
+            rotationAnimation.fromValue = 0.0
+            rotationAnimation.toValue = (direction == UIViewContentMode.Right ? angle.toDegreesToRadians : -angle.toDegreesToRadians)
+            rotationAnimation.duration = duration
+            rotationAnimation.autoreverses = autoReverse
+            rotationAnimation.repeatCount = repeatCount
+            rotationAnimation.removedOnCompletion = false
+            rotationAnimation.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionLinear)
+            
+            CATransaction.setCompletionBlock(completionEnd)
+            
+            self.layer.addAnimation(rotationAnimation,forKey:"transform.rotation.z")
     }
     
     public func stopAnimation() {
@@ -140,7 +174,12 @@ public extension UIView {
     public func isBeingAnimated() -> Bool {
         return self.layer.animationKeys()?.count > 0
     }
-    public func applyPulseToSize(scale:CGFloat, duration:NSTimeInterval, repeatAnimate:Bool) {
+    public func applyPulseToSize(
+        scale:CGFloat,
+        duration:NSTimeInterval,
+        repeatAnimate:Bool,
+        completionEnd: (() -> ())) {
+            
         let pulseAnimate = CABasicAnimation(keyPath: "transform.scale")
         
         
@@ -150,42 +189,65 @@ public extension UIView {
 
         pulseAnimate.autoreverses = true
         pulseAnimate.repeatCount = repeatAnimate ? Float.infinity : 0
+            
+        CATransaction.setCompletionBlock(completionEnd)
+            
         self.layer.addAnimation(pulseAnimate, forKey:"pulse")
     }
+    
     @available(iOS 7,*)
-    public func applyMotionEffects() {
+    public func applyMotionEffects(
+        minimumRelativeValueX:Float = -10.00,
+        maximumRelativeValueX:Float = 10.00,
+        minimumRelativeValueY:Float = -10.00,
+        maximumRelativeValueY:Float = 10.00
+        ) {
         
         let horizontalEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type:.TiltAlongHorizontalAxis)
-        horizontalEffect.minimumRelativeValue = -10.00
-        horizontalEffect.maximumRelativeValue = 10.00
+        horizontalEffect.minimumRelativeValue = minimumRelativeValueX
+        horizontalEffect.maximumRelativeValue = maximumRelativeValueX
         
         let verticalEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-        verticalEffect.minimumRelativeValue = -10.00
-        verticalEffect.maximumRelativeValue = 10.00
+        verticalEffect.minimumRelativeValue = minimumRelativeValueY
+        verticalEffect.maximumRelativeValue = maximumRelativeValueY
         
         let motionEffectGroup = UIMotionEffectGroup()
         motionEffectGroup.motionEffects = [horizontalEffect, verticalEffect]
         
+        
+            
         self.addMotionEffect(motionEffectGroup)
         
     }
     
-    public func applyShakeHorizontally() {
+    public func applyShakeHorizontally(
+        duration:CFTimeInterval = 0.5,
+        moveValues:[Float] = [(-12), (12), (-8), (8), (-4), (4), (0) ],
+        completionEnd: (() -> ())) {
+            
         let animation:CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.duration = 0.5
-        animation.values = [(-12), (12), (-8), (8), (-4), (4), (0) ]
-        
+        animation.duration = duration
+        animation.values = moveValues
+            
+        CATransaction.setCompletionBlock(completionEnd)
+            
         self.layer.addAnimation(animation, forKey: "shake")
     }
-    public func applyShakeVertically() {
+    public func applyShakeVertically(
+        duration:CFTimeInterval = 0.5,
+        moveValues:[Float] = [(-12), (12), (-8), (8), (-4), (4), (0) ],
+        completionEnd: (() -> ())) {
+            
         let animation:CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.translation.y")
-        
+            
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.duration = 0.5
-        animation.values = [(-12), (12), (-8), (8), (-4), (4), (0) ]
+        animation.duration = duration
+        animation.values = moveValues
         
+        CATransaction.setCompletionBlock(completionEnd)
+            
         self.layer.addAnimation(animation, forKey: "shake")
     }
 }
@@ -196,7 +258,12 @@ extension UIView {
 // MARK: - Shadow
 extension UIView {
     
-    func applyPlainShadow(shadowColor:UIColor =  UIColor.blackColor(),shadowOpacity:Float = 0.4, shadowRadius:CGFloat = 5, shadowOffset:CGSize = CGSize(width: 0, height: 10)) {
+    func applyPlainShadow(
+        shadowColor:UIColor =  UIColor.blackColor(),
+        shadowOpacity:Float = 0.4,
+        shadowRadius:CGFloat = 5,
+        shadowOffset:CGSize = CGSize(width: 0, height: 10)) {
+            
         self.layer.shadowColor = shadowColor.CGColor
         self.layer.shadowOffset = shadowOffset
         self.layer.shadowOpacity = shadowOpacity
@@ -209,8 +276,7 @@ extension UIView {
         depth:CGFloat = 11.00 ,
         lessDepth:CGFloat = 0.8,
         curviness:CGFloat = 5,
-        radius:CGFloat = 1
-        ) {
+        radius:CGFloat = 1 ) {
 
         let path = UIBezierPath()
         
@@ -224,9 +290,14 @@ extension UIView {
         path.addLineToPoint(CGPoint(x: self.width - 2 * radius, y: self.height + depth))
         
         // path to bottom left via curve
-        path.addCurveToPoint(CGPoint(x: radius, y: self.height + depth),
-            controlPoint1: CGPoint(x: self.width - curviness, y: self.height + (lessDepth * depth) - curviness),
-            controlPoint2: CGPoint(x: curviness, y: self.height + (lessDepth * depth) - curviness))
+        path.addCurveToPoint(
+            CGPoint(x: radius, y: self.height + depth),
+            controlPoint1: CGPoint(
+                x: self.width - curviness,
+                y: self.height + (lessDepth * depth) - curviness),
+            controlPoint2: CGPoint(
+                x: curviness,
+                y: self.height + (lessDepth * depth) - curviness))
         
         self.layer.shadowPath = path.CGPath
         self.layer.shadowColor = shadowColor.CGColor

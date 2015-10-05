@@ -8,38 +8,102 @@
 
 import Foundation
 
+/*
+* Double Extension
+*
+* - Convert Numbers
+* - Radians Degrees
+*/
+
+/// ############################################################ ///
+///                       To ( Convert )                         ///
+/// ############################################################ ///
 public extension Double {
-    
+    /* --------------------------------------------------------------------------- */
+    /*                              Convert Numbers                                */
+    /* --------------------------------------------------------------------------- */
     /// Int to String
     public var toString:String {
         get {
-            
             return self.description
-            //String(self)
         }
     }
-    
-    var isInteger:Bool { return floor(self) == self }
-    /**
-    Returns a random floating point number between 0.0 and 1.0, inclusive.
-    By DaRkDOG
-    */
+    /// Double to Int
+    public var toInt:Int {
+        get {
+            return Int(self)
+        }
+        
+    }
+    /// Double to Float
+    public var toFloat:Float {
+        get {
+            return Float(self)
+        }
+        
+    }
+    /// Double to CGFloat
+    public var toCGFloat:CGFloat {
+        get {
+            return CGFloat(self)
+        }
+        
+    }
+    /* --------------------------------------------------------------------------- */
+    /*                              Radians Degrees                                */
+    /* --------------------------------------------------------------------------- */
+    /// Converts an angle in degrees to radians.
+    public var toDegreesToRadians:CGFloat {
+        get {
+            return CGFloat(M_PI) * self.toCGFloat / 180.0
+        }
+    }
+    /// Converts an angle in radians to degrees.
+    public var toRadiansToDegrees:CGFloat {
+        get {
+            return self.toCGFloat * 180.0 / CGFloat(M_PI)
+        }
+    }
+}
+/// ############################################################ ///
+///                       Is ( Tested )                          ///
+/// ############################################################ ///
+// MARK: - Is ( Tested )
+public extension Double {
+    /// Is Integer
+    public var isInt:Bool {
+        get {
+            return floor(self) == self
+        }
+    }
+
+}
+/// ############################################################ ///
+///                         Random                               ///
+/// ############################################################ ///
+// MARK: - Random
+public extension Double {
+    /// Returns a random floating point number between 0.0 and 1.0, inclusive.
     public static var random:Double {
         get {
             return Double(arc4random()) / 0xFFFFFFFF
         }
     }
     /**
-    Create a random num Double
-    :param: lower number Double
-    :param: upper number Double
-    :return: random number Double
+    Create a random number Double
+    
+    - parameter min: Double
+    - parameter max: Double
+    
+    - returns: Double
     */
     public static func random(min: Double, max: Double) -> Double {
         return Double.random * (max - min) + min
     }
 }
-
+/// ############################################################ ///
+///                           Date                               ///
+/// ############################################################ ///
 // MARK: - Date
 public extension Double {
     /// Int to Seconde

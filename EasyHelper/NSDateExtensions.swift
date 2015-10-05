@@ -8,8 +8,17 @@
 
 import Foundation
 
-//https://github.com/malcommac/SwiftDate
-//Date
+/*
+* Date Extension
+* Inspirate by : https://github.com/malcommac/SwiftDate
+*
+* - Convert Numbers
+* - Radians Degrees
+*/
+
+/// ############################################################ ///
+///      Operations with NSDate WITH DATES (==,!=,<,>,<=,>=      ///
+/// ############################################################ ///
 
 //MARK: OPERATIONS WITH DATES (==,!=,<,>,<=,>=)
 extension NSDate : Comparable {}
@@ -62,6 +71,9 @@ NSDate >=
 public func >= (left: NSDate, right: NSDate) -> Bool {
     return !(left < right)
 }
+/// ############################################################ ///
+///               Arithmetic operations with NSDate              ///
+/// ############################################################ ///
 
 //MARK: ARITHMETIC OPERATIONS WITH DATES (-,-=,+,+=)
 /**
@@ -95,6 +107,10 @@ NSDate += 1.month
 public func += (inout left: NSDate, right: NSTimeInterval) {
     left = left.dateByAddingTimeInterval(right)
 }
+
+/// ############################################################ ///
+///               Arithmetic operations with NSDate              ///
+/// ############################################################ ///
 
 // MARK: - Extension Date
 public extension NSDate {

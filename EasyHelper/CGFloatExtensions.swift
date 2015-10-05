@@ -8,94 +8,132 @@
 
 import CoreGraphics
 
-/** The value of π as a CGFloat */
+/// ############################################################ ///
+///                       To ( Convert )                         ///
+/// ############################################################ ///
 
-
+// MARK: - Classical
 extension CGFloat {
-    
-    var π:CGFloat {
-        return CGFloat(M_PI)
+    /* --------------------------------------------------------------------------- */
+    /*                              Convert Numbers                                */
+    /* --------------------------------------------------------------------------- */
+    /// CGFloat to String
+    public var toString:String {
+        get {
+            return self.description
+        }
     }
-    /**
-    * Converts an angle in degrees to radians.
-    */
-    func degreesToRadians() -> CGFloat {
-        return π * self / 180.0
-    }
-    
-    /**
-    * Converts an angle in radians to degrees.
-    */
-    func radiansToDegrees() -> CGFloat {
-        return self * 180.0 / π
-    }
-    
-    /**
-    * Ensures that the float value stays between the given values, inclusive.
-    */
-    func clamped(v1: CGFloat, _ v2: CGFloat) -> CGFloat {
-        let min = v1 < v2 ? v1 : v2
-        let max = v1 > v2 ? v1 : v2
-        return self < min ? min : (self > max ? max : self)
-    }
-    
-    /**
-    * Ensures that the float value stays between the given values, inclusive.
-    */
-    mutating func clamp(v1: CGFloat, _ v2: CGFloat) -> CGFloat {
-        self = clamped(v1, v2)
-        return self
-    }
-    
-    /**
-    * Returns 1.0 if a floating point value is positive; -1.0 if it is negative.
-    */
-    func sign() -> CGFloat {
+    /// CGFloat to CGFloat
+    public var toInt:Int {
+        get {
+            return Int(self)
+        }
         
-        return (self >= 0.0) ? 1.0 : -1.0
     }
-    
+    /// CGFloat to Float
+    public var toFloat:Float {
+        get {
+            return Float(self)
+        }
+        
+    }
+    /// CGFloat to Double
+    public var toDouble:Double {
+        get {
+            return Double(self)
+        }
+    }
+    /* --------------------------------------------------------------------------- */
+    /*                              Radians Degrees                                */
+    /* --------------------------------------------------------------------------- */
+    /// Converts an angle in degrees to radians.
+    public var toDegreesToRadians:CGFloat {
+        get {
+            return CGFloat(M_PI) * self / 180.0
+        }
+    }
+    /// Converts an angle in radians to degrees.
+    public var toRadiansToDegrees:CGFloat {
+        get {
+            return self * 180.0 / CGFloat(M_PI)
+        }
+    }
+    /* --------------------------------------------------------------------------- */
+    /*                    CGAffineTransformMakeTranslation                         */
+    /* --------------------------------------------------------------------------- */
     /**
-    Tructure float en matrice de translation pour une animation
+    Float structure in translation matrix for an animation
     
-    - parameter uCGFloat: tructure de type float
-    :return: CGAffineTransform Une matrice de translation
+    - parameter uCGFloatX: CGFloat
+    - parameter uCGFloatY: CGFloat
+    
+    - returns: CGAffineTransform Structure in translation matrix
     */
     static func toCGAffineTransform(uCGFloatX uCGFloatX: CGFloat, uCGFloatY: CGFloat) -> CGAffineTransform {
         return CGAffineTransformMakeTranslation(uCGFloatX, uCGFloatY)
     }
-    /**
-    * Randomly returns either 1.0 or -1.0.
-    */
-    static func randomSign() -> CGFloat {
-        return (arc4random_uniform(2) == 0) ? 1.0 : -1.0
+}
+/// ############################################################ ///
+///                         Is ( Tested )                        ///
+/// ############################################################ ///
+
+// MARK: - tested
+public extension CGFloat {
+    /// Is Integer
+    var isInt:Bool {
+        get {
+            return floor(self) == self
+        }
     }
-    /**
-    Returns a random floating point number between 0.0 and 1.0, inclusive.
-    By DaRkDOG
-    */
+}
+/// ############################################################ ///
+///                         Random                               ///
+/// ############################################################ ///
+
+// MARK: - Random
+public extension CGFloat {
+    /// Randomly returns either 1.0 or -1.0.
+    public static var randomSign:CGFloat {
+        get {
+            return (arc4random_uniform(2) == 0) ? 1.0 : -1.0
+        }
+    }
+    /// Returns a random floating point number between 0.0 and 1.0, inclusive.
     public static var random:CGFloat {
         get {
-            
             return CGFloat(Float.random)
         }
-        
     }
     /**
     Create a random num CGFloat
-    - parameter lower: number CGFloat
-    - parameter upper: number CGFloat
-    :return: random number CGFloat
-    By DaRkDOG
+    
+    - parameter min: CGFloat
+    - parameter max: CGFloat
+    
+    - returns: CGFloat random number
     */
     public static func random(min: CGFloat, max: CGFloat) -> CGFloat {
         return CGFloat.random * (max - min) + min
     }
+}
+
+
+/// ############################################################ ///
+///                         Math Angle                           ///
+/// ############################################################ ///
+
+// MARK: - Angle
+public extension CGFloat {
     /**
-    * Returns the shortest angle between two angles. The result is always between
-    * -π and π.
+    Returns the shortest angle between two angles. The result is always between -π and π.
+    
+    - parameter angle1: CGFloat
+    - parameter angle2: CGFloat
+    
+    - returns: CGFloat
     */
     func shortestAngleBetween(angle1: CGFloat, angle2: CGFloat) -> CGFloat {
+        let π = CGFloat(M_PI)
         let twoπ = π * 2.0
         var angle = (angle2 - angle1) % twoπ
         if (angle >= π) {

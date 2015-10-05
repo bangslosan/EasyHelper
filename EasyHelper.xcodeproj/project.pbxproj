@@ -195,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				884921DD1BBBDF3700EA150A /* CALayerExtensions.swift */,
-				884921DE1BBBDF3700EA150A /* CGFloatExtensions.swift */,
 				884921DF1BBBDF3700EA150A /* CGPointExtensions.swift */,
 				884921E01BBBDF3700EA150A /* CGRectExtensions.swift */,
 				884921E11BBBDF3700EA150A /* CGSizeExtensions.swift */,
@@ -206,6 +205,7 @@
 		8849221F1BBBE35200EA150A /* Numbers */ = {
 			isa = PBXGroup;
 			children = (
+				884921DE1BBBDF3700EA150A /* CGFloatExtensions.swift */,
 				884921EA1BBBDF3700EA150A /* IntExtensions.swift */,
 				884921E91BBBDF3700EA150A /* FloatExtensions.swift */,
 				884921E41BBBDF3700EA150A /* DoubleExtensions.swift */,
