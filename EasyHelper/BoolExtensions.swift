@@ -7,25 +7,16 @@
 //
 
 
-//xcx
+/// ############################################################ ///
+///                          Random                              ///
+/// ############################################################ ///
+
+// MARK: - Bool Random
 extension Bool {
-    /**
-    Random Bool
-    
-    :returns: Bool
-    */
+    /// Random Bool
     public var random:Bool {
         get {
             return Int.random(0, max: 1) == 1
         }
-    }
-    /**
-    Toggle bool
-    
-    - returns: !(Self Bool)
-    */
-    mutating func toggle() -> Bool {
-        self = !self
-        return self
     }
 }
