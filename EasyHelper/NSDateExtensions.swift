@@ -109,31 +109,11 @@ public func += (inout left: NSDate, right: NSTimeInterval) {
 }
 
 /// ############################################################ ///
-///               Arithmetic operations with NSDate              ///
+///                     Get days functions                       ///
 /// ############################################################ ///
 
-// MARK: - Extension Date
+// MARK: - Get days functions
 public extension NSDate {
-    
-    /// Specify calendrical units such as day and month
-    private class var componentFlags:NSCalendarUnit {
-        return [NSCalendarUnit.Year ,
-            NSCalendarUnit.Month ,
-            NSCalendarUnit.Day,
-            NSCalendarUnit.WeekOfYear,
-            NSCalendarUnit.Hour ,
-            NSCalendarUnit.Minute ,
-            NSCalendarUnit.Second ,
-            NSCalendarUnit.Weekday ,
-            NSCalendarUnit.WeekdayOrdinal,
-            NSCalendarUnit.WeekOfYear]
-    }
-
-    /// Return the NSDateComponents which represent current date
-    private var components: NSDateComponents {
-        return  NSCalendar.currentCalendar().components(NSDate.componentFlags, fromDate: self)
-    }
-    
     /// Get the day component of the date
     var day: Int			{
         get {
@@ -149,7 +129,7 @@ public extension NSDate {
     /// Get the year component of the date
     public var year : Int			{
         get {
-          return components.year
+            return components.year
         }
     }
     /// Get the hour component of the date
@@ -200,7 +180,34 @@ public extension NSDate {
             return components.weekdayOrdinal
         }
     }
+}
+/// ############################################################ ///
+///                     Create days functions                    ///
+/// ############################################################ ///
 
+// MARK: - Create days functions
+public extension NSDate {
+    /* --------------------------------------------------------------------------- */
+    /*                              Create Day                                     */
+    /* --------------------------------------------------------------------------- */
+    /**
+    Create a new NSDate instance based on refDate (if nil uses current date) and set components
+    
+    :param: refDate reference date instance (nil to use NSDate())
+    :param: year    year component (nil to leave it untouched)
+    :param: month   month component (nil to leave it untouched)
+    :param: day     day component (nil to leave it untouched)
+    :param: tz      time zone component (it's the abbreviation of NSTimeZone, like 'UTC' or 'GMT+2', nil to use current time zone)
+    
+    :returns: a new NSDate with components changed according to passed params
+    */
+    public class func date(refDate refDate: NSDate? = nil, year: Int?  = nil, month: Int?  = nil, day:Int?  = nil, hour: Int? = nil, minute: Int? = nil, second: Int? = nil, tz: String? = nil) -> NSDate {
+        let referenceDate = refDate ?? NSDate()
+        return referenceDate.set(year, month: month, day: day, hour: hour, minute: minute, second: second, tz: tz)
+    }
+    /* --------------------------------------------------------------------------- */
+    /*                    Create day by Today, Yesteday, Tomorrow                  */
+    /* --------------------------------------------------------------------------- */
     /**
     Return a new NSDate instance with the current date and time set to 00:00:00
     
@@ -234,24 +241,35 @@ public extension NSDate {
     public class func tomorrow() -> NSDate {
         return today()+1.day
     }
-    /**
-    Return true if current date's day is not a weekend day
-    
-    :returns: true if date's day is a week day, not a weekend day
-    */
-    func isWeekday() -> Bool {
-        return !self.isWeekend()
-    }
-    
-    /**
-    Return true if the date is the weekend
-    
-    :returns: true or false
-    */
-    func isWeekend() -> Bool {
+
+}
+
+/// ############################################################ ///
+///                       Is ( Tested )                          ///
+/// ############################################################ ///
+// MARK: - Is ( Tested )
+public extension NSDate {
+
+    /// Return true if the date is the weekend
+    public var isWeekend:Bool {
         let range = NSCalendar.currentCalendar().maximumRangeOfUnit(NSCalendarUnit.Weekday)
         return (self.weekday == range.location || self.weekday == range.length)
     }
+    /// Return true if current date's day is not a weekend day
+    public var isWeekday:Bool {
+        return !self.isWeekend
+    }
+}
+
+/// ############################################################ ///
+///                         Private                              ///
+/// ############################################################ ///
+
+// MARK: - Get days functions
+public extension NSDate {
+    /* --------------------------------------------------------------------------- */
+    /*                              Create Day                                     */
+    /* --------------------------------------------------------------------------- */
     /**
     Individual set single component of the current date instance
     
@@ -276,24 +294,24 @@ public extension NSDate {
         components.timeZone = (tz != nil ? NSTimeZone(abbreviation: tz!) : NSTimeZone.defaultTimeZone())
         return NSCalendar.currentCalendar().dateFromComponents(components)
     }
-    
-    /**
-    Create a new NSDate instance based on refDate (if nil uses current date) and set components
-    
-    :param: refDate reference date instance (nil to use NSDate())
-    :param: year    year component (nil to leave it untouched)
-    :param: month   month component (nil to leave it untouched)
-    :param: day     day component (nil to leave it untouched)
-    :param: tz      time zone component (it's the abbreviation of NSTimeZone, like 'UTC' or 'GMT+2', nil to use current time zone)
-    
-    :returns: a new NSDate with components changed according to passed params
-    */
-    public class func date(refDate refDate: NSDate? = nil, year: Int?  = nil, month: Int?  = nil, day:Int?  = nil, hour: Int? = nil, minute: Int? = nil, second: Int? = nil, tz: String? = nil) -> NSDate {
-        let referenceDate = refDate ?? NSDate()
-        return referenceDate.set(year, month: month, day: day, hour: hour, minute: minute, second: second, tz: tz)
+    /* --------------------------------------------------------------------------- */
+    /*                              Components                                     */
+    /* --------------------------------------------------------------------------- */
+    /// Specify calendrical units such as day and month
+    private class var componentFlags:NSCalendarUnit {
+        return [NSCalendarUnit.Year ,
+            NSCalendarUnit.Month ,
+            NSCalendarUnit.Day,
+            NSCalendarUnit.WeekOfYear,
+            NSCalendarUnit.Hour ,
+            NSCalendarUnit.Minute ,
+            NSCalendarUnit.Second ,
+            NSCalendarUnit.Weekday ,
+            NSCalendarUnit.WeekdayOrdinal,
+            NSCalendarUnit.WeekOfYear]
     }
-    
+    /// Return the NSDateComponents which represent current date
+    private var components: NSDateComponents {
+        return  NSCalendar.currentCalendar().components(NSDate.componentFlags, fromDate: self)
+    }
 }
-
-
-
