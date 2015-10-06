@@ -380,3 +380,21 @@ Copy & Paste  into your project
 
 ``` 
 
+###### Motion Effects 
+<img src="http://static.ashfurrow.com/teehanlax/motionEffects.gif" height="100" width="200"/>
+``` swift
+    /**
+    Motion Effects
+    
+    - parameter minimumRelativeValueX: Min Relative Value X ( default = -10.00 )
+    - parameter maximumRelativeValueX: Max Relative Value X ( default = 10.00 )
+    - parameter minimumRelativeValueY: Min Relative Value Y ( default = -10.00 )
+    - parameter maximumRelativeValueY: Max Relative Value Y ( default = 10.00 )
+    */
+    /// Example
+    view.applyMotionEffects()
+    
+    view.applyMotionEffects(-30, maximumRelativeValueX: 30, minimumRelativeValueY: -30, maximumRelativeValueY: 30)
+
+``` 
+
