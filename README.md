@@ -49,8 +49,8 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 * [UIView](#UIView)
 	* [Init](#UIView-Init)
 	* [Frame](#UIView-Frame)
-	* [Layer](#UIView-Layer)
-	* [Transform](#UIView-Transform)
+	* [Shadow](#UIView-Shadow)
+	* [Animation](#UIView-Animation)
 	* [Animation](#UIView-Animation)
 	* [Rendering](#UIView-Rendering)
 	* [Gestures](#UIView-Gestures)
@@ -104,17 +104,21 @@ Copy & Paste  into your project
 
 #### Init <a id="UIView-Init"></a>
 
-##### Quick init method for views
+###### Quick init method for views
 
 ``` swift
     let view = (x: 10, y: 10, width: 100, height: 100)
 ```
+###### Quick init from superView
 
+``` swift
+    let view = (superView: mySuperView)
+```
 
 #### Frame <a id="UIView-Frame"></a>
 
 ##### Get/Set frame values  
-
+###### X / Y 
 ``` swift
     let positionX: CGFloat = view.x
     view.x = 10
@@ -125,7 +129,7 @@ Copy & Paste  into your project
     let positionY: CGFloat = view.y
     view.y = 10
 ```
-
+###### width / height
 ``` swift
     let positionY: CGFloat = view.width
     view.width = 100
@@ -135,19 +139,21 @@ Copy & Paste  into your project
     let positionY: CGFloat = view.height
     view.height = 100
 ```
-
+###### Position 
 ``` swift
     let position: CGPoint = view.position
     view.position = CGPointMake(100, 100)
+``` 
+###### Get Position in Center
+``` swift
+    let position: CGPoint = view.applyCenter
 ```
-
+###### Size 
 ``` swift
     let size: CGSize = view.size
     view.size = CGSizeMake(100, 100)
 ```
-
-
-##### Shadow
+#### Shadow <a id="UIView-Shadow"></a>
 <center>
 <img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
 </center>
@@ -220,29 +226,46 @@ Adding Flat shadow
     func applyFlatShadow()
 ```
 
-#### Transform <a id="UIView-Transform"></a>
+#### Animation <a id="UIView-Animation"></a>
 
 ##### Set rotation
+Stop animation
 
 ``` swift
-	func setRotationX (x: CGFloat)
-	func setRotationY (y: CGFloat)
-	func setRotationZ (z: CGFloat)
+	view.stopAnimation()
+``` 
+
+Is being animated
+
+``` swift
+	view.isBeingAnimated()
+``` 
+
+Apply Fade In
+
+``` swift
+    	/**
+	Fade In
     
-   func setRotation (x: CGFloat,
-   		y: CGFloat,
-   		z: CGFloat)
-```
+    	- parameter duration:      NSTimeInterval ( default = 1.0 )
+	- parameter delay:         NSTimeInterval ( default = 0 )
+    	- parameter alpha:         CGFloat ( default = 1.0 )
+    	- parameter completionEnd: (() -> ())? When animation is finished
+    	*/
+	// Example
+	
+    	view.applyFadeIn()
+    	
+    	view.applyFadeIn(duration: 10)
+    	
+    	view.applyFadeIn(duration: 10, delay: 10, toAlpha: 0.8) { 
+    		(bool) -> () in
+		print("Is finish")
+        }
+``` 
 
-##### Set scale
 
-``` swift
-    func setScale (x: CGFloat,
-        y: CGFloat)
-```
-
-
-#### Animation <a id="UIView-Animation"></a>
+#### Animation <a id="UIView-a"></a>
 
 ##### Animating view with constant values
 
