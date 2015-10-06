@@ -98,6 +98,7 @@ Copy & Paste  into your project
 
 
 ## Documentation
+### UIView extension <a id="UIView"></a>
 
 #### Init <a id="UIView-Init"></a>
 
@@ -153,8 +154,6 @@ Copy & Paste  into your project
     let size: CGSize = view.size
     view.size = CGSizeMake(100, 100)
 ```
-
-### UIView extension <a id="UIView"></a>
 
 #### Helper <a id="UIView-Helper"></a>
 
