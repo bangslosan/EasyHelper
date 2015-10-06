@@ -154,9 +154,8 @@ Copy & Paste  into your project
     view.size = CGSizeMake(100, 100)
 ```
 #### Shadow <a id="UIView-Shadow"></a>
-<center>
-<img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
-</center>
+<img src="http://yannickstephan.com/easyhelper/plainshadows.png" height="200" width="200"/>
+
 ###### Plain Shadow
 
 ``` swift
@@ -176,7 +175,7 @@ Copy & Paste  into your project
 ```
 
 ###### Adding Curved Shadow
-
+<img src="http://yannickstephan.com/easyhelper/curveshadows.png" height="200" width="200"/>
 ``` swift
     
     /**
@@ -198,7 +197,7 @@ Copy & Paste  into your project
 ```
 
 ###### Adding Hover Shadow
-
+<img src="http://yannickstephan.com/easyhelper/hovershadows.png" height="200" width="200"/>
 ``` swift
     /**
     Hover Shadow
