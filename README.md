@@ -49,8 +49,8 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 * [UIView](#UIView)
 	* [Init](#UIView-Init)
 	* [Frame](#UIView-Frame)
+	* [Helper](#UIView-Helper)
 	* [Shadow](#UIView-Shadow)
-	* [Animation](#UIView-Animation)
 	* [Animation](#UIView-Animation)
 	* [Rendering](#UIView-Rendering)
 	* [Gestures](#UIView-Gestures)
@@ -149,10 +149,23 @@ Copy & Paste  into your project
     let position: CGPoint = view.applyCenter
 ```
 ###### Size 
+
 ``` swift
     let size: CGSize = view.size
     view.size = CGSizeMake(100, 100)
 ```
+#### Helper <a id="UIView-Helper"></a>
+
+###### Remove all SubView
+``` swift
+    view.removeAllSubViews()
+```
+
+###### View to image
+``` swift
+    view.toImage()
+```
+
 #### Shadow <a id="UIView-Shadow"></a>
 <img src="http://yannickstephan.com/easyhelper/plainshadows.png" height="200" width="200"/>
 
