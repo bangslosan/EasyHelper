@@ -50,9 +50,10 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 	* [Helper](#UIView-Helper)
 	* [Init](#UIView-Init)
 	* [Frame](#UIView-Frame)
+	* [Border](#UIView-Border)
 	* [Shadow](#UIView-Shadow)
 	* [Animation](#UIView-Animation)
-	* [Aspect](#UIView-Aspect)
+	
 
 * [UIViewController](#UIViewController)
 * [UIScrollView](#UIScrollView)
@@ -168,6 +169,46 @@ Copy & Paste  into your project
     let size: CGSize = view.size
     view.size = CGSizeMake(100, 100)
 ```
+
+#### Border <a id="UIView-Border"></a>
+
+###### Border
+<img src="http://yannickstephan.com/easyhelper/border.png" height="200" width="200"/>
+``` swift
+    /**
+    Set Border
+    
+    - parameter borderColor: UIColor    ( default = UIColor.blackColor() )
+    - parameter borderWidth: CGFloat    ( default = 1.0 )
+    */
+    /// Example
+    view.applyBorder()
+    
+    view.applyBorder(UIColor.yellowColor(), borderWidth: 10)
+``` 
+
+###### Rounder
+<img src="http://yannickstephan.com/easyhelper/rounder.png" height="200" width="200"/>
+``` swift
+    /**
+    Set Rounder
+    
+    - parameter radius: CGFloat
+    */
+    /// Example
+    view.applyRounder(10)
+``` 
+
+###### Round
+<img src="http://yannickstephan.com/easyhelper/round.png" height="200" width="200"/>
+``` swift
+    /**
+    Set Round
+    
+    */
+    /// Example
+    view.applyRound()
+``` 
 
 #### Shadow <a id="UIView-Shadow"></a>
 <img src="http://yannickstephan.com/easyhelper/plainshadows.png" height="200" width="200"/>
@@ -398,42 +439,4 @@ Copy & Paste  into your project
 
 ``` 
 
-#### Aspect <a id="UIView-Aspect"></a>
 
-###### Border
-<img src="http://yannickstephan.com/easyhelper/border.png" height="200" width="200"/>
-``` swift
-    /**
-    Set Border
-    
-    - parameter borderColor: UIColor    ( default = UIColor.blackColor() )
-    - parameter borderWidth: CGFloat    ( default = 1.0 )
-    */
-    /// Example
-    view.applyBorder()
-    
-    view.applyBorder(UIColor.yellowColor(), borderWidth: 10)
-``` 
-
-###### Rounder
-<img src="http://yannickstephan.com/easyhelper/rounder.png" height="200" width="200"/>
-``` swift
-    /**
-    Set Rounder
-    
-    - parameter radius: CGFloat
-    */
-    /// Example
-    view.applyRounder(10)
-``` 
-
-###### Round
-<img src="http://yannickstephan.com/easyhelper/round.png" height="200" width="200"/>
-``` swift
-    /**
-    Set Round
-    
-    */
-    /// Example
-    view.applyRound()
-``` 
