@@ -28,9 +28,26 @@ func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
     func sqrt(a: CGFloat) -> CGFloat {
         return CGFloat(sqrtf(Float(a)))
     }
-#endif*/
-
+#endif
+enum AnchorPosition: StringLiteralType, CGPoint {
+    case TopLeft        = "{0, 0}"
+    case TopCenter      = "{0.5, 0}"
+    case TopRight       = "{1, 0}"
+    
+    case MidLeft        = "{0, 0.5}"
+    case MidCenter      = "{0.5, 0.5}"
+    case MidRight       = "{1, 0.5}"
+    
+    case BottomLeft     = "{0, 1}"
+    case BottomCenter   = "{0.5, 1}"
+    case BottomRight    = "{1, 1}"
+    
+    var description:String {
+        return self.rawValue
+    }
+}*/
 extension CGPoint {
+    
     /// Length
     var length:CGFloat {
         get {
@@ -46,5 +63,16 @@ extension CGPoint {
         get {
           return CGAffineTransformMakeTranslation(self.x, self.y)
         }
+    }
+    public init(stringLiteral value: StringLiteralType) {
+        self = CGPointFromString(value)
+    }
+    
+    public init(extendedGraphemeClusterLiteral value: StringLiteralType) {
+        self = CGPointFromString(value)
+    }
+    
+    public init(unicodeScalarLiteral value: StringLiteralType) {
+        self = CGPointFromString(value)
     }
 }

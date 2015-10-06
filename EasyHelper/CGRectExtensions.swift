@@ -9,6 +9,7 @@
 import CoreGraphics
 
 extension CGRect: Hashable {
+
     /// Add HashValue For CGRect
     public var hashValue: Int {
         get {

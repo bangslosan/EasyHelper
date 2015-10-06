@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 DaRk-_-D0G. All rights reserved.
 //
 
-import CoreGraphics
+import Foundation
 
 /// ############################################################ ///
 ///                       To ( Convert )                         ///

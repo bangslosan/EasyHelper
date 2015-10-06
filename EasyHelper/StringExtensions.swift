@@ -137,6 +137,14 @@ public extension String {
     public func explode(delimiter:String = " ") -> [String] {
         return self.componentsSeparatedByString(delimiter)
     }
+    
+    func getSizeWithFont (width: CGFloat = .max, height: CGFloat = .max, font: UIFont) -> CGSize {
+        return (self as NSString).getSizeWithFont(
+            width,
+            height: height,
+            font: font)
+    }
+
 }
 
 /// ############################################################ ///

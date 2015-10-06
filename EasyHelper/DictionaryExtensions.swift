@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 DaRk-_-D0G. All rights reserved.
 //
 import Foundation
+
+
 // MARK: - Classical
 public extension Dictionary {
     /**
@@ -16,6 +18,7 @@ public extension Dictionary {
     :returns: Bool
     */
     func contains<T where T : Equatable>(obj: T) -> Bool {
+        
         return self.filter({$0 as? T == obj}).count > 0
     }
     

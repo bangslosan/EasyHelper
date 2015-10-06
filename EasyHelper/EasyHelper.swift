@@ -8,6 +8,8 @@
 
 //(UIScreen.mainScreen().nativeBounds.size.width / UIScreen.mainScreen().nativeScale)
 import SystemConfiguration
+import Foundation
+import UIKit
 
 public typealias EH = EasyHelper
 public class EasyHelper {
@@ -42,14 +44,7 @@ public class EasyHelper {
     /// Is iPad
     public class var isIpad:Bool {
         get {
-            
             return UI_USER_INTERFACE_IDIOM() == .Pad
-         /*   if #available(iOS 8.0, *) {
-               
-                return UIScreen.mainScreen().traitCollection.userInterfaceIdiom == .Pad
-            } else {
-                return UIDevice.currentDevice().userInterfaceIdiom == .Pad
-            }*/
         }
         
     }
@@ -57,13 +52,7 @@ public class EasyHelper {
     public class var isIphone:Bool {
         get {
             return UI_USER_INTERFACE_IDIOM() == .Phone
-            /*if #available(iOS 8.0, *) {
-                return UIScreen.mainScreen().traitCollection.userInterfaceIdiom == .Phone
-            } else {
-                return UIDevice.currentDevice().userInterfaceIdiom == .Phone
-            }*/
         }
-        
     }
     /// Is iPhone 4 and less
     public static var isIphone4Less:Bool {
@@ -150,7 +139,20 @@ public class EasyHelper {
             return !(isPortrait)
         }
     }
-
+    static func checkDataFromUrl() throws {
+        
+    }
     
+    static func getDataFromUrl(urL:String, completion: ((data:NSData?, error:NSError?) -> ())) {
+        if let nsurl = NSURL (string: urL) {
+            EasyHelper.getDataFromUrl(nsurl, completion: completion)
+        }
+    }
+    static func getDataFromUrl(urL:NSURL, completion: ((data:NSData?, error:NSError?) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(urL) {
+            (data, response, error) in
+            completion(data: data, error: error)
+            }.resume()
+    }
 }
 

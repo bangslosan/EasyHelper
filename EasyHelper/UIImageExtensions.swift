@@ -8,6 +8,21 @@
 import UIKit
 
 public extension UIImage {
+    /* func setResizeImage (width width:CGFloat, height:CGFloat, withAlpha:Bool)  {
+        
+        let newSize = CGSizeMake(width, height)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, !withAlpha, 0.0)
+        self.image!.drawInRect(CGRect(origin: CGPointZero, size: newSize))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        self.image! = scaledImage
+    }
+    func round() {
+        if let _ = self.image {
+            self.layer.cornerRadius = self.frame.size.width / 2
+            self.clipsToBounds = true
+        }
+    }*/
     /**
     Resize UIImageView
     

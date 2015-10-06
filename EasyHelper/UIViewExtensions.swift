@@ -10,6 +10,28 @@ import UIKit
 
 // Todo So if you want to change the position of your cell within it’s superview (the tableview in this case), use the frame. But if you want to shrink or move an element within the view, use the bounds!
 
+/// ############################################################ ///
+///                       Initilizers                            ///
+/// ############################################################ ///
+// MARK: - Initilizers
+public extension UIView {
+        convenience init (
+            x: CGFloat,
+            y: CGFloat,
+            w: CGFloat,
+            h: CGFloat) {
+                self.init (frame: CGRect (x: x, y: y, width: w, height: h))
+        }
+        
+        convenience init (superView: UIView) {
+            self.init (frame: CGRect (origin: CGPointZero, size: superView.size))
+        }
+}
+
+/// ############################################################ ///
+///                       Classical                              ///
+/// ############################################################ ///
+
 // MARK: - UIView Extension Classical
 public extension UIView {
     /// X position
@@ -18,9 +40,7 @@ public extension UIView {
            return self.frame.origin.x
         }
         set {
-            var frame:CGRect = self.frame
-            frame.origin.x = newValue
-            self.frame = frame
+            self.frame = CGRect (x: newValue, y: self.y, width: self.width, height: self.height)
         }
     }
     
@@ -30,9 +50,7 @@ public extension UIView {
             return self.frame.origin.y
         }
         set {
-            var frame:CGRect = self.frame
-            frame.origin.y = newValue
-            self.frame = frame
+            self.frame = CGRect (x: self.x, y: newValue, width: self.width, height: self.height)
         }
         
     }
@@ -54,6 +72,17 @@ public extension UIView {
             self.frame.size.height = newValue
         }
     }
+    public var size: CGSize {
+        get {
+            return self.frame.size
+        }
+        set {
+            self.frame = CGRect (origin: self.frame.origin, size: newValue)
+        }
+    }
+    var applyCenter: CGPoint {
+        return CGPoint(x: width/2, y: height/2)
+    }
     /**
     Remove allSubView
     */
@@ -62,10 +91,26 @@ public extension UIView {
     }
     
 }
-
+/// ############################################################ ///
+///                         Animate                              ///
+/// ############################################################ ///
 // MARK: - UIView Extension Animate
 public extension UIView {
-
+    /* --------------------------------------------------------------------------- */
+    /*                          Start and Stop Animate                             */
+    /* --------------------------------------------------------------------------- */
+    public func stopAnimation() {
+        CATransaction.begin()
+        self.layer.removeAllAnimations()
+        CATransaction.commit()
+        CATransaction.flush()
+    }
+    public func isBeingAnimated() -> Bool {
+        return self.layer.animationKeys()?.count > 0
+    }
+    /* --------------------------------------------------------------------------- */
+    /*                              Fad In & Out                                   */
+    /* --------------------------------------------------------------------------- */
     /**
     Fade In
     
@@ -79,8 +124,14 @@ public extension UIView {
         duration: NSTimeInterval = 1.0,
         delay: NSTimeInterval = 0.0,
         alpha: CGFloat = 1,
-        completionEnd: (() -> ())? = nil) {
+        completionEnd: ((Bool) -> ())? = nil) {
             
+            UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.TransitionNone, animations: {
+                
+                self.alpha = alpha
+                
+                }, completion: completionEnd)
+            /*
             let animation = CABasicAnimation(keyPath:"opacity")
             animation.beginTime = CACurrentMediaTime() + delay;
             animation.duration = duration
@@ -90,7 +141,7 @@ public extension UIView {
             
             CATransaction.setCompletionBlock(completionEnd)
             
-            self.layer.addAnimation(animation, forKey:"animateOpacity")
+            self.layer.addAnimation(animation, forKey:"animateOpacity")*/
     }
     /**
     Fade Out
@@ -105,9 +156,14 @@ public extension UIView {
         duration: NSTimeInterval = 1.0,
         delay: NSTimeInterval = 0.0,
         alpha: CGFloat = 0,
-        completionEnd: (() -> ())? = nil) {
+        completionEnd: ((Bool) -> ())? = nil) {
+            UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.TransitionNone, animations: {
+                
+                self.alpha = alpha
+                
+                }, completion: completionEnd)
             
-            let animation = CABasicAnimation(keyPath:"opacity")
+           /* let animation = CABasicAnimation(keyPath:"opacity")
             animation.beginTime = CACurrentMediaTime() + delay;
             animation.duration = duration
             animation.fromValue = 1
@@ -116,23 +172,44 @@ public extension UIView {
             
             CATransaction.setCompletionBlock(completionEnd)
             
-            self.layer.addAnimation(animation, forKey:"animateOpacity")
+            self.layer.addAnimation(animation, forKey:"animateOpacity")*/
     }
-    /**
-    Scrool to page
-    
-    - parameter scrollView: UIScrollView
-    - parameter page:       Int
-    - parameter animated:   Bool
-    */
-    func scrollToPage(scrollView: UIScrollView, page: Int, animated: Bool) {
-        var frame: CGRect = scrollView.frame
-        frame.origin.x = frame.size.width * CGFloat(page);
-        frame.origin.y = 0;
-        scrollView.scrollRectToVisible(frame, animated: animated)
+    /* --------------------------------------------------------------------------- */
+    /*                                  Shake                                      */
+    /* --------------------------------------------------------------------------- */
+    public func applyShakeHorizontally(
+        duration:CFTimeInterval = 0.5,
+        moveValues:[Float] = [(-12), (12), (-8), (8), (-4), (4), (0) ],
+        completionEnd: (() -> ())) {
+            
+        let animation:CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.duration = duration
+        animation.values = moveValues
+            
+        CATransaction.setCompletionBlock(completionEnd)
+            
+        self.layer.addAnimation(animation, forKey: "shake")
     }
-    
+    public func applyShakeVertically(
+        duration:CFTimeInterval = 0.5,
+        moveValues:[Float] = [(-12), (12), (-8), (8), (-4), (4), (0) ],
+        completionEnd: (() -> ())) {
+            
+        let animation:CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.translation.y")
+            
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.duration = duration
+        animation.values = moveValues
+        
+        CATransaction.setCompletionBlock(completionEnd)
+            
+        self.layer.addAnimation(animation, forKey: "shake")
+    }
+    /* --------------------------------------------------------------------------- */
+    /*                              Animates                                       */
+    /* --------------------------------------------------------------------------- */
     /**
     Set Rotation 360 on View
     
@@ -165,34 +242,26 @@ public extension UIView {
             self.layer.addAnimation(rotationAnimation,forKey:"transform.rotation.z")
     }
     
-    public func stopAnimation() {
-        CATransaction.begin()
-        self.layer.removeAllAnimations()
-        CATransaction.commit()
-        CATransaction.flush()
-    }
-    public func isBeingAnimated() -> Bool {
-        return self.layer.animationKeys()?.count > 0
-    }
+    
     public func applyPulseToSize(
         scale:CGFloat,
         duration:NSTimeInterval,
         repeatAnimate:Bool,
         completionEnd: (() -> ())) {
             
-        let pulseAnimate = CABasicAnimation(keyPath: "transform.scale")
-        
-        
-        pulseAnimate.duration = duration
-        pulseAnimate.toValue =  scale
-        pulseAnimate.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-
-        pulseAnimate.autoreverses = true
-        pulseAnimate.repeatCount = repeatAnimate ? Float.infinity : 0
+            let pulseAnimate = CABasicAnimation(keyPath: "transform.scale")
             
-        CATransaction.setCompletionBlock(completionEnd)
             
-        self.layer.addAnimation(pulseAnimate, forKey:"pulse")
+            pulseAnimate.duration = duration
+            pulseAnimate.toValue =  scale
+            pulseAnimate.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            
+            pulseAnimate.autoreverses = true
+            pulseAnimate.repeatCount = repeatAnimate ? Float.infinity : 0
+            
+            CATransaction.setCompletionBlock(completionEnd)
+            
+            self.layer.addAnimation(pulseAnimate, forKey:"pulse")
     }
     
     @available(iOS 7,*)
@@ -202,62 +271,52 @@ public extension UIView {
         minimumRelativeValueY:Float = -10.00,
         maximumRelativeValueY:Float = 10.00
         ) {
-        
-        let horizontalEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type:.TiltAlongHorizontalAxis)
-        horizontalEffect.minimumRelativeValue = minimumRelativeValueX
-        horizontalEffect.maximumRelativeValue = maximumRelativeValueX
-        
-        let verticalEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-        verticalEffect.minimumRelativeValue = minimumRelativeValueY
-        verticalEffect.maximumRelativeValue = maximumRelativeValueY
-        
-        let motionEffectGroup = UIMotionEffectGroup()
-        motionEffectGroup.motionEffects = [horizontalEffect, verticalEffect]
-        
-        
             
-        self.addMotionEffect(motionEffectGroup)
-        
-    }
-    
-    public func applyShakeHorizontally(
-        duration:CFTimeInterval = 0.5,
-        moveValues:[Float] = [(-12), (12), (-8), (8), (-4), (4), (0) ],
-        completionEnd: (() -> ())) {
+            let horizontalEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type:.TiltAlongHorizontalAxis)
+            horizontalEffect.minimumRelativeValue = minimumRelativeValueX
+            horizontalEffect.maximumRelativeValue = maximumRelativeValueX
             
-        let animation:CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.translation.x")
-        
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.duration = duration
-        animation.values = moveValues
+            let verticalEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
+            verticalEffect.minimumRelativeValue = minimumRelativeValueY
+            verticalEffect.maximumRelativeValue = maximumRelativeValueY
             
-        CATransaction.setCompletionBlock(completionEnd)
+            let motionEffectGroup = UIMotionEffectGroup()
+            motionEffectGroup.motionEffects = [horizontalEffect, verticalEffect]
             
-        self.layer.addAnimation(animation, forKey: "shake")
-    }
-    public func applyShakeVertically(
-        duration:CFTimeInterval = 0.5,
-        moveValues:[Float] = [(-12), (12), (-8), (8), (-4), (4), (0) ],
-        completionEnd: (() -> ())) {
             
-        let animation:CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.translation.y")
             
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.duration = duration
-        animation.values = moveValues
-        
-        CATransaction.setCompletionBlock(completionEnd)
+            self.addMotionEffect(motionEffectGroup)
             
-        self.layer.addAnimation(animation, forKey: "shake")
     }
 }
-// MARK: - Animate
+// MARK: - The aspect
 extension UIView {
-    
+    func applyBorder(borderColor:UIColor = UIColor.blackColor(),borderWidth:CGFloat = 1) {
+        self.layer.borderColor = borderColor.CGColor
+        self.layer.borderWidth = borderWidth
+        self.clipsToBounds = true
+    }
+    func applyRounder(radius:CGFloat) {
+        self.layer.cornerRadius = radius
+        self.clipsToBounds = true
+    }
+    func applyRound() {
+        self.layer.cornerRadius = self.width / 2
+        self.clipsToBounds = true
+    }
 }
 // MARK: - Shadow
 extension UIView {
+    /**
+    Plain Shadow
     
+    <img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
+    
+    - parameter shadowColor:   UIColor
+    - parameter shadowOpacity: Float
+    - parameter shadowRadius:  CGFloat
+    - parameter shadowOffset:  CGSize
+    */
     func applyPlainShadow(
         shadowColor:UIColor =  UIColor.blackColor(),
         shadowOpacity:Float = 0.4,
@@ -269,6 +328,19 @@ extension UIView {
         self.layer.shadowOpacity = shadowOpacity
         self.layer.shadowRadius = shadowRadius
     }
+    /**
+    Curved Shadow
+    
+    <img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
+    
+    - parameter shadowOpacity: Float
+    - parameter shadowOffset:  CGSize
+    - parameter shadowColor:   UIColor
+    - parameter depth:         CGFloat
+    - parameter lessDepth:     CGFloat
+    - parameter curviness:     CGFloat
+    - parameter radius:        CGFloatb
+    */
     func applyCurvedShadow(
         shadowOpacity:Float = 0.3,
         shadowOffset:CGSize = CGSize(width: 0, height: -3),
@@ -305,6 +377,11 @@ extension UIView {
         self.layer.shadowRadius = radius
         self.layer.shadowOffset = shadowOffset
     }
+    /**
+    Hover Shadow
+    
+    <img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
+    */
     func applyHoverShadow() {
 
         let path = UIBezierPath(roundedRect: CGRect(x: 5, y: self.height + 5, width: self.width - 10, height: 15), cornerRadius: 10)
@@ -315,5 +392,31 @@ extension UIView {
         self.layer.shadowRadius = 5
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
+    /**
+    Flat shadow
     
+    <img src="http://yannickstephan.com/easyhelper/flatshadow.png" height="100" width="100"/>
+    */
+    func applyFlatShadow(){
+        self.layer.shadowColor = UIColor.blackColor().CGColor
+        self.layer.shadowOffset = CGSizeMake(0.0, 2.0)
+        self.layer.masksToBounds = false
+        self.layer.shadowRadius = 1.0
+        self.layer.shadowOpacity = 0.5
+    }
+    
+}
+
+// MARK: - Render Extensions
+
+extension UIView {
+    
+    func toImage () -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+        drawViewHierarchyInRect(bounds, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return img
+    }
 }
