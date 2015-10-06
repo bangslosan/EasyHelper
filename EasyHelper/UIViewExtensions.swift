@@ -16,11 +16,12 @@ import UIKit
 // MARK: - Initilizers
 public extension UIView {
         convenience init (
+           
             x: CGFloat,
             y: CGFloat,
-            w: CGFloat,
-            h: CGFloat) {
-                self.init (frame: CGRect (x: x, y: y, width: w, height: h))
+            width: CGFloat,
+            height: CGFloat) {
+                self.init (frame: CGRect (x: x, y: y, width: width, height: height))
         }
         
         convenience init (superView: UIView) {
@@ -74,22 +75,45 @@ public extension UIView {
     }
     public var size: CGSize {
         get {
+            
             return self.frame.size
         }
         set {
             self.frame = CGRect (origin: self.frame.origin, size: newValue)
         }
     }
+    var position: CGPoint {
+        get {
+            return self.frame.origin
+        } set (value) {
+            self.frame = CGRect (origin: value, size: self.frame.size)
+        }
+    }
     var applyCenter: CGPoint {
         return CGPoint(x: width/2, y: height/2)
     }
+
+    
+}
+/// ############################################################ ///
+///                         Other                               ///
+/// ############################################################ ///
+extension UIView {
     /**
     Remove allSubView
     */
     public func removeAllSubViews() {
         for subView :AnyObject in self.subviews { subView.removeFromSuperview() }
     }
-    
+
+    func toImage () -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+        drawViewHierarchyInRect(bounds, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return img
+    }
 }
 /// ############################################################ ///
 ///                         Animate                              ///
@@ -114,21 +138,20 @@ public extension UIView {
     /**
     Fade In
     
-    - parameter duration:      NSTimeInterval
-    - parameter delay:         NSTimeInterval
-    - parameter alpha:         CGFloat
+    - parameter duration:      NSTimeInterval ( default = 1.0 )
+    - parameter delay:         NSTimeInterval ( default = 0 )
+    - parameter alpha:         CGFloat ( default = 1.0 )
     - parameter completionEnd: (() -> ())? When animation is finished
     */
     public func applyFadeIn(
-        
-        duration: NSTimeInterval = 1.0,
+        duration duration: NSTimeInterval = 1.0,
         delay: NSTimeInterval = 0.0,
-        alpha: CGFloat = 1,
+        toAlpha: CGFloat = 1,
         completionEnd: ((Bool) -> ())? = nil) {
-            
+
             UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.TransitionNone, animations: {
                 
-                self.alpha = alpha
+                self.alpha = toAlpha
                 
                 }, completion: completionEnd)
             /*
@@ -146,20 +169,20 @@ public extension UIView {
     /**
     Fade Out
     
-    - parameter duration:      NSTimeInterval
-    - parameter delay:         NSTimeInterval
-    - parameter alpha:         CGFloat
+    - parameter duration:      NSTimeInterval   ( default = 1.0 )
+    - parameter delay:         NSTimeInterval   ( default = 0.0 )
+    - parameter alpha:         CGFloat          ( default = 0 )
     - parameter completionEnd: (() -> ())? When animation is finished
     */
     public func applyFadeOut(
         
-        duration: NSTimeInterval = 1.0,
+        duration duration: NSTimeInterval = 1.0,
         delay: NSTimeInterval = 0.0,
-        alpha: CGFloat = 0,
+        toAlpha: CGFloat = 0,
         completionEnd: ((Bool) -> ())? = nil) {
             UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.TransitionNone, animations: {
                 
-                self.alpha = alpha
+                self.alpha = toAlpha
                 
                 }, completion: completionEnd)
             
@@ -177,10 +200,17 @@ public extension UIView {
     /* --------------------------------------------------------------------------- */
     /*                                  Shake                                      */
     /* --------------------------------------------------------------------------- */
+    /**
+    Shake Horizontally
+    
+    - parameter duration:      duration     ( default = 0.5 )
+    - parameter moveValues:    moveValues   ( default = [-12, 12, -8, 8, -4, 4, 0] )
+    - parameter completionEnd: (() -> ())? When animation is finished
+    */
     public func applyShakeHorizontally(
-        duration:CFTimeInterval = 0.5,
-        moveValues:[Float] = [(-12), (12), (-8), (8), (-4), (4), (0) ],
-        completionEnd: (() -> ())) {
+        duration duration:CFTimeInterval = 0.5,
+        moveValues:[Float] = [-12, 12, -8, 8, -4, 4, 0],
+        completionEnd: (() -> ())?) {
             
         let animation:CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         
@@ -193,7 +223,7 @@ public extension UIView {
         self.layer.addAnimation(animation, forKey: "shake")
     }
     public func applyShakeVertically(
-        duration:CFTimeInterval = 0.5,
+        duration duration:CFTimeInterval = 0.5,
         moveValues:[Float] = [(-12), (12), (-8), (8), (-4), (4), (0) ],
         completionEnd: (() -> ())) {
             
@@ -211,10 +241,14 @@ public extension UIView {
     /*                              Animates                                       */
     /* --------------------------------------------------------------------------- */
     /**
-    Set Rotation 360 on View
+     Set Animation Rotation on View
     
-    :param: duration   Duration
-    :param: completion When If Completed
+    - parameter angle:         CGFloat ( example 360 = 360 degrees)
+    - parameter duration:      NSTimeInterval
+    - parameter direction:     UIViewContentMode ( .Left, .Right )
+    - parameter repeatCount:   Float
+    - parameter autoReverse:   Bool
+    - parameter completionEnd: (() -> ())? When animation is finished
     */
     public func applyRotateToAngle(
         angle:CGFloat,
@@ -222,7 +256,7 @@ public extension UIView {
         direction:UIViewContentMode,
         repeatCount:Float = 0,
         autoReverse:Bool = false,
-        completionEnd: (() -> ())
+        completionEnd: (() -> ())?
         ) {
             
             
@@ -242,18 +276,25 @@ public extension UIView {
             self.layer.addAnimation(rotationAnimation,forKey:"transform.rotation.z")
     }
     
+    /**
+    Set animation Pulse on View
     
+    - parameter toScale:       CGFloat
+    - parameter duration:      NSTimeInterval
+    - parameter repeatAnimate: Bool
+    - parameter completionEnd: (() -> ())? When animation is finished
+    */
     public func applyPulseToSize(
-        scale:CGFloat,
-        duration:NSTimeInterval,
+        duration duration:NSTimeInterval,
+        toScale:CGFloat,
         repeatAnimate:Bool,
-        completionEnd: (() -> ())) {
+        completionEnd: (() -> ())?) {
             
             let pulseAnimate = CABasicAnimation(keyPath: "transform.scale")
             
             
             pulseAnimate.duration = duration
-            pulseAnimate.toValue =  scale
+            pulseAnimate.toValue =  toScale
             pulseAnimate.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             
             pulseAnimate.autoreverses = true
@@ -264,7 +305,16 @@ public extension UIView {
             self.layer.addAnimation(pulseAnimate, forKey:"pulse")
     }
     
+
     @available(iOS 7,*)
+    /**
+    Motion Effects
+    
+    - parameter minimumRelativeValueX: Min Relative Value X ( default = -10.00 )
+    - parameter maximumRelativeValueX: Max Relative Value X ( default = 10.00 )
+    - parameter minimumRelativeValueY: Min Relative Value Y ( default = -10.00 )
+    - parameter maximumRelativeValueY: Max Relative Value Y ( default = 10.00 )
+    */
     public func applyMotionEffects(
         minimumRelativeValueX:Float = -10.00,
         maximumRelativeValueX:Float = 10.00,
@@ -289,17 +339,36 @@ public extension UIView {
             
     }
 }
+/// ############################################################ ///
+///                         Aspect                               ///
+/// ############################################################ ///
+
 // MARK: - The aspect
 extension UIView {
+    /**
+    Set Border
+    
+    - parameter borderColor: UIColor    ( default = UIColor.blackColor() )
+    - parameter borderWidth: CGFloat    ( default = 1.0 )
+    */
     func applyBorder(borderColor:UIColor = UIColor.blackColor(),borderWidth:CGFloat = 1) {
         self.layer.borderColor = borderColor.CGColor
         self.layer.borderWidth = borderWidth
         self.clipsToBounds = true
     }
+    /**
+    Set Rounder
+    
+    - parameter radius: CGFloat
+    */
     func applyRounder(radius:CGFloat) {
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
     }
+    /**
+    Set Round
+    
+    */
     func applyRound() {
         self.layer.cornerRadius = self.width / 2
         self.clipsToBounds = true
@@ -312,10 +381,10 @@ extension UIView {
     
     <img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
     
-    - parameter shadowColor:   UIColor
-    - parameter shadowOpacity: Float
-    - parameter shadowRadius:  CGFloat
-    - parameter shadowOffset:  CGSize
+    - parameter shadowColor:   UIColor  ( default = UIColor.blackColor() )
+    - parameter shadowOpacity: Float    ( default = 0.4 )
+    - parameter shadowRadius:  CGFloat  ( default = 0.5 )
+    - parameter shadowOffset:  CGSize   ( default = CGSize(width: 0, height: 10) )
     */
     func applyPlainShadow(
         shadowColor:UIColor =  UIColor.blackColor(),
@@ -333,22 +402,23 @@ extension UIView {
     
     <img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
     
-    - parameter shadowOpacity: Float
-    - parameter shadowOffset:  CGSize
-    - parameter shadowColor:   UIColor
-    - parameter depth:         CGFloat
-    - parameter lessDepth:     CGFloat
-    - parameter curviness:     CGFloat
-    - parameter radius:        CGFloatb
+    - parameter shadowOpacity: Float    ( default = 0.3 )
+    - parameter shadowOffset:  CGSize   ( default = CGSize(width: 0, height: -3) )
+    - parameter shadowColor:   UIColor  ( default = UIColor.blackColor() )
+    - parameter depth:         CGFloat  ( default = 11.0 )
+    - parameter lessDepth:     CGFloat  ( default = 0.8 )
+    - parameter curviness:     CGFloat  ( default = 5 )
+    - parameter radius:        CGFloat  ( default = 1 )
     */
     func applyCurvedShadow(
-        shadowOpacity:Float = 0.3,
+        shadowOpacity shadowOpacity:Float = 0.3,
         shadowOffset:CGSize = CGSize(width: 0, height: -3),
         shadowColor:UIColor = UIColor.blackColor(),
         depth:CGFloat = 11.00 ,
         lessDepth:CGFloat = 0.8,
         curviness:CGFloat = 5,
         radius:CGFloat = 1 ) {
+
 
         let path = UIBezierPath()
         
@@ -404,19 +474,5 @@ extension UIView {
         self.layer.shadowRadius = 1.0
         self.layer.shadowOpacity = 0.5
     }
-    
 }
 
-// MARK: - Render Extensions
-
-extension UIView {
-    
-    func toImage () -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
-        drawViewHierarchyInRect(bounds, afterScreenUpdates: false)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return img
-    }
-}

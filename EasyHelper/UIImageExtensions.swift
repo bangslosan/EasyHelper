@@ -8,21 +8,6 @@
 import UIKit
 
 public extension UIImage {
-    /* func setResizeImage (width width:CGFloat, height:CGFloat, withAlpha:Bool)  {
-        
-        let newSize = CGSizeMake(width, height)
-        
-        UIGraphicsBeginImageContextWithOptions(newSize, !withAlpha, 0.0)
-        self.image!.drawInRect(CGRect(origin: CGPointZero, size: newSize))
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        self.image! = scaledImage
-    }
-    func round() {
-        if let _ = self.image {
-            self.layer.cornerRadius = self.frame.size.width / 2
-            self.clipsToBounds = true
-        }
-    }*/
     /**
     Resize UIImageView
     
@@ -50,12 +35,9 @@ public extension UIImage {
     
     :returns: UIImage
     */
-    public class func addTextToImage(image:UIImage, label:UILabel,pointof: CGPoint) throws -> UIImage {
+    public class func addTextToImage(image:UIImage, label:UILabel,pointof: CGPoint) -> UIImage {
         
-        guard let textLabel = label.text else {
-            throw EHError.Nil("[EasyHelper][addTextToImage] Label haven't text")
-        }
-        
+        if label.text == nil { EHError.Nil("[EasyHelper][addTextToImage] Label haven't text") }
         let dict:NSDictionary = [
             NSForegroundColorAttributeName:label.textColor,
             NSFontAttributeName : label.font]
@@ -64,34 +46,12 @@ public extension UIImage {
         image.drawInRect(CGRectMake(0, 0, image.size.width, image.size.height))
         
         let rect: CGRect = CGRectMake(pointof.x, pointof.y, image.size.width, image.size.height)
-        textLabel.drawInRect(CGRectIntegral(rect), withAttributes:dict as? [String : AnyObject])
+        label.text?.drawInRect(CGRectIntegral(rect), withAttributes:dict as? [String : AnyObject])
         
         let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
         return newImage
     }
-    /**
-    Create Screenshot
-    
-    :returns: UIImage
-    */
-    public static func screenshot(opaque:Bool = false) throws ->  UIImage {
-        guard let keyWindowV = UIApplication.sharedApplication().keyWindow else {
-            throw EHError.Nil("[EasyHelper][screenShot] Nil object keyWindow")
-        }
-        guard let context = UIGraphicsGetCurrentContext() else {
-            throw EHError.Nil("[EasyHelper][screenShot] Nil object UIGraphicsGetCurrentContext")
-        }
-        
-        let layer = keyWindowV.layer
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, opaque, EasyHelper.screenScale);
-        layer.renderInContext(context)
-        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        
-        return screenshot
-        
-    }
+
 }

@@ -9,17 +9,6 @@
 import Foundation
 public extension AnySequence {
     /**
-    First element of the sequence.
-    
-    :returns: First element of the sequence if present
-    */
-    public var first: Element? {
-        get {
-            return self.generate().next()
-        }
-    }
-    
-    /**
     Returns each element of the sequence in an array
     
     :returns: Each element of the sequence in an array

@@ -143,12 +143,36 @@ public class EasyHelper {
         
     }
     
-    static func getDataFromUrl(urL:String, completion: ((data:NSData?, error:NSError?) -> ())) {
+    /**
+    Create Screenshot
+    
+    :returns: UIImage
+    */
+    public static func getScreenshot(opaque:Bool = false) throws ->  UIImage {
+        guard let keyWindowV = UIApplication.sharedApplication().keyWindow else {
+            throw EHError.Nil("[EasyHelper][screenShot] Nil object keyWindow")
+        }
+        guard let context = UIGraphicsGetCurrentContext() else {
+            throw EHError.Nil("[EasyHelper][screenShot] Nil object UIGraphicsGetCurrentContext")
+        }
+        
+        let layer = keyWindowV.layer
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, opaque, EasyHelper.screenScale);
+        layer.renderInContext(context)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        
+        return screenshot
+        
+    }
+    
+    public static func getDataFromUrl(urL:String, completion: ((data:NSData?, error:NSError?) -> ())) {
         if let nsurl = NSURL (string: urL) {
             EasyHelper.getDataFromUrl(nsurl, completion: completion)
         }
     }
-    static func getDataFromUrl(urL:NSURL, completion: ((data:NSData?, error:NSError?) -> Void)) {
+    public static func getDataFromUrl(urL:NSURL, completion: ((data:NSData?, error:NSError?) -> Void)) {
         NSURLSession.sharedSession().dataTaskWithURL(urL) {
             (data, response, error) in
             completion(data: data, error: error)
