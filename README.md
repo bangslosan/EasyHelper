@@ -160,22 +160,19 @@ Copy & Paste  into your project
 Plain Shadow
 
 ``` swift
-    
+   
     /**
     Plain Shadow
-    
-    <img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
-    
-    - parameter shadowColor:   UIColor
-    - parameter shadowOpacity: Float
-    - parameter shadowRadius:  CGFloat
-    - parameter shadowOffset:  CGSize
+
+    - parameter shadowColor:   UIColor  ( default = UIColor.blackColor() )
+    - parameter shadowOpacity: Float    ( default = 0.4 )
+    - parameter shadowRadius:  CGFloat  ( default = 0.5 )
+    - parameter shadowOffset:  CGSize   ( default = CGSize(width: 0, height: 10) )
     */
-    func applyPlainShadow(
-        shadowColor:UIColor =  UIColor.blackColor(),
-        shadowOpacity:Float = 0.4,
-        shadowRadius:CGFloat = 5,
-        shadowOffset:CGSize = CGSize(width: 0, height: 10))   
+    /// Example
+    self.applyPlainShadow()
+            
+    self.applyPlainShadow(shadowColor: UIColor.yellowColor(), shadowOpacity: 0.8, shadowRadius: 3) 
 ```
 
 Adding Curved Shadow
@@ -185,24 +182,19 @@ Adding Curved Shadow
     /**
     Curved Shadow
     
-    <img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
-    
-    - parameter shadowOpacity: Float
-    - parameter shadowOffset:  CGSize
-    - parameter shadowColor:   UIColor
-    - parameter depth:         CGFloat
-    - parameter lessDepth:     CGFloat
-    - parameter curviness:     CGFloat
-    - parameter radius:        CGFloatb
+    - parameter shadowOpacity: Float    ( default = 0.3 )
+    - parameter shadowOffset:  CGSize   ( default = CGSize(width: 0, height: -3) )
+    - parameter shadowColor:   UIColor  ( default = UIColor.blackColor() )
+    - parameter depth:         CGFloat  ( default = 11.0 )
+    - parameter lessDepth:     CGFloat  ( default = 0.8 )
+    - parameter curviness:     CGFloat  ( default = 5 )
+    - parameter radius:        CGFloat  ( default = 1 )
     */
-    func applyCurvedShadow(
-        shadowOpacity:Float = 0.3,
-        shadowOffset:CGSize = CGSize(width: 0, height: -3),
-        shadowColor:UIColor = UIColor.blackColor(),
-        depth:CGFloat = 11.00 ,
-        lessDepth:CGFloat = 0.8,
-        curviness:CGFloat = 5,
-        radius:CGFloat = 1 )   
+    /// Example
+    
+    self.applyCurvedShadow()
+        
+    self.applyCurvedShadow(shadowOpacity: 0.8, shadowColor: UIColor.yellowColor(), radius: 3) 
 ```
 
 Adding Hover Shadow
@@ -210,8 +202,7 @@ Adding Hover Shadow
 ``` swift
     /**
     Hover Shadow
-    
-    <img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
+
     */
     func applyHoverShadow()  
 ```
@@ -229,6 +220,7 @@ Adding Flat shadow
 #### Animation <a id="UIView-Animation"></a>
 
 ##### Set rotation
+
 Stop animation
 
 ``` swift
@@ -238,33 +230,76 @@ Stop animation
 Is being animated
 
 ``` swift
-	view.isBeingAnimated()
+    view.isBeingAnimated()
 ``` 
 
 Apply Fade In
 
 ``` swift
-    	/**
-	Fade In
+    /**
+    Fade In
     
-    	- parameter duration:      NSTimeInterval ( default = 1.0 )
-	- parameter delay:         NSTimeInterval ( default = 0 )
-    	- parameter alpha:         CGFloat ( default = 1.0 )
-    	- parameter completionEnd: (() -> ())? When animation is finished
-    	*/
-	// Example
+    - parameter duration:      NSTimeInterval ( default = 1.0 )
+    - parameter delay:         NSTimeInterval ( default = 0 )
+    - parameter alpha:         CGFloat ( default = 1.0 )
+    - parameter completionEnd: (() -> ())? When animation is finished
+    */
+    // Example
 	
-    	view.applyFadeIn()
+    view.applyFadeIn()
     	
-    	view.applyFadeIn(duration: 10)
+    view.applyFadeIn(duration: 10)
     	
-    	view.applyFadeIn(duration: 10, delay: 10, toAlpha: 0.8) { 
-    		(bool) -> () in
-		print("Is finish")
-        }
+    view.applyFadeIn(duration: 10, delay: 10, toAlpha: 0.8) { 
+    	(bool) -> () in
+    	print("Is finish")
+    }
 ``` 
 
+Apply Fade Out
 
+``` swift
+    /**
+    Fade In
+    
+    - parameter duration:      NSTimeInterval   ( default = 1.0 )
+    - parameter delay:         NSTimeInterval   ( default = 0.0 )
+    - parameter alpha:         CGFloat          ( default = 0 )
+    - parameter completionEnd: (() -> ())? When animation is finished
+    */
+    /// Example
+	
+    view.applyFadeOut()
+    	
+    view.applyFadeOut(duration: 10)
+    	
+    view.applyFadeOut(duration: 10, delay: 10) { 
+        (bool) -> () in
+        print("Is finish")
+    }
+``` 
+
+Shake Horizontally
+
+``` swift
+    /**
+    Shake Horizontally
+    
+    - parameter duration:      duration     ( default = 0.5 )
+    - parameter moveValues:    moveValues   ( default = [-12, 12, -8, 8, -4, 4, 0] )
+    - parameter completionEnd: (() -> ())? When animation is finished
+    */
+    /// Example
+	
+    view.applyShakeHorizontally()
+    
+    view.applyShakeHorizontally { 
+     	// When animation is finished
+    }
+    
+    view.applyShakeHorizontally(duration: 10)
+
+``` 
 #### Animation <a id="UIView-a"></a>
 
 ##### Animating view with constant values
