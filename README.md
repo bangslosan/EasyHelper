@@ -223,9 +223,9 @@ Copy & Paste  into your project
     - parameter shadowOffset:  CGSize   ( default = CGSize(width: 0, height: 10) )
     */
     /// Example
-    self.applyPlainShadow()
+    view.applyPlainShadow()
             
-    self.applyPlainShadow(shadowColor: UIColor.yellowColor(), shadowOpacity: 0.8, shadowRadius: 3) 
+    view.applyPlainShadow(shadowColor: UIColor.yellowColor(), shadowOpacity: 0.8, shadowRadius: 3) 
 ```
 
 ###### Adding Curved Shadow
@@ -245,9 +245,9 @@ Copy & Paste  into your project
     */
     /// Example
     
-    self.applyCurvedShadow()
+    view.applyCurvedShadow()
         
-    self.applyCurvedShadow(shadowOpacity: 0.8, shadowColor: UIColor.yellowColor(), radius: 3) 
+    view.applyCurvedShadow(shadowOpacity: 0.8, shadowColor: UIColor.yellowColor(), radius: 3) 
 ```
 
 ###### Adding Hover Shadow
@@ -257,7 +257,7 @@ Copy & Paste  into your project
     Hover Shadow
 
     */
-    func applyHoverShadow()  
+    view.applyHoverShadow()  
 ```
 ###### Adding Flat shadow
 <img src="http://yannickstephan.com/easyhelper/flatshadow.png" height="100" width="110"/>
@@ -267,7 +267,7 @@ Copy & Paste  into your project
     
     <img src="http://yannickstephan.com/easyhelper/flatshadow.png" height="100" width="100"/>
     */
-    func applyFlatShadow()
+    view.applyFlatShadow()
 ```
 
 #### Animation <a id="UIView-Animation"></a>
