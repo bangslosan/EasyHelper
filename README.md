@@ -53,8 +53,6 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 	* [Border](#UIView-Border)
 	* [Shadow](#UIView-Shadow)
 	* [Animation](#UIView-Animation)
-	
-
 * [UIViewController](#UIViewController)
 * [UIScrollView](#UIScrollView)
 * [UILabel](#UILabel)
