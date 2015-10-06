@@ -52,8 +52,8 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 	* [Frame](#UIView-Frame)
 	* [Shadow](#UIView-Shadow)
 	* [Animation](#UIView-Animation)
-	* [Rendering](#UIView-Rendering)
-	* [Gestures](#UIView-Gestures)
+	* [Aspect](#UIView-Aspect)
+
 * [UIViewController](#UIViewController)
 * [UIScrollView](#UIScrollView)
 * [UILabel](#UILabel)
@@ -398,3 +398,42 @@ Copy & Paste  into your project
 
 ``` 
 
+#### Aspect <a id="UIView-Aspect"></a>
+
+###### Border
+<img src="http://yannickstephan.com/easyhelper/border.png" height="200" width="200"/>
+``` swift
+    /**
+    Set Border
+    
+    - parameter borderColor: UIColor    ( default = UIColor.blackColor() )
+    - parameter borderWidth: CGFloat    ( default = 1.0 )
+    */
+    /// Example
+    view.applyBorder()
+    
+    view.applyBorder(UIColor.yellowColor(), borderWidth: 10)
+``` 
+
+###### Rounder
+<img src="http://yannickstephan.com/easyhelper/rounder.png" height="200" width="200"/>
+``` swift
+    /**
+    Set Rounder
+    
+    - parameter radius: CGFloat
+    */
+    /// Example
+    view.applyRounder(10)
+``` 
+
+###### Round
+<img src="http://yannickstephan.com/easyhelper/round.png" height="200" width="200"/>
+``` swift
+    /**
+    Set Round
+    
+    */
+    /// Example
+    view.applyRound()
+``` 
