@@ -157,7 +157,7 @@ Copy & Paste  into your project
 <center>
 <img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
 </center>
-Plain Shadow
+###### Plain Shadow
 
 ``` swift
    
@@ -175,7 +175,7 @@ Plain Shadow
     self.applyPlainShadow(shadowColor: UIColor.yellowColor(), shadowOpacity: 0.8, shadowRadius: 3) 
 ```
 
-Adding Curved Shadow
+###### Adding Curved Shadow
 
 ``` swift
     
@@ -197,7 +197,7 @@ Adding Curved Shadow
     self.applyCurvedShadow(shadowOpacity: 0.8, shadowColor: UIColor.yellowColor(), radius: 3) 
 ```
 
-Adding Hover Shadow
+###### Adding Hover Shadow
 
 ``` swift
     /**
@@ -206,7 +206,7 @@ Adding Hover Shadow
     */
     func applyHoverShadow()  
 ```
-Adding Flat shadow
+###### Adding Flat shadow
 <img src="http://yannickstephan.com/easyhelper/flatshadow.png" height="100" width="110"/>
 ``` swift
     /**
@@ -219,21 +219,20 @@ Adding Flat shadow
 
 #### Animation <a id="UIView-Animation"></a>
 
-##### Set rotation
-
-Stop animation
+###### Stop animation
 
 ``` swift
 	view.stopAnimation()
 ``` 
 
-Is being animated
+###### Is being animated
 
 ``` swift
     view.isBeingAnimated()
 ``` 
 
-Apply Fade In
+###### Apply Fade In
+<img src="http://zippy.gfycat.com/FrailTiredHusky.gif" height="200" width="200"/>
 
 ``` swift
     /**
@@ -256,8 +255,8 @@ Apply Fade In
     }
 ``` 
 
-Apply Fade Out
-
+###### Apply Fade Out
+<img src="http://zippy.gfycat.com/DeadFickleFlatcoatretriever.gif" height="200" width="200"/>
 ``` swift
     /**
     Fade In
@@ -279,7 +278,8 @@ Apply Fade Out
     }
 ``` 
 
-Shake Horizontally
+###### Shake Horizontally
+<img src="http://zippy.gfycat.com/EnlightenedForcefulGallowaycow.gif" height="200" width="200"/>
 
 ``` swift
     /**
@@ -298,6 +298,28 @@ Shake Horizontally
     }
     
     view.applyShakeHorizontally(duration: 10)
+
+``` 
+
+###### Shake Horizontally
+<img src="http://zippy.gfycat.com/EqualEnchantingHarborporpoise.gif" height="255" width="183"/>
+``` swift
+    /**
+    Shake Horizontally
+    
+    - parameter duration:      duration     ( default = 0.5 )
+    - parameter moveValues:    moveValues   ( default = [-12, 12, -8, 8, -4, 4, 0] )
+    - parameter completionEnd: (() -> ())? When animation is finished
+    */
+    /// Example
+	
+    view.applyShakeVertically()
+    
+    view.applyShakeVertically { 
+     	// When animation is finished
+    }
+    
+    view.applyShakeVertically(duration: 10)
 
 ``` 
 #### Animation <a id="UIView-a"></a>
