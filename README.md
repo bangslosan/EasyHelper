@@ -47,9 +47,9 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 
 * [Installation](#Installation)
 * [UIView](#UIView)
+	* [Helper](#UIView-Helper)
 	* [Init](#UIView-Init)
 	* [Frame](#UIView-Frame)
-	* [Helper](#UIView-Helper)
 	* [Shadow](#UIView-Shadow)
 	* [Animation](#UIView-Animation)
 	* [Rendering](#UIView-Rendering)
@@ -102,15 +102,25 @@ Copy & Paste  into your project
 
 ### UIView extension <a id="UIView"></a>
 
+#### Helper <a id="UIView-Helper"></a>
+
+###### Remove all SubView
+``` swift
+    view.removeAllSubViews()
+```
+
+###### View to image
+``` swift
+    view.toImage()
+```
+
 #### Init <a id="UIView-Init"></a>
 
 ###### Quick init method for views
-
 ``` swift
     let view = (x: 10, y: 10, width: 100, height: 100)
 ```
 ###### Quick init from superView
-
 ``` swift
     let view = (superView: mySuperView)
 ```
@@ -118,6 +128,7 @@ Copy & Paste  into your project
 #### Frame <a id="UIView-Frame"></a>
 
 ##### Get/Set frame values  
+
 ###### X / Y 
 ``` swift
     let positionX: CGFloat = view.x
@@ -129,7 +140,8 @@ Copy & Paste  into your project
     let positionY: CGFloat = view.y
     view.y = 10
 ```
-###### width / height
+
+###### Width / Height
 ``` swift
     let positionY: CGFloat = view.width
     view.width = 100
@@ -139,31 +151,22 @@ Copy & Paste  into your project
     let positionY: CGFloat = view.height
     view.height = 100
 ```
+
 ###### Position 
 ``` swift
     let position: CGPoint = view.position
     view.position = CGPointMake(100, 100)
 ``` 
+
 ###### Get Position in Center
 ``` swift
     let position: CGPoint = view.applyCenter
 ```
-###### Size 
 
+###### Size 
 ``` swift
     let size: CGSize = view.size
     view.size = CGSizeMake(100, 100)
-```
-#### Helper <a id="UIView-Helper"></a>
-
-###### Remove all SubView
-``` swift
-    view.removeAllSubViews()
-```
-
-###### View to image
-``` swift
-    view.toImage()
 ```
 
 #### Shadow <a id="UIView-Shadow"></a>
@@ -349,12 +352,31 @@ Copy & Paste  into your project
     - parameter completionEnd: (() -> ())? When animation is finished
     */
     /// Example
-	
-    view.applyRotateToAngle(360, duration: 3, direction: UIViewContentMode.Left, completionEnd: {
+    view.applyRotateToAngle(360, duration: 3, direction: UIViewContentMode.Left)
+    
+    view.applyRotateToAngle(360, duration: 3, direction: UIViewContentMode.Left) {
         /// When animation is finished
-    })
+    }
+
 
 ``` 
 
+###### Pulse 
+<img src="http://zippy.gfycat.com/PotableRemorsefulIndianglassfish.gif" height="200" width="200"/>
+``` swift
+    /**
+    Set animation Scale on View
+    - parameter duration:      NSTimeInterval
+    - parameter toScale:       CGFloat
+    - parameter repeatAnimate: Bool
+    - parameter completionEnd: (() -> ())? When animation is finished
+    */
+    /// Example
+    view.applyPulseToSize(duration: 5, toScale: 1.5, repeatAnimate: false)
+    
+    view.applyPulseToSize(duration: 5, toScale: 1.5, repeatAnimate: false) {
+        /// When animation is finished        
+    }
 
+``` 
 
