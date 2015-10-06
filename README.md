@@ -47,9 +47,9 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 
 * [Installation](#Installation)
 * [UIView](#UIView)
-	* [Helper](#UIView-Helper)
 	* [Init](#UIView-Init)
 	* [Frame](#UIView-Frame)
+	* [Helper](#UIView-Helper)
 	* [Border](#UIView-Border)
 	* [Shadow](#UIView-Shadow)
 	* [Animation](#UIView-Animation)
@@ -100,20 +100,6 @@ Copy & Paste  into your project
 
 
 ## Documentation
-
-### UIView extension <a id="UIView"></a>
-
-#### Helper <a id="UIView-Helper"></a>
-
-###### Remove all SubView
-``` swift
-    view.removeAllSubViews()
-```
-
-###### View to image
-``` swift
-    view.toImage()
-```
 
 #### Init <a id="UIView-Init"></a>
 
@@ -168,6 +154,20 @@ Copy & Paste  into your project
 ``` swift
     let size: CGSize = view.size
     view.size = CGSizeMake(100, 100)
+```
+
+### UIView extension <a id="UIView"></a>
+
+#### Helper <a id="UIView-Helper"></a>
+
+###### Remove all SubView
+``` swift
+    view.removeAllSubViews()
+```
+
+###### View to image
+``` swift
+    view.toImage()
 ```
 
 #### Border <a id="UIView-Border"></a>
