@@ -54,7 +54,7 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 	* [Border](#UIView-Border)
 	* [Shadow](#UIView-Shadow)
 	* [Animation](#UIView-Animation)
-* [UIAlertController](#UIAlertController)
+* [UIAlertController / UIAlertView](#UIAlertController)
 
 * [UIScrollView](#UIScrollView)
 * [UILabel](#UILabel)
@@ -432,7 +432,7 @@ Copy & Paste  into your project
 
 ``` 
 
-#### UIAlertController <a id="UIView-UIAlertController"></a>
+#### UIAlertController <a id="UIAlertController"></a>
 ###### Plain Shadow
 
 ``` swift
@@ -476,4 +476,36 @@ Copy & Paste  into your project
     	buttonOk: "Ok", 
     	buttonCancel: "No", 
     	completionOpenedAlert: funcOpend, completionCancel: funcCancel, completionOk: funcOk)
+```
+``` swift
+    @available(iOS 7.0, *)
+    /**
+    Open Standard Alert on iOS 7
+    
+    - parameter title:            Title
+    - parameter message:          Message
+    - parameter buttonOk:         Title button OK
+    - parameter buttonCancel:     Title button Cancel
+    
+    - handler handler Add :
+    func alertView(View: UIAlertView!, buttonIndex: Int){
+    	switch buttonIndex {
+    	case 1:
+    		// OK
+    	break
+    	case 0:
+    		// Cancel
+    	break
+    	default:
+    		// Other
+    	break
+    	}
+    }
+    */
+    UIAlertView.openStandardAlert(
+        delegate dg : uiviewcontroller,
+        title:"Title",
+        message:"message",
+        buttonOk:"ok",
+        buttonCancel:"no")
 ```
