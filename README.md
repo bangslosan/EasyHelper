@@ -433,8 +433,9 @@ Copy & Paste  into your project
 ``` 
 
 #### UIAlertController <a id="UIAlertController"></a>
-###### Plain Shadow
-
+###### Open Standard Alert
+<img src="http://nshipster.s3.amazonaws.com/uialertcontroller-alert-defautl-style.png" height="100" width="200"/>
+iOS 8
 ``` swift
     @available(iOS 8.0, *)
     /**
@@ -477,6 +478,7 @@ Copy & Paste  into your project
     	buttonCancel: "No", 
     	completionOpenedAlert: funcOpend, completionCancel: funcCancel, completionOk: funcOk)
 ```
+iOS 7
 ``` swift
     @available(iOS 7.0, *)
     /**
@@ -508,4 +510,23 @@ Copy & Paste  into your project
         message:"message",
         buttonOk:"ok",
         buttonCancel:"no")
+```
+###### Open Sheet Alert
+iOS 8
+<img src="http://nshipster.s3.amazonaws.com/uialertcontroller-action-sheet-automatic-style.png" height="100" width="200"/>
+``` swift
+    /**
+    Open Sheet Alert
+    
+    - parameter dg:                       Delegate UIViewController
+    - parameter title:                    Title
+    - parameter message:                  Message
+    - parameter buttonOk:                 Title button OK
+    - parameter buttonCancel:             Title button Cancel
+    - parameter buttonDestructive:        Title button Destructive
+    - parameter completionOpenSheetAlert: Completion when Alert is opened
+    - parameter completionCancel:         Completion click button Cancel
+    - parameter completionOk:             Completion click button Ok
+    - parameter completionDestructive:    Completion click button Destructive
+    */
 ```
