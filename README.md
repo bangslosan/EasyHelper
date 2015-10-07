@@ -46,6 +46,7 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 ## Table of Contents
 
 * [Installation](#Installation)
+* [UIKit](#UIKit)
 * [UIView](#UIView)
 	* [Init](#UIView-Init)
 	* [Frame](#UIView-Frame)
@@ -53,7 +54,8 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 	* [Border](#UIView-Border)
 	* [Shadow](#UIView-Shadow)
 	* [Animation](#UIView-Animation)
-* [UIViewController](#UIViewController)
+* [UIAlertController](#UIAlertController)
+
 * [UIScrollView](#UIScrollView)
 * [UILabel](#UILabel)
 	* [AttributedString](#UILabel-NSAttributedString)
@@ -75,16 +77,7 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 * [CGPoint](#CGPoint)
 * [CGFloat](#CGFloat)
 * [UIAlertController](#UIAlertController)
-* [UIBarButtonItem](#UIBarButtonItem)
-* [BlockButton](#BlockButton)
-* [BlockWebView](#BlockWebView)
-* [BlockTap](#BlockTap)
-* [BlockPan](#BlockPan)
-* [BlockSwipe](#BlockSwipe)
-* [BlockPinch](#BlockPinch)
-* [BlockLongPress](#BlockLongPress)
-* [BlockPicker](#BlockPicker)
-* [BlockPicker](#BlockPicker)
+
 
 
 ## Installation <a id="Installation"></a>
@@ -98,6 +91,9 @@ Copy & Paste  into your project
 
 
 ## Documentation
+
+## UIKit extension <a id="UIKit"></a>
+
 ### UIView extension <a id="UIView"></a>
 
 #### Init <a id="UIView-Init"></a>
@@ -436,4 +432,22 @@ Copy & Paste  into your project
 
 ``` 
 
+#### UIAlertController <a id="UIView-UIAlertController"></a>
+###### Plain Shadow
 
+``` swift
+    @available(iOS 8.0, *)
+    /**
+    Open Standard Alert on iOS 8 and more
+    
+    - parameter delegate:         Delegate UIViewController
+    - parameter title:            Title
+    - parameter message:          Message
+    - parameter buttonOk:         Title button OK
+    - parameter buttonCancel:     Title button Cancel
+    - parameter handlerOpenAlert: Completion when Alert is opened
+    - parameter handlerCancel:    Completion click button Cancel
+    - parameter handlerOk:        Completion click button OK
+    */
+
+```
