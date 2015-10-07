@@ -139,9 +139,24 @@ public class EasyHelper {
             return !(isPortrait)
         }
     }
-    static func checkDataFromUrl() throws {
-        
+    public static var appDelegate:UIApplicationDelegate? {
+        get {
+            return UIApplication.sharedApplication().delegate
+        }
+        set {
+            EH.appDelegate = newValue
+        }
     }
+    public static var rootController:UIViewController? {
+        get {
+            return EH.appDelegate?.window??.rootViewController
+        }
+        set {
+            EH.rootController = newValue
+        }
+
+    }
+
     
     /**
     Create Screenshot
@@ -178,5 +193,14 @@ public class EasyHelper {
             completion(data: data, error: error)
             }.resume()
     }
+    
+    public class func getStoryboard(storyName storyName:String) -> UIStoryboard {
+        return UIStoryboard(name: storyName, bundle: nil)
+    }
+    public class func getViewControllerByIdentifier(storyName storyName:String, identifierVC:String) -> UIViewController {
+            return EasyHelper.getStoryboard(storyName: storyName).instantiateViewControllerWithIdentifier(identifierVC)
+
+    }
+
 }
 

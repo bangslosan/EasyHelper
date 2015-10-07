@@ -33,5 +33,5 @@ extension EasyError: CustomStringConvertible {
         }
     }
     
-    func printLog() { printObject(self.description) }
+    func printError() { printObject(self.description) }
 }

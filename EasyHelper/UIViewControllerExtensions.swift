@@ -9,7 +9,4 @@
 import Foundation
 
 
-public extension UIViewController {
-
-    
-}
+public extension UIViewController { }

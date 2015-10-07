@@ -183,10 +183,10 @@
 		8849221C1BBBE2E600EA150A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				884921F61BBBDF3700EA150A /* UIViewExtensions.swift */,
 				884921E81BBBDF3700EA150A /* UIAlertController.swift */,
 				88CA195C1BC3102A00C133EB /* UIViewControllerExtensions.swift */,
 				88AEBD691BC2D6F500B392E7 /* UIScrollViewExtensions.swift */,
-				884921F61BBBDF3700EA150A /* UIViewExtensions.swift */,
 				884921F11BBBDF3700EA150A /* UIColorExtensions.swift */,
 				884921F21BBBDF3700EA150A /* UIImageExtensions.swift */,
 				884921F41BBBDF3700EA150A /* UILabelExtensions.swift */,

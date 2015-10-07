@@ -9,7 +9,4 @@
 
 import UIKit
 
-extension NSData {
-
-    
-}
+extension NSData { }

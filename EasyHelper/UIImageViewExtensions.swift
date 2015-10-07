@@ -104,7 +104,7 @@ extension UIImageView {
             self.init(frame: frame, imageName: defaultImage, contentMode: contentMode)
             
             guard let nsurl = NSURL (string: url) else {
-                EHError.Nil("[UIImageView][imageWithUrl] URLString is nil").printLog()
+                EHError.Nil("[UIImageView][imageWithUrl] URLString is nil").printError()
                 return
             }
             
@@ -135,9 +135,9 @@ extension UIImageView {
                 EasyAsync.GlobalMainQueue({
                     guard error == nil, let hasData = data, let hasImage = UIImage(data: hasData)   else {
                         if error != nil {
-                            EHError.Error("[UIImageView][imageWithUrl] Error : \(error)").printLog()
+                            EHError.Error("[UIImageView][imageWithUrl] Error : \(error)").printError()
                         } else {
-                            EHError.NSData("[UIImageView][imageWithUrl] NSData Error : data not image").printLog()
+                            EHError.NSData("[UIImageView][imageWithUrl] NSData Error : data not image").printError()
                         }
                         
                         if (errorDownload != nil) { errorDownload!() }

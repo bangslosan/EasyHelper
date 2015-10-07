@@ -9,7 +9,7 @@
 import Foundation
 
 public extension UIButton {
-    convenience init (x: CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
-        self.init(frame: CGRect (x: x, y: y, width: w, height: h))
+    convenience init (x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
+        self.init(frame: CGRect (x: x, y: y, width: width, height: height))
     }
 }

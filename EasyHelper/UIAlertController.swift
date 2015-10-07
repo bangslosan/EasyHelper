@@ -13,14 +13,14 @@ public extension UIAlertController {
     /**
     Open Standard Alert on iOS 8 and more
     
-    - parameter delegate:         Delegate UIViewController
-    - parameter title:            Title
-    - parameter message:          Message
-    - parameter buttonOk:         Title button OK
-    - parameter buttonCancel:     Title button Cancel
-    - parameter handlerOpenAlert: Completion when Alert is opened
-    - parameter handlerCancel:    Completion click button Cancel
-    - parameter handlerOk:        Completion click button OK
+    - parameter delegate:              Delegate UIViewController
+    - parameter title:                 Title
+    - parameter message:               Message
+    - parameter buttonOk:              Title button OK
+    - parameter buttonCancel:          Title button Cancel
+    - parameter completionOpenedAlert: Completion when Alert is opened
+    - parameter completionCancel:      Completion click button Cancel
+    - parameter completionOk:          Completion click button OK
     */
     class func openStandardAlert(
         delegate delegate:UIViewController,
@@ -28,40 +28,37 @@ public extension UIAlertController {
         message:String?,
         buttonOk:String,
         buttonCancel:String,
-        handlerOpenAlert: (() -> ())?,
-        handlerCancel: (() -> ())?,
-        handlerOk: (() -> ())?) {
-            
+        completionOpenedAlert: (() -> ())?,
+        completionCancel: ((action:UIAlertAction) -> ())?,
+        completionOk: ((action:UIAlertAction) -> ())?) {
+
+
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
             
-            let cancelAction = UIAlertAction(title: buttonCancel, style: .Cancel) { (action) in
-                handlerCancel?()
-            }
+            let cancelAction = UIAlertAction(title: buttonCancel, style: .Cancel, handler: completionCancel)
             
             alertController.addAction(cancelAction)
             
-            let OKAction = UIAlertAction(title: buttonOk, style: .Default) { (action) in
-                handlerOk?()
-            }
+            let OKAction = UIAlertAction(title: buttonOk, style: .Default, handler: completionOk)
             alertController.addAction(OKAction)
             
             delegate.presentViewController(alertController, animated: true) {
-                handlerOpenAlert?()
+                completionOpenedAlert?()
             }
     }
     /**
     Open Sheet Alert
     
-    - parameter dg:                     Delegate UIViewController
-    - parameter title:                  Title
-    - parameter message:                Message
-    - parameter buttonOk:               Title button OK
-    - parameter buttonCancel:           Title button Cancel
-    - parameter buttonDestructive:      Title button Destructive
-    - parameter handlerOpenSheetAlert:  Completion when Alert is opened
-    - parameter handlerCancel:          Completion click button Cancel
-    - parameter handlerOk:              Completion click button Ok
-    - parameter handleDestructive:      Completion click button Destructive
+    - parameter dg:                       Delegate UIViewController
+    - parameter title:                    Title
+    - parameter message:                  Message
+    - parameter buttonOk:                 Title button OK
+    - parameter buttonCancel:             Title button Cancel
+    - parameter buttonDestructive:        Title button Destructive
+    - parameter completionOpenSheetAlert: Completion when Alert is opened
+    - parameter completionCancel:         Completion click button Cancel
+    - parameter completionOk:             Completion click button Ok
+    - parameter completionDestructive:    Completion click button Destructive
     */
     class func openSheetAlert(
         delegate dg:UIViewController,
@@ -70,30 +67,22 @@ public extension UIAlertController {
         buttonOk:String?,
         buttonCancel:String?,
         buttonDestructive:String?,
-        handlerOpenSheetAlert: (() -> ())?,
-        handlerCancel: (() -> ())?,
-        handlerOk: (() -> ())?,
-        handleDestructive: (() -> ())?){
+        completionOpenSheetAlert: (() -> ())?,
+        completionCancel: ((action:UIAlertAction) -> ())?,
+        completionOk: ((action:UIAlertAction) -> ())?,
+        completionDestructive: ((action:UIAlertAction) -> ())?){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
         
-        let cancelAction = UIAlertAction(title: buttonCancel, style: .Cancel) { (action) in
-            handlerCancel?()
-        }
+        let cancelAction = UIAlertAction(title: buttonCancel, style: .Cancel,handler: completionCancel)
         alertController.addAction(cancelAction)
         
-        let OKAction = UIAlertAction(title: buttonOk, style: .Default) { (action) in
-            handlerOk?()
-        }
+        let OKAction = UIAlertAction(title: buttonOk, style: .Default, handler: completionOk)
         alertController.addAction(OKAction)
         
-        let destroyAction = UIAlertAction(title: buttonDestructive, style: .Destructive) { (action) in
-            handleDestructive?()
-        }
+        let destroyAction = UIAlertAction(title: buttonDestructive, style: .Destructive, handler: completionDestructive)
         alertController.addAction(destroyAction)
         
-        dg.presentViewController(alertController, animated: true) {
-            handlerOpenSheetAlert?()
-        }
+        dg.presentViewController(alertController, animated: true, completion: completionOpenSheetAlert)
     }
     /**
     Open Standard Alert with more buttons on iOS 8+
@@ -164,7 +153,7 @@ public extension UIAlertView {
     class func openStandardAlert(
         delegate dg : UIViewController,
         title:String,
-        message:String,
+        message:String?,
         buttonOk:String,
         buttonCancel:String) {
             
