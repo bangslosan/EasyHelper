@@ -449,5 +449,31 @@ Copy & Paste  into your project
     - parameter handlerCancel:    Completion click button Cancel
     - parameter handlerOk:        Completion click button OK
     */
-
+    UIAlertController.openStandardAlert(
+    	delegate: uiviewcontroller, 
+    	title: "Title", 
+    	message: "Message", 
+    	buttonOk: "Ok", 
+    	buttonCancel: "No", 
+    	completionOpenedAlert: { 
+                
+        }, completionCancel: { 
+            (action) -> () in
+                    
+        }) { 
+            (action) -> () in
+                    
+    }
+    
+    ///	Func pass in parameter
+    /// func funcOpend () { }
+    /// func funcCancel (action:UIAlertAction) { }
+    /// func funcOk (action:UIAlertAction) { }
+    UIAlertController.openStandardAlert(
+    	delegate: uiviewcontroller, 
+    	title: "Title", 
+    	message: "Message", 
+    	buttonOk: "Ok", 
+    	buttonCancel: "No", 
+    	completionOpenedAlert: funcOpend, completionCancel: funcCancel, completionOk: funcOk)
 ```
