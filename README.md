@@ -39,7 +39,7 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 
 ## Features :
 
-# Is Coming ! Wait  😎
+# There is a lot of documentation make it appear to progressively  😎
 
 -------
 
@@ -55,28 +55,6 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 	* [Shadow](#UIView-Shadow)
 	* [Animation](#UIView-Animation)
 * [UIAlertController / UIAlertView](#UIAlertController)
-
-* [UIScrollView](#UIScrollView)
-* [UILabel](#UILabel)
-	* [AttributedString](#UILabel-NSAttributedString)
-	* [Self sizing](#UILabel-Frame)
-	* [Initilizers](#UILabel-Init)
-* [NSAttributedString](#NSAttributedString)
-* [String](#String)
-* [UIFont](#UIFont)
-* [UIImageView](#UIImageView)
-* [UIColor](#UIColor)
-* [UIImage](#UIImage)
-* [NSDate](#NSDate)
-* [Array](#Array)
-* [Dictionary](#Dictionary)
-* [Dispatch](#Dispatch)
-* [Download Task](#Download)
-* [UIScreen](#UIScreen)
-* [CGSize](#CGSize)
-* [CGPoint](#CGPoint)
-* [CGFloat](#CGFloat)
-* [UIAlertController](#UIAlertController)
 
 
 
