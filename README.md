@@ -39,53 +39,23 @@ Get in contact with the developer on Twitter: [YannickSteph](https://twitter.com
 
 ## Features :
 
-# Is Coming ! Wait  😎
+# There is a lot of documentation make it appear to progressively  😎
 
 -------
 
 ## Table of Contents
 
 * [Installation](#Installation)
+* [UIKit](#UIKit)
 * [UIView](#UIView)
-	* [Helper](#UIView-Helper)
 	* [Init](#UIView-Init)
 	* [Frame](#UIView-Frame)
+	* [Helper](#UIView-Helper)
+	* [Border](#UIView-Border)
 	* [Shadow](#UIView-Shadow)
 	* [Animation](#UIView-Animation)
-	* [Aspect](#UIView-Aspect)
+* [UIAlertController / UIAlertView](#UIAlertController)
 
-* [UIViewController](#UIViewController)
-* [UIScrollView](#UIScrollView)
-* [UILabel](#UILabel)
-	* [AttributedString](#UILabel-NSAttributedString)
-	* [Self sizing](#UILabel-Frame)
-	* [Initilizers](#UILabel-Init)
-* [NSAttributedString](#NSAttributedString)
-* [String](#String)
-* [UIFont](#UIFont)
-* [UIImageView](#UIImageView)
-* [UIColor](#UIColor)
-* [UIImage](#UIImage)
-* [NSDate](#NSDate)
-* [Array](#Array)
-* [Dictionary](#Dictionary)
-* [Dispatch](#Dispatch)
-* [Download Task](#Download)
-* [UIScreen](#UIScreen)
-* [CGSize](#CGSize)
-* [CGPoint](#CGPoint)
-* [CGFloat](#CGFloat)
-* [UIAlertController](#UIAlertController)
-* [UIBarButtonItem](#UIBarButtonItem)
-* [BlockButton](#BlockButton)
-* [BlockWebView](#BlockWebView)
-* [BlockTap](#BlockTap)
-* [BlockPan](#BlockPan)
-* [BlockSwipe](#BlockSwipe)
-* [BlockPinch](#BlockPinch)
-* [BlockLongPress](#BlockLongPress)
-* [BlockPicker](#BlockPicker)
-* [BlockPicker](#BlockPicker)
 
 
 ## Installation <a id="Installation"></a>
@@ -100,19 +70,9 @@ Copy & Paste  into your project
 
 ## Documentation
 
+## UIKit extension <a id="UIKit"></a>
+
 ### UIView extension <a id="UIView"></a>
-
-#### Helper <a id="UIView-Helper"></a>
-
-###### Remove all SubView
-``` swift
-    view.removeAllSubViews()
-```
-
-###### View to image
-``` swift
-    view.toImage()
-```
 
 #### Init <a id="UIView-Init"></a>
 
@@ -169,6 +129,58 @@ Copy & Paste  into your project
     view.size = CGSizeMake(100, 100)
 ```
 
+#### Helper <a id="UIView-Helper"></a>
+
+###### Remove all SubView
+``` swift
+    view.removeAllSubViews()
+```
+
+###### View to image
+``` swift
+    view.toImage()
+```
+
+#### Border <a id="UIView-Border"></a>
+
+###### Border
+<img src="http://yannickstephan.com/easyhelper/border.png" height="200" width="200"/>
+``` swift
+    /**
+    Set Border
+    
+    - parameter borderColor: UIColor    ( default = UIColor.blackColor() )
+    - parameter borderWidth: CGFloat    ( default = 1.0 )
+    */
+    /// Example
+    view.applyBorder()
+    
+    view.applyBorder(UIColor.yellowColor(), borderWidth: 10)
+``` 
+
+###### Rounder
+<img src="http://yannickstephan.com/easyhelper/rounder.png" height="200" width="200"/>
+``` swift
+    /**
+    Set Rounder
+    
+    - parameter radius: CGFloat
+    */
+    /// Example
+    view.applyRounder(10)
+``` 
+
+###### Round
+<img src="http://yannickstephan.com/easyhelper/round.png" height="200" width="200"/>
+``` swift
+    /**
+    Set Round
+    
+    */
+    /// Example
+    view.applyRound()
+``` 
+
 #### Shadow <a id="UIView-Shadow"></a>
 <img src="http://yannickstephan.com/easyhelper/plainshadows.png" height="200" width="200"/>
 
@@ -185,9 +197,9 @@ Copy & Paste  into your project
     - parameter shadowOffset:  CGSize   ( default = CGSize(width: 0, height: 10) )
     */
     /// Example
-    self.applyPlainShadow()
+    view.applyPlainShadow()
             
-    self.applyPlainShadow(shadowColor: UIColor.yellowColor(), shadowOpacity: 0.8, shadowRadius: 3) 
+    view.applyPlainShadow(shadowColor: UIColor.yellowColor(), shadowOpacity: 0.8, shadowRadius: 3) 
 ```
 
 ###### Adding Curved Shadow
@@ -207,9 +219,9 @@ Copy & Paste  into your project
     */
     /// Example
     
-    self.applyCurvedShadow()
+    view.applyCurvedShadow()
         
-    self.applyCurvedShadow(shadowOpacity: 0.8, shadowColor: UIColor.yellowColor(), radius: 3) 
+    view.applyCurvedShadow(shadowOpacity: 0.8, shadowColor: UIColor.yellowColor(), radius: 3) 
 ```
 
 ###### Adding Hover Shadow
@@ -219,7 +231,7 @@ Copy & Paste  into your project
     Hover Shadow
 
     */
-    func applyHoverShadow()  
+    view.applyHoverShadow()  
 ```
 ###### Adding Flat shadow
 <img src="http://yannickstephan.com/easyhelper/flatshadow.png" height="100" width="110"/>
@@ -229,7 +241,7 @@ Copy & Paste  into your project
     
     <img src="http://yannickstephan.com/easyhelper/flatshadow.png" height="100" width="100"/>
     */
-    func applyFlatShadow()
+    view.applyFlatShadow()
 ```
 
 #### Animation <a id="UIView-Animation"></a>
@@ -398,42 +410,101 @@ Copy & Paste  into your project
 
 ``` 
 
-#### Aspect <a id="UIView-Aspect"></a>
-
-###### Border
-<img src="http://yannickstephan.com/easyhelper/border.png" height="200" width="200"/>
+#### UIAlertController <a id="UIAlertController"></a>
+###### Open Standard Alert
+<img src="http://nshipster.s3.amazonaws.com/uialertcontroller-alert-defautl-style.png" height="100" width="200"/>
+iOS 8
+``` swift
+    @available(iOS 8.0, *)
+    /**
+    Open Standard Alert on iOS 8 and more
+    
+    - parameter delegate:         Delegate UIViewController
+    - parameter title:            Title
+    - parameter message:          Message
+    - parameter buttonOk:         Title button OK
+    - parameter buttonCancel:     Title button Cancel
+    - parameter handlerOpenAlert: Completion when Alert is opened
+    - parameter handlerCancel:    Completion click button Cancel
+    - parameter handlerOk:        Completion click button OK
+    */
+    UIAlertController.openStandardAlert(
+    	delegate: uiviewcontroller, 
+    	title: "Title", 
+    	message: "Message", 
+    	buttonOk: "Ok", 
+    	buttonCancel: "No", 
+    	completionOpenedAlert: { 
+                
+        }, completionCancel: { 
+            (action) -> () in
+                    
+        }) { 
+            (action) -> () in
+                    
+    }
+    
+    ///	Func pass in parameter
+    /// func funcOpend () { }
+    /// func funcCancel (action:UIAlertAction) { }
+    /// func funcOk (action:UIAlertAction) { }
+    UIAlertController.openStandardAlert(
+    	delegate: uiviewcontroller, 
+    	title: "Title", 
+    	message: "Message", 
+    	buttonOk: "Ok", 
+    	buttonCancel: "No", 
+    	completionOpenedAlert: funcOpend, completionCancel: funcCancel, completionOk: funcOk)
+```
+iOS 7
+``` swift
+    @available(iOS 7.0, *)
+    /**
+    Open Standard Alert on iOS 7
+    
+    - parameter title:            Title
+    - parameter message:          Message
+    - parameter buttonOk:         Title button OK
+    - parameter buttonCancel:     Title button Cancel
+    
+    - handler handler Add :
+    func alertView(View: UIAlertView!, buttonIndex: Int){
+    	switch buttonIndex {
+    	case 1:
+    		// OK
+    	break
+    	case 0:
+    		// Cancel
+    	break
+    	default:
+    		// Other
+    	break
+    	}
+    }
+    */
+    UIAlertView.openStandardAlert(
+        delegate dg : uiviewcontroller,
+        title:"Title",
+        message:"message",
+        buttonOk:"ok",
+        buttonCancel:"no")
+```
+###### Open Sheet Alert
+iOS 8
+<img src="http://nshipster.s3.amazonaws.com/uialertcontroller-action-sheet-automatic-style.png" height="100" width="200"/>
 ``` swift
     /**
-    Set Border
+    Open Sheet Alert
     
-    - parameter borderColor: UIColor    ( default = UIColor.blackColor() )
-    - parameter borderWidth: CGFloat    ( default = 1.0 )
+    - parameter dg:                       Delegate UIViewController
+    - parameter title:                    Title
+    - parameter message:                  Message
+    - parameter buttonOk:                 Title button OK
+    - parameter buttonCancel:             Title button Cancel
+    - parameter buttonDestructive:        Title button Destructive
+    - parameter completionOpenSheetAlert: Completion when Alert is opened
+    - parameter completionCancel:         Completion click button Cancel
+    - parameter completionOk:             Completion click button Ok
+    - parameter completionDestructive:    Completion click button Destructive
     */
-    /// Example
-    view.applyBorder()
-    
-    view.applyBorder(UIColor.yellowColor(), borderWidth: 10)
-``` 
-
-###### Rounder
-<img src="http://yannickstephan.com/easyhelper/rounder.png" height="200" width="200"/>
-``` swift
-    /**
-    Set Rounder
-    
-    - parameter radius: CGFloat
-    */
-    /// Example
-    view.applyRounder(10)
-``` 
-
-###### Round
-<img src="http://yannickstephan.com/easyhelper/round.png" height="200" width="200"/>
-``` swift
-    /**
-    Set Round
-    
-    */
-    /// Example
-    view.applyRound()
-``` 
+```
