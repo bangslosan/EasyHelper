@@ -507,4 +507,38 @@ iOS 8
     - parameter completionOk:             Completion click button Ok
     - parameter completionDestructive:    Completion click button Destructive
     */
+    UIAlertController.openSheetAlert(
+    delegate: uiviewcontroller, 
+    title: "Titre", 
+    message: "message", 
+    buttonOk: "Ok", 
+    buttonCancel: "Cancel",
+    buttonDestructive: "Destroy", 
+    	completionOpenSheetAlert: { 
+                
+        }, completionCancel: { 
+        	(action) -> () in
+                    
+        }, completionOk: { 
+        	(action) -> () in
+                    
+        }) { 
+        	(action) -> () in
+                    
+    }
+    
+    
+    ///	Func pass in parameter
+    /// func funcOpend () { }
+    /// func funcCancel (action:UIAlertAction) { }
+    /// func funcOk (action:UIAlertAction) { }
+    /// func funcDestroy (action:UIAlertAction) { }
+    UIAlertController.openSheetAlert(
+    delegate: uiviewcontroller, 
+    title: "Titre", 
+    message: "message", 
+    buttonOk: "Ok", 
+    buttonCancel: "Cancel",
+    buttonDestructive: "Destroy", 
+    completionOpenSheetAlert: funcOpend, completionCancel: funcCancel, completionOk: funcOk,completionDestructive: funcDestroy)
 ```
