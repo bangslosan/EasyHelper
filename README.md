@@ -509,24 +509,24 @@ iOS 8+
     - parameter completionDestructive:    Completion click button Destructive
     */
     UIAlertController.openSheetAlert(
-    delegate: uiviewcontroller, 
-    title: "Titre", 
-    message: "message", 
-    buttonOk: "Ok", 
-    buttonCancel: "Cancel",
-    buttonDestructive: "Destroy", 
-    	completionOpenSheetAlert: { 
+        delegate: uiviewcontroller, 
+        title: "Titre", 
+        message: "message", 
+        buttonOk: "Ok", 
+        buttonCancel: "Cancel",
+        buttonDestructive: "Destroy", 
+    	    completionOpenSheetAlert: { 
                 
-        }, completionCancel: { 
+            }, completionCancel: { 
         	(action) -> () in
                     
-        }, completionOk: { 
+            }, completionOk: { 
         	(action) -> () in
                     
-        }) { 
+            }) { 
         	(action) -> () in
                     
-    }
+        }
     
     
     ///	Func pass in parameter
@@ -535,13 +535,13 @@ iOS 8+
     /// func funcOk (action:UIAlertAction) { }
     /// func funcDestroy (action:UIAlertAction) { }
     UIAlertController.openSheetAlert(
-    delegate: uiviewcontroller, 
-    title: "Titre", 
-    message: "message", 
-    buttonOk: "Ok", 
-    buttonCancel: "Cancel",
-    buttonDestructive: "Destroy", 
-    completionOpenSheetAlert: funcOpend, completionCancel: funcCancel, completionOk: funcOk,completionDestructive: funcDestroy)
+        delegate: uiviewcontroller, 
+        title: "Titre", 
+        message: "message", 
+        buttonOk: "Ok", 
+        buttonCancel: "Cancel",
+        buttonDestructive: "Destroy", 
+        completionOpenSheetAlert: funcOpend, completionCancel: funcCancel, completionOk: funcOk,completionDestructive: funcDestroy)
 ```
 iOS 7
 ``` swift
@@ -598,16 +598,16 @@ iOS 8+
         }
         
         
-        /// Func pass in parameter
-    	/// func funcOpend () { }
-    	/// func funcCancel (action:UIAlertAction) { }
-    	/// func funcOk (action:UIAlertAction) { }
-    	/// func funcButtons (action:UIAlertAction) { }
-	UIAlertController.openStandardAlertMoreButtons(
-    	delegate: uiviewcontroller, 
-    	title: "Title", 
-    	message: "message", 
-    	buttons: ["One","Two","Three"], 
-    	buttonCancel: "Cancel", 
-    	completionOpenAlert: funcOpend, completionCancel: funcCancel,completionButtons: funcButtons)
+    /// Func pass in parameter
+    /// func funcOpend () { }
+    /// func funcCancel (action:UIAlertAction) { }
+    /// func funcOk (action:UIAlertAction) { }
+    /// func funcButtons (action:UIAlertAction) { }
+    UIAlertController.openStandardAlertMoreButtons(
+        delegate: uiviewcontroller, 
+        title: "Title", 
+        message: "message", 
+        buttons: ["One","Two","Three"], 
+        buttonCancel: "Cancel", 
+        completionOpenAlert: funcOpend, completionCancel: funcCancel,completionButtons: funcButtons)
 ```
