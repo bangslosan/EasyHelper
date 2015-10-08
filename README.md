@@ -493,6 +493,7 @@ iOS 7
 iOS 8
 <img src="http://nshipster.s3.amazonaws.com/uialertcontroller-action-sheet-automatic-style.png" height="100" width="200"/>
 ``` swift
+    @available(iOS 8.0, *)
     /**
     Open Sheet Alert
     
@@ -544,6 +545,30 @@ iOS 8
 ```
 iOS 7
 ``` swift
+     @available(iOS 7.0, *)
+    /**
+    Open Sheet Alert
+    
+    - parameter delegateSheet:          UIActionSheetDelegate
+    - parameter inView:                 UIView
+    - parameter title:                  Title
+    - parameter message:                Message
+    - parameter buttonOk:               Title button OK
+    - parameter buttonCancel:           Title button Cancel
+    - parameter buttonDestructive:      Title button Destructive
+    
+    - handlerSheetDelegate : 
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) { 
+    	switch buttonIndex { } 
+    }
+    */
+    UIAlertView.openSheetAlert(delegateSheet: uiactionsheetdelegate, inView: view, title: "Titre", message: "message", buttonOk: "ok", buttonCancel: "No", buttonDestructive: "Destroy")
+```
+###### Open Standard Alert With More Buttons
+<img src="http://nshipster.s3.amazonaws.com/uialertcontroller-alert-one-two-three-cancel.png" height="100" width="200"/>
+iOS 8
+``` swift
+     @available(iOS 7.0, *)
     /**
     Open Sheet Alert
     
