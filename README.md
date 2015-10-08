@@ -413,11 +413,11 @@ Copy & Paste  into your project
 #### UIAlertController <a id="UIAlertController"></a>
 ###### Open Standard Alert
 <img src="http://nshipster.s3.amazonaws.com/uialertcontroller-alert-defautl-style.png" height="100" width="200"/>
-iOS 8
+iOS 8+
 ``` swift
     @available(iOS 8.0, *)
     /**
-    Open Standard Alert on iOS 8 and more
+    Open Standard Alert on iOS 8+
     
     - parameter delegate:         Delegate UIViewController
     - parameter title:            Title
@@ -490,12 +490,12 @@ iOS 7
         buttonCancel:"no")
 ```
 ###### Open Sheet Alert
-iOS 8
+iOS 8+
 <img src="http://nshipster.s3.amazonaws.com/uialertcontroller-action-sheet-automatic-style.png" height="100" width="200"/>
 ``` swift
     @available(iOS 8.0, *)
     /**
-    Open Sheet Alert
+    Open Sheet Alert for iOS 8+
     
     - parameter dg:                       Delegate UIViewController
     - parameter title:                    Title
@@ -565,25 +565,49 @@ iOS 7
     UIAlertView.openSheetAlert(delegateSheet: uiactionsheetdelegate, inView: view, title: "Titre", message: "message", buttonOk: "ok", buttonCancel: "No", buttonDestructive: "Destroy")
 ```
 ###### Open Standard Alert With More Buttons
-<img src="http://nshipster.s3.amazonaws.com/uialertcontroller-alert-one-two-three-cancel.png" height="100" width="200"/>
-iOS 8
+<img src="http://nshipster.s3.amazonaws.com/uialertcontroller-alert-one-two-three-cancel.png" height="150" width="200"/>
+iOS 8+
 ``` swift
-     @available(iOS 7.0, *)
+    @available(iOS 8.0, *)
     /**
-    Open Sheet Alert
+    Open Standard Alert with more buttons on iOS 8+
     
-    - parameter delegateSheet:          UIActionSheetDelegate
-    - parameter inView:                 UIView
-    - parameter title:                  Title
-    - parameter message:                Message
-    - parameter buttonOk:               Title button OK
-    - parameter buttonCancel:           Title button Cancel
-    - parameter buttonDestructive:      Title button Destructive
-    
-    - handlerSheetDelegate : 
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) { 
-    	switch buttonIndex { } 
-    }
+    - parameter dg:                  Delegate UIViewController
+    - parameter title:               Title
+    - parameter message:             Message
+    - parameter buttons:             Titles buttons
+    - parameter buttonCancel:        Title button Cancel
+    - parameter completionOpenAlert: Completion when Alert is opened
+    - parameter completionCancel:    Completion click button Cancel
+    - parameter completionButtons:   Completion click buttons
     */
-    UIAlertView.openSheetAlert(delegateSheet: uiactionsheetdelegate, inView: view, title: "Titre", message: "message", buttonOk: "ok", buttonCancel: "No", buttonDestructive: "Destroy")
+    UIAlertController.openStandardAlertMoreButtons(
+    	delegate: uiviewcontroller, 
+    	title: "Title", 
+    	message: "message", 
+    	buttons: ["One","Two","Three"], 
+    	buttonCancel: "Cancel", 
+    	completionOpenAlert: { 
+                
+        }, completionCancel: { 
+        	(action) -> () in
+                 
+        }) { 
+        	(action) -> () in
+                 
+        }
+        
+        
+        /// Func pass in parameter
+    	/// func funcOpend () { }
+    	/// func funcCancel (action:UIAlertAction) { }
+    	/// func funcOk (action:UIAlertAction) { }
+    	/// func funcButtons (action:UIAlertAction) { }
+	UIAlertController.openStandardAlertMoreButtons(
+    	delegate: uiviewcontroller, 
+    	title: "Title", 
+    	message: "message", 
+    	buttons: ["One","Two","Three"], 
+    	buttonCancel: "Cancel", 
+    	completionOpenAlert: funcOpend, completionCancel: funcCancel,completionButtons: funcButtons)
 ```
