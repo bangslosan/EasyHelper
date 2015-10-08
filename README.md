@@ -542,3 +542,23 @@ iOS 8
     buttonDestructive: "Destroy", 
     completionOpenSheetAlert: funcOpend, completionCancel: funcCancel, completionOk: funcOk,completionDestructive: funcDestroy)
 ```
+iOS 7
+``` swift
+    /**
+    Open Sheet Alert
+    
+    - parameter delegateSheet:          UIActionSheetDelegate
+    - parameter inView:                 UIView
+    - parameter title:                  Title
+    - parameter message:                Message
+    - parameter buttonOk:               Title button OK
+    - parameter buttonCancel:           Title button Cancel
+    - parameter buttonDestructive:      Title button Destructive
+    
+    - handlerSheetDelegate : 
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) { 
+    	switch buttonIndex { } 
+    }
+    */
+    UIAlertView.openSheetAlert(delegateSheet: uiactionsheetdelegate, inView: view, title: "Titre", message: "message", buttonOk: "ok", buttonCancel: "No", buttonDestructive: "Destroy")
+```
