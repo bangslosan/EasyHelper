@@ -31,8 +31,7 @@ public extension UIAlertController {
         completionOpenedAlert: (() -> ())?,
         completionCancel: ((action:UIAlertAction) -> ())?,
         completionOk: ((action:UIAlertAction) -> ())?) {
-
-
+            
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
             
             let cancelAction = UIAlertAction(title: buttonCancel, style: .Cancel, handler: completionCancel)
@@ -71,30 +70,31 @@ public extension UIAlertController {
         completionCancel: ((action:UIAlertAction) -> ())?,
         completionOk: ((action:UIAlertAction) -> ())?,
         completionDestructive: ((action:UIAlertAction) -> ())?){
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
-        
-        let cancelAction = UIAlertAction(title: buttonCancel, style: .Cancel,handler: completionCancel)
-        alertController.addAction(cancelAction)
-        
-        let OKAction = UIAlertAction(title: buttonOk, style: .Default, handler: completionOk)
-        alertController.addAction(OKAction)
-        
-        let destroyAction = UIAlertAction(title: buttonDestructive, style: .Destructive, handler: completionDestructive)
-        alertController.addAction(destroyAction)
-        
-        dg.presentViewController(alertController, animated: true, completion: completionOpenSheetAlert)
+
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+            
+            let cancelAction = UIAlertAction(title: buttonCancel, style: .Cancel,handler: completionCancel)
+            alertController.addAction(cancelAction)
+            
+            let OKAction = UIAlertAction(title: buttonOk, style: .Default, handler: completionOk)
+            alertController.addAction(OKAction)
+            
+            let destroyAction = UIAlertAction(title: buttonDestructive, style: .Destructive, handler: completionDestructive)
+            alertController.addAction(destroyAction)
+            
+            dg.presentViewController(alertController, animated: true, completion: completionOpenSheetAlert)
     }
     /**
     Open Standard Alert with more buttons on iOS 8+
     
-    - parameter delegate:         Delegate UIViewController
-    - parameter title:            Title
-    - parameter message:          Message
-    - parameter buttonOk:         Title button OK
-    - parameter buttonCancel:     Title button Cancel
-    - parameter handlerOpenAlert: Completion when Alert is opened
-    - parameter handlerCancel:    Completion click button Cancel
-    - parameter handlerOk:        Completion click button OK
+    - parameter dg:                  Delegate UIViewController
+    - parameter title:               Title
+    - parameter message:             Message
+    - parameter buttons:             Titles buttons
+    - parameter buttonCancel:        Title button Cancel
+    - parameter completionOpenAlert: Completion when Alert is opened
+    - parameter completionCancel:    Completion click button Cancel
+    - parameter completionButtons:   Completion click buttons
     */
     class func openStandardAlertMoreButtons(
         delegate dg:UIViewController,
@@ -102,27 +102,22 @@ public extension UIAlertController {
         message:String?,
         buttons:String...,
         buttonCancel:String,
-        handlerOpenAlert: (() -> ())?,
-        handlerCancel: (() -> ())?,
-        handlerButtons: ((UIAlertAction) -> ())?) {
-            
+        completionOpenAlert: (() -> ())?,
+        completionCancel: ((action:UIAlertAction) -> ())?,
+        completionButtons: ((action:UIAlertAction) -> ())?) {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
             
             for oneButton in buttons {
                 
-                let buttonAction = UIAlertAction(title: oneButton, style: .Default, handler: handlerButtons)
+                let buttonAction = UIAlertAction(title: oneButton, style: .Default, handler: completionButtons)
                 alertController.addAction(buttonAction)
                 
             }
             
-            let cancelAction = UIAlertAction(title: buttonCancel, style: .Cancel) { (action) in
-                handlerCancel?()
-            }
+            let cancelAction = UIAlertAction(title: buttonCancel, style: .Cancel,handler: completionCancel)
             alertController.addAction(cancelAction)
             
-            dg.presentViewController(alertController, animated: true) {
-                handlerOpenAlert?()
-            }
+            dg.presentViewController(alertController, animated: true,completion: completionOpenAlert)
     }
 }
 @available(*, deprecated=8.0, deprecated=9.0, message="Because !")
@@ -169,17 +164,13 @@ public extension UIAlertView {
     /**
     Open Sheet Alert
     
-    - parameter dg:                    UIActionSheetDelegate
-    - parameter inView:                UIView
+    - parameter delegateSheet:          UIActionSheetDelegate
+    - parameter inView:                 UIView
     - parameter title:                  Title
     - parameter message:                Message
     - parameter buttonOk:               Title button OK
     - parameter buttonCancel:           Title button Cancel
     - parameter buttonDestructive:      Title button Destructive
-    - parameter handlerOpenSheetAlert:  Completion when Alert is opened
-    - parameter handlerCancel:          Completion click button Cancel
-    - parameter handlerOk:              Completion click button Ok
-    - parameter handleDestructive:      Completion click button Destructive
     
     - handlerSheetDelegate : func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) { switch buttonIndex { } }
     */
@@ -191,10 +182,9 @@ public extension UIAlertView {
         buttonOk:String,
         buttonCancel:String?,
         buttonDestructive:String?) {
-
-        let actionSheet = UIActionSheet(title: title, delegate: dg, cancelButtonTitle: buttonCancel, destructiveButtonTitle: buttonDestructive, otherButtonTitles: buttonOk)
-        actionSheet.actionSheetStyle = .Default
-        actionSheet.showInView(inView)
+            let actionSheet = UIActionSheet(title: title, delegate: dg, cancelButtonTitle: buttonCancel, destructiveButtonTitle: buttonDestructive, otherButtonTitles: buttonOk)
+            actionSheet.actionSheetStyle = .Default
+            actionSheet.showInView(inView)
     }
-
+    
 }

@@ -17,4 +17,6 @@ public extension UILabel {
             self.font =  UIFont(name: self.font.fontName, size: newValue)
         }
     }
+    
+    
 }
