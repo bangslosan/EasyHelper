@@ -210,8 +210,8 @@ public extension UIView {
     public func applyShakeHorizontally(
         duration duration:CFTimeInterval = 0.5,
         moveValues:[Float] = [-12, 12, -8, 8, -4, 4, 0],
-        completionEnd: (() -> ())?) {
-            
+        completionEnd: dispatch_block_t?) {
+        
         let animation:CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
@@ -344,14 +344,14 @@ public extension UIView {
 /// ############################################################ ///
 
 // MARK: - The aspect
-extension UIView {
+public extension UIView {
     /**
     Set Border
     
     - parameter borderColor: UIColor    ( default = UIColor.blackColor() )
     - parameter borderWidth: CGFloat    ( default = 1.0 )
     */
-    func applyBorder(borderColor:UIColor = UIColor.blackColor(),borderWidth:CGFloat = 1) {
+    public func applyBorder(borderColor:UIColor = UIColor.blackColor(),borderWidth:CGFloat = 1) {
         self.layer.borderColor = borderColor.CGColor
         self.layer.borderWidth = borderWidth
         self.clipsToBounds = true
@@ -361,7 +361,7 @@ extension UIView {
     
     - parameter radius: CGFloat
     */
-    func applyRounder(radius:CGFloat) {
+    public func applyRounder(radius:CGFloat) {
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
     }
@@ -369,13 +369,13 @@ extension UIView {
     Set Round
     
     */
-    func applyRound() {
+    public func applyRound() {
         self.layer.cornerRadius = self.width / 2
         self.clipsToBounds = true
     }
 }
 // MARK: - Shadow
-extension UIView {
+public extension UIView {
     /**
     Plain Shadow
     
@@ -386,7 +386,7 @@ extension UIView {
     - parameter shadowRadius:  CGFloat  ( default = 0.5 )
     - parameter shadowOffset:  CGSize   ( default = CGSize(width: 0, height: 10) )
     */
-    func applyPlainShadow(
+    public func applyPlainShadow(
         shadowColor:UIColor =  UIColor.blackColor(),
         shadowOpacity:Float = 0.4,
         shadowRadius:CGFloat = 5,
@@ -410,7 +410,7 @@ extension UIView {
     - parameter curviness:     CGFloat  ( default = 5 )
     - parameter radius:        CGFloat  ( default = 1 )
     */
-    func applyCurvedShadow(
+    public func applyCurvedShadow(
         shadowOpacity shadowOpacity:Float = 0.3,
         shadowOffset:CGSize = CGSize(width: 0, height: -3),
         shadowColor:UIColor = UIColor.blackColor(),
@@ -452,7 +452,7 @@ extension UIView {
     
     <img src="http://yannickstephan.com/easyhelper/shadow1.png" height="200" width="200"/>
     */
-    func applyHoverShadow() {
+    public func applyHoverShadow() {
 
         let path = UIBezierPath(roundedRect: CGRect(x: 5, y: self.height + 5, width: self.width - 10, height: 15), cornerRadius: 10)
         
@@ -467,7 +467,7 @@ extension UIView {
     
     <img src="http://yannickstephan.com/easyhelper/flatshadow.png" height="100" width="100"/>
     */
-    func applyFlatShadow(){
+    public func applyFlatShadow(){
         self.layer.shadowColor = UIColor.blackColor().CGColor
         self.layer.shadowOffset = CGSizeMake(0.0, 2.0)
         self.layer.masksToBounds = false

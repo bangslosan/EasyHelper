@@ -132,7 +132,7 @@ extension UIImageView {
             EasyHelper.getDataFromUrl(url) {
                 (data, error)  in
                 
-                EasyAsync.GlobalMainQueue({
+                EHAsync.mainQueue({
                     guard error == nil, let hasData = data, let hasImage = UIImage(data: hasData)   else {
                         if error != nil {
                             EHError.Error("[UIImageView][imageWithUrl] Error : \(error)").printError()

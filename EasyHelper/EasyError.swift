@@ -9,7 +9,7 @@
 import Foundation
 
 typealias EasyError = EHError
-enum EHError: ErrorType {
+public enum EHError: ErrorType {
     case Error(String)
     case Nil(String)
     case PathForResource(String)
@@ -20,8 +20,8 @@ enum EHError: ErrorType {
     
 
 }
-extension EasyError: CustomStringConvertible {
-    var description: String {
+ extension EasyError: CustomStringConvertible {
+    public var description: String {
         switch self {
         case Error(let ePrint) : return ePrint
         case Nil(let ePrint) : return ePrint
@@ -33,5 +33,5 @@ extension EasyError: CustomStringConvertible {
         }
     }
     
-    func printError() { printObject(self.description) }
+    func printError() { printObject("[EasyHelper] \(self.description)") }
 }
