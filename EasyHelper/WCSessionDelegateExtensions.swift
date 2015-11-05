@@ -11,6 +11,7 @@ import WatchConnectivity
 
 public extension WCSessionDelegate {
     
+    @available(iOS 9.0, *)
     @available(iOSApplicationExtension 9.0, *)
     public var sessions:WCSession? {
         get {
@@ -18,6 +19,7 @@ public extension WCSessionDelegate {
         }
     }
     
+    @available(iOS 9.0, *)
     @available(iOSApplicationExtension 9.0, *)
     public func  configureSessions(delegate:WCSessionDelegate) {
         

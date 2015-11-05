@@ -140,15 +140,18 @@ public class EasyHelper {
             return !(isPortrait)
         }
     }
-  /*  public static var appDelegate:UIApplicationDelegate? {
+    /// Get the appDelegate
+    public static var appDelegate:UIApplicationDelegate? {
         get {
             return UIApplication.sharedApplication().delegate
         }
         set {
             EH.appDelegate = newValue
         }
-    }*/
-   /* public static var rootController:UIViewController? {
+    }
+    
+   /// Get the RootController
+   public static var rootController:UIViewController? {
         get {
             return EH.appDelegate?.window??.rootViewController
         }
@@ -156,14 +159,14 @@ public class EasyHelper {
             EH.rootController = newValue
         }
 
-    }*/
+    }
 
     
     /**
     Create Screenshot
     
     :returns: UIImage
-
+    */
     public static func getScreenshot(opaque:Bool = false) throws ->  UIImage {
         guard let keyWindowV = UIApplication.sharedApplication().keyWindow else {
             throw EHError.Nil("[EasyHelper][screenShot] Nil object keyWindow")
@@ -181,7 +184,7 @@ public class EasyHelper {
         
         return screenshot
         
-    } */
+    }
     
     public static func getDataFromUrl(urL:String, completion: ((data:NSData?, error:NSError?) -> ())) {
         if let nsurl = NSURL (string: urL) {

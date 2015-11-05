@@ -210,7 +210,7 @@ public extension UIView {
     public func applyShakeHorizontally(
         duration duration:CFTimeInterval = 0.5,
         moveValues:[Float] = [-12, 12, -8, 8, -4, 4, 0],
-        completionEnd: dispatch_block_t?) {
+        completionEnd: dispatch_block_t? = nil) {
         
         let animation:CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         
