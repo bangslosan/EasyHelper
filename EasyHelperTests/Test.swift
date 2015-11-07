@@ -24,7 +24,7 @@ class Test: XCTestCase {
     func testExample() {
         
         do {
-          try UIImage.screenshot()
+          try UIImage.getScreenshot(true)
         } catch {
             XCTAssert(false)
         }

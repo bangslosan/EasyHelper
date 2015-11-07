@@ -17,16 +17,14 @@ public struct EasySound: CustomStringConvertible {
     
     /** Creates a sound from a filename. No need to include the file extension: Prototope will
     try all the valid extensions. */
-    public init?(name: String, type:String) {
+    public init?(name: String, type:String) throws {
         
         guard let patch = NSBundle.getPath(name: name, type: type) else {
-            EasyError.PathForResource("Can't find the patch").printError()
-            return nil
+            throw EasyError.PathForResource("Can't find the patch")
         }
        
         guard let data = NSData(contentsOfFile: patch) else {
-            EasyError.NSData("Can't find data by the patch").printError()
-            return nil
+            throw EasyError.NSData(whereIs: "EasySound",funcIs: "init?",errorIs:"Can't find data by the patch")
         }
 
         do {
@@ -34,19 +32,17 @@ public struct EasySound: CustomStringConvertible {
             self.player.prepareToPlay()
             self.name = name
         } catch {
-            EasyError.Error("\(error)").printError()
-            return nil
+            throw EasyError.Error(whereIs: "EasySound",funcIs: "init?",errorIs: "\(error)")
         }
         
         
 
     }
     
-    public init?(url:NSURL) {
+    public init?(url:NSURL) throws {
         
         guard let data = NSData(contentsOfURL: url) else {
-            EasyError.NSData("Can't find data by the patch").printError()
-            return nil
+            throw EasyError.NSData(whereIs: "EasySound",funcIs: "init?",errorIs:"Can't find data by the patch")
         }
         
         do {
@@ -54,8 +50,7 @@ public struct EasySound: CustomStringConvertible {
             self.player.prepareToPlay()
             self.name = ""
         } catch {
-            EasyError.Error("\(error)").printError()
-            return nil
+            throw EasyError.Error(whereIs: "EasySound",funcIs: "init?",errorIs: "\(error)")
         }
     }
     

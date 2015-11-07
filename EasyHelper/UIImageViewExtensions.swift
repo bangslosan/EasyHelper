@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Extensions UIImageView by EasyHelper
 extension UIImageView {
     
     /**
@@ -99,7 +100,8 @@ extension UIImageView {
         defaultImage:String? = nil,
         contentMode:UIViewContentMode = .ScaleAspectFit,
         succesDownload:((imageView:UIImageView,donwloadedImage:UIImage)->())? = nil,
-        errorDownload:(()->())? = nil) {
+        errorDownload:(()->())? = nil
+        ) {
             
             self.init(frame: frame, imageName: defaultImage, contentMode: contentMode)
             
@@ -127,17 +129,18 @@ extension UIImageView {
     func imageWithUrl(
         url:NSURL,
         succesDownload:((imageView:UIImageView,imageDownload: UIImage)->())? = nil,
-        errorDownload:(()->())? = nil) {
+        errorDownload:(()->())? = nil
+        ) {
             
-            EasyHelper.getDataFromUrl(url) {
+            NSData.getDataFromNSURL(url) {
                 (data, error)  in
                 
                 EHAsync.mainQueue({
                     guard error == nil, let hasData = data, let hasImage = UIImage(data: hasData)   else {
                         if error != nil {
-                            EHError.Error("[UIImageView][imageWithUrl] Error : \(error)").printError()
+                            EHError.Error(whereIs: "Extensions UIImageView", funcIs: "imageWithUrl", errorIs: "Error : \(error)").printError()
                         } else {
-                            EHError.NSData("[UIImageView][imageWithUrl] NSData Error : data not image").printError()
+                            EHError.NSData(whereIs: "EasyHelper extension Dictionary",funcIs: "loadJSONFromBundle",errorIs:"NSData Error : data not have image").printError()
                         }
                         
                         if (errorDownload != nil) { errorDownload!() }

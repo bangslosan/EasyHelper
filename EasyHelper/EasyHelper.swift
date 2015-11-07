@@ -79,19 +79,6 @@ public class EasyHelper {
             return EasyHelper.isIphone && screenMaxLength == 736.0
         }
     }
-    /// Language use
-    public class var languageCode:String {
-        get {
-            return NSLocale.preferredLanguages()[0] as String
-           // return NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as? String
-        }
-    }
-    /// Country type in iPhone
-    public class var countryCode:String? {
-        get {
-            return NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as? String
-        }
-    }
     /// Screen Width
     public class var screenWidth:CGFloat {
         get {
@@ -162,48 +149,27 @@ public class EasyHelper {
     }
 
     
-    /**
-    Create Screenshot
-    
-    :returns: UIImage
-    */
-    public static func getScreenshot(opaque:Bool = false) throws ->  UIImage {
-        guard let keyWindowV = UIApplication.sharedApplication().keyWindow else {
-            throw EHError.Nil("[EasyHelper][screenShot] Nil object keyWindow")
-        }
-        guard let context = UIGraphicsGetCurrentContext() else {
-            throw EHError.Nil("[EasyHelper][screenShot] Nil object UIGraphicsGetCurrentContext")
-        }
-        
-        let layer = keyWindowV.layer
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, opaque, EasyHelper.screenScale);
-        layer.renderInContext(context)
-        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        
-        return screenshot
-        
-    }
-    
-    public static func getDataFromUrl(urL:String, completion: ((data:NSData?, error:NSError?) -> ())) {
-        if let nsurl = NSURL (string: urL) {
-            EasyHelper.getDataFromUrl(nsurl, completion: completion)
-        }
-    }
-    public static func getDataFromUrl(urL:NSURL, completion: ((data:NSData?, error:NSError?) -> Void)) {
-        NSURLSession.sharedSession().dataTaskWithURL(urL) {
-            (data, response, error) in
-            completion(data: data, error: error)
-            }.resume()
-    }
-    
     public class func getStoryboard(storyName storyName:String) -> UIStoryboard {
         return UIStoryboard(name: storyName, bundle: nil)
     }
     public class func getViewControllerByIdentifier(storyName storyName:String, identifierVC:String) -> UIViewController {
             return EasyHelper.getStoryboard(storyName: storyName).instantiateViewControllerWithIdentifier(identifierVC)
 
+    }
+    
+    //********** A REVOIR ********//
+    /// Language use
+    public class var languageCode:String {
+        get {
+            return NSLocale.preferredLanguages()[0] as String
+            // return NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as? String
+        }
+    }
+    /// Country type in iPhone
+    public class var countryCode:String? {
+        get {
+            return NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as? String
+        }
     }
 
 }

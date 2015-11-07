@@ -256,7 +256,7 @@ public extension UIView {
         direction:UIViewContentMode,
         repeatCount:Float = 0,
         autoReverse:Bool = false,
-        completionEnd: (() -> ())?
+        completionEnd: dispatch_block_t? = nil
         ) {
             
             
@@ -288,7 +288,8 @@ public extension UIView {
         duration duration:NSTimeInterval,
         toScale:CGFloat,
         repeatAnimate:Bool,
-        completionEnd: (() -> ())?) {
+        completionEnd: dispatch_block_t? = nil
+        ) {
             
             let pulseAnimate = CABasicAnimation(keyPath: "transform.scale")
             

@@ -10,6 +10,7 @@ import Foundation
 
 public extension NSLayoutConstraint {
     
+    // TODO Encore a revoir
     class func applyHorizontalConstraint(viewContener:UIView,views:[UIView]) {
         viewContener.translatesAutoresizingMaskIntoConstraints = false
         for (index, button) in views.enumerate() {

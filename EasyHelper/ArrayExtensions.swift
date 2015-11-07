@@ -129,7 +129,7 @@ public extension Array {
         }
         
         guard let data = try? NSData(contentsOfFile: path, options:.DataReadingUncached)   else {
-            throw EHError.NSData("[EasyHelper][loadJSONFromBundle][->NSData] The absolute path of the file not find\nFile : '\(filename)'")
+            throw EHError.NSData(whereIs: "EasyHelper extension Array",funcIs: "loadJSONFromBundle",errorIs:"[->NSData] The absolute path of the file not find\nFile : '\(filename)'")
         }
         
         guard let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? [String : AnyObject] else {

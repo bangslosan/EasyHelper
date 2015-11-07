@@ -8,7 +8,4 @@
 
 import UIKit
 
-extension NSURLConnection {
-    
-    
-}
+extension NSURLConnection { }

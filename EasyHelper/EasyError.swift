@@ -10,10 +10,10 @@ import Foundation
 
 typealias EasyError = EHError
 public enum EHError: ErrorType {
-    case Error(String)
+    case Error(whereIs:String,funcIs:String, errorIs:String)
     case Nil(String)
     case PathForResource(String)
-    case NSData(String)
+    case NSData(whereIs:String,funcIs:String, errorIs:String)
     case NSURL(String)
     case JSON(String)
     case NSDictionary(String)
@@ -23,10 +23,10 @@ public enum EHError: ErrorType {
  extension EasyError: CustomStringConvertible {
     public var description: String {
         switch self {
-        case Error(let ePrint) : return ePrint
+        case Error(let whereIs,let funcIs, let errorString) : return "[EasyHelper \(whereIs)][\(funcIs)] \(errorString)"
         case Nil(let ePrint) : return ePrint
         case PathForResource(let ePrint) : return ePrint
-        case NSData(let ePrint) : return ePrint
+        case NSData(let whereIs,let funcIs, let errorString) : return "[EasyHelper \(whereIs)][\(funcIs)] \(errorString)"
         case NSURL(let ePrint) : return ePrint
         case JSON(let ePrint) : return ePrint
         case NSDictionary(let ePrint) : return ePrint

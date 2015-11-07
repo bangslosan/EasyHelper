@@ -54,4 +54,27 @@ public extension UIImage {
         return newImage
     }
 
+    /**
+     Create Screenshot
+     
+     :returns: UIImage
+     */
+    public static func getScreenshot(opaque:Bool = false) throws ->  UIImage {
+        guard let keyWindowV = UIApplication.sharedApplication().keyWindow else {
+            throw EHError.Nil("[EasyHelper][screenShot] Nil object keyWindow")
+        }
+        guard let context = UIGraphicsGetCurrentContext() else {
+            throw EHError.Nil("[EasyHelper][screenShot] Nil object UIGraphicsGetCurrentContext")
+        }
+        
+        let layer = keyWindowV.layer
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, opaque, EasyHelper.screenScale);
+        layer.renderInContext(context)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        
+        return screenshot
+        
+    }
 }
