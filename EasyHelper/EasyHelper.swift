@@ -47,7 +47,6 @@ public class EasyHelper {
         get {
             return UI_USER_INTERFACE_IDIOM() == .Pad
         }
-        
     }
     /// Is iPhone
     public class var isIphone:Bool {
@@ -133,27 +132,40 @@ public class EasyHelper {
             return UIApplication.sharedApplication().delegate
         }
         set {
-            EH.appDelegate = newValue
+            UIApplication.sharedApplication().delegate = newValue
         }
     }
     
    /// Get the RootController
    public static var rootController:UIViewController? {
         get {
-            return EH.appDelegate?.window??.rootViewController
+            return UIApplication.sharedApplication().delegate?.window??.rootViewController
         }
         set {
-            EH.rootController = newValue
+            UIApplication.sharedApplication().delegate?.window??.rootViewController = newValue
         }
 
     }
-
-    
+    /**
+     Get Storyboard
+     
+     - parameter storyName: String / Name of Storyboard
+     
+     - returns: UIStoryboard
+     */
     public class func getStoryboard(storyName storyName:String) -> UIStoryboard {
         return UIStoryboard(name: storyName, bundle: nil)
     }
+    /**
+     Get ViewController by indentifier
+     
+     - parameter storyName:    String / Name of Storyboard
+     - parameter identifierVC: String / Identifier of VC
+     
+     - returns: UIViewController
+     */
     public class func getViewControllerByIdentifier(storyName storyName:String, identifierVC:String) -> UIViewController {
-            return EasyHelper.getStoryboard(storyName: storyName).instantiateViewControllerWithIdentifier(identifierVC)
+            return UIStoryboard(name: storyName, bundle: nil).instantiateViewControllerWithIdentifier(identifierVC)
 
     }
     

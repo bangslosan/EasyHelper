@@ -7,8 +7,16 @@
 //
 
 import Foundation
-extension CALayer {
-    var x: CGFloat {
+
+/// ############################################################ ///
+///                       Classical                              ///
+/// ############################################################ ///
+
+// MARK: - Extensions CALayer Classical
+public extension CALayer {
+    
+    /// Position X
+    public var x: CGFloat {
         get {
             return self.frame.origin.x
         }
@@ -17,7 +25,8 @@ extension CALayer {
         }
     }
     
-    var y: CGFloat {
+    /// Position Y
+    public var y: CGFloat {
         get {
             return self.frame.origin.y
         }
@@ -26,7 +35,8 @@ extension CALayer {
         }
     }
     
-    var width: CGFloat {
+    /// Size Width
+    public var width: CGFloat {
         get {
             return self.frame.size.width
         }
@@ -35,7 +45,8 @@ extension CALayer {
         }
     }
     
-    var height: CGFloat {
+    /// Size Height
+    public var height: CGFloat {
         get {
             return self.frame.size.height
         }
@@ -44,6 +55,13 @@ extension CALayer {
         }
     }
     
+    /**
+     Add border
+     
+     - parameter edge:      UIRectEdge
+     - parameter color:     UIColor
+     - parameter thickness: CGFloat
+     */
     public func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
         
         let border = CALayer()

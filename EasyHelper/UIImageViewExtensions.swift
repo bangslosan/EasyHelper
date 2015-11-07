@@ -8,18 +8,21 @@
 
 import Foundation
 
-// MARK: - Extensions UIImageView by EasyHelper
-extension UIImageView {
+/// ############################################################ ///
+///                       Initilizers                            ///
+/// ############################################################ ///
+// MARK: - Initilizers
+public extension UIImageView {
     
     /**
-    Initialize with internal image ( with image or not if imageName = nil )
-    
-    - parameter frame:       CGRect
-    - parameter imageName:   String? / Name of image in Asset
-    - parameter contentMode: UIViewContentMode ( default = ScaleAspectFit )
-    
-    - returns: UIImageView
-    */
+     Initialize with internal image ( with image or not if imageName = nil )
+     
+     - parameter frame:       CGRect
+     - parameter imageName:   String? / Name of image in Asset
+     - parameter contentMode: UIViewContentMode ( default = ScaleAspectFit )
+     
+     - returns: UIImageView
+     */
     convenience init (frame: CGRect, imageName: String?, contentMode:UIViewContentMode = .ScaleAspectFit) {
         guard let hasImgName = imageName, let hasImage = UIImage (named: hasImgName) else {
             self.init (frame: frame)
@@ -29,40 +32,40 @@ extension UIImageView {
         self.init (frame: frame,image: hasImage, contentMode: contentMode)
     }
     /**
-    Initialize with internal image
-    
-    - parameter frame:       CGRect
-    - parameter image:       String / Name of image in Asset
-    - parameter contentMode: UIViewContentMode ( default = ScaleAspectFit )
-    
-    - returns: UIImageView
-    */
+     Initialize with internal image
+     
+     - parameter frame:       CGRect
+     - parameter image:       String / Name of image in Asset
+     - parameter contentMode: UIViewContentMode ( default = ScaleAspectFit )
+     
+     - returns: UIImageView
+     */
     convenience init (frame: CGRect, image: UIImage, contentMode:UIViewContentMode = .ScaleAspectFit) {
         self.init (frame: frame)
         self.image = image
         self.contentMode = contentMode
     }
     /**
-    Initialize, Download a image on a server
-    
-    Can set a default image
-    
-    When is finished download a callBack (succesDownload or errorDownload) is call, for assign the image with an animation
-    
-    Or directly if succesDownload = nil
-    
-    succesDownload (imageView = self / UIImageView , donwloadedImage = UIImage / image downloaded)
-    
-    
-    - parameter frame:           CGRect
-    - parameter nsurl:           NSURL
-    - parameter defaultImage:    String? / default image (default = nil)
-    - parameter contentMode:     UIViewContentMode (default = .ScaleAspectFit)
-    - parameter succesDownload:  (imageView = self / UIImageView , donwloadedImage = UIImage / image downloaded)->()
-    - parameter errorDownload:   ()->()
-    
-    - returns: UIImageView
-    */
+     Initialize, Download a image on a server
+     
+     Can set a default image
+     
+     When is finished download a callBack (succesDownload or errorDownload) is call, for assign the image with an animation
+     
+     Or directly if succesDownload = nil
+     
+     succesDownload (imageView = self / UIImageView , donwloadedImage = UIImage / image downloaded)
+     
+     
+     - parameter frame:           CGRect
+     - parameter nsurl:           NSURL
+     - parameter defaultImage:    String? / default image (default = nil)
+     - parameter contentMode:     UIViewContentMode (default = .ScaleAspectFit)
+     - parameter succesDownload:  (imageView = self / UIImageView , donwloadedImage = UIImage / image downloaded)->()
+     - parameter errorDownload:   ()->()
+     
+     - returns: UIImageView
+     */
     convenience init (
         frame: CGRect,
         nsurl:NSURL,
@@ -74,26 +77,26 @@ extension UIImageView {
             self.imageWithUrl(nsurl,succesDownload: succesDownload,errorDownload: errorDownload)
     }
     /**
-    Initialize, Download a image on a server
-    
-    Can set a default image
-    
-    When is finished download a callBack (succesDownload or errorDownload) is call, for assign the image with an animation
-    
-    Or directly if succesDownload = nil
-    
-    succesDownload (imageView = self / UIImageView , donwloadedImage = UIImage / image downloaded)
-    
-    
-    - parameter frame:           CGRect
-    - parameter url:             String Url
-    - parameter defaultImage:    String? / default image (default = nil)
-    - parameter contentMode:     UIViewContentMode (default = .ScaleAspectFit)
-    - parameter succesDownload:  (imageView = self / UIImageView , donwloadedImage = UIImage / image downloaded)->()
-    - parameter errorDownload:   ()->() / Call when error
-    
-    - returns: UIImageView
-    */
+     Initialize, Download a image on a server
+     
+     Can set a default image
+     
+     When is finished download a callBack (succesDownload or errorDownload) is call, for assign the image with an animation
+     
+     Or directly if succesDownload = nil
+     
+     succesDownload (imageView = self / UIImageView , donwloadedImage = UIImage / image downloaded)
+     
+     
+     - parameter frame:           CGRect
+     - parameter url:             String Url
+     - parameter defaultImage:    String? / default image (default = nil)
+     - parameter contentMode:     UIViewContentMode (default = .ScaleAspectFit)
+     - parameter succesDownload:  (imageView = self / UIImageView , donwloadedImage = UIImage / image downloaded)->()
+     - parameter errorDownload:   ()->() / Call when error
+     
+     - returns: UIImageView
+     */
     convenience init  (
         frame: CGRect,
         url:String,
@@ -113,6 +116,13 @@ extension UIImageView {
             self.imageWithUrl(nsurl,succesDownload: succesDownload,errorDownload: errorDownload)
             
     }
+}
+/// ############################################################ ///
+///                       Download image for server              ///
+/// ############################################################ ///
+// MARK: - Initilizers
+extension UIImageView {
+
     /**
     Download image for server
     
@@ -135,7 +145,7 @@ extension UIImageView {
             NSData.getDataFromNSURL(url) {
                 (data, error)  in
                 
-                EHAsync.mainQueue({
+                dispatch_sync(dispatch_get_main_queue(), {
                     guard error == nil, let hasData = data, let hasImage = UIImage(data: hasData)   else {
                         if error != nil {
                             EHError.Error(whereIs: "Extensions UIImageView", funcIs: "imageWithUrl", errorIs: "Error : \(error)").printError()
@@ -148,7 +158,7 @@ extension UIImageView {
                     }
                     if (succesDownload != nil) { succesDownload!(imageView: self, imageDownload:hasImage); return }
                     self.image = hasImage
-                    
+                    // Update the UI on the main thread.
                 })
             }
     }

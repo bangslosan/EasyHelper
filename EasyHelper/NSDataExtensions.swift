@@ -9,7 +9,12 @@
 
 import UIKit
 
-// MARK: - NSDate Extensions by EasyHelper
+
+/// ############################################################ ///
+///                     Get Data from                            ///
+/// ############################################################ ///
+
+// MARK: - NSDate Extensions get Data from
 public extension NSData {
     
     /**
@@ -36,5 +41,28 @@ public extension NSData {
             completion(data: data, error: error)
             }.resume()
     }
-    
 }
+
+/// ############################################################ ///
+///                     Hexadecimal                              ///
+/// ############################################################ ///
+
+// MARK: - NSDate Extensions Hexadecimal
+public extension NSData {
+    /**
+     Create hexadecimal string representation of NSData object.
+     
+     - returns: String
+     */
+    public func hexadecimalString() -> String {
+        let string = NSMutableString(capacity: length * 2)
+        var byte: UInt8 = 0
+        
+        for i in 0 ..< length {
+            getBytes(&byte, range: NSMakeRange(i, 1))
+            string.appendFormat("%02x", byte)
+        }
+        return string as String
+    }
+}
+

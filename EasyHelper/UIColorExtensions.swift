@@ -8,6 +8,12 @@
 
 import UIKit
 
+/// ############################################################ ///
+///                       Extension                              ///
+/// ############################################################ ///
+
+
+// MARK: - Extensions UIColor by EasyHelper 
 public extension UIColor {
 
     /**

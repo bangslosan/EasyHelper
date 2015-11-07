@@ -11,7 +11,7 @@ import Foundation
 extension NSString {
     
     /**
-     Get size with font with this string and param Height & width
+     Get Size for font with Width & Height of your View
      
      - parameter width:  width
      - parameter height: height

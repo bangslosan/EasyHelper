@@ -9,6 +9,7 @@
 import Foundation
 public extension UILabel {
     
+    
     public var fontSize:CGFloat {
         get {
             return self.font.pointSize
@@ -17,6 +18,13 @@ public extension UILabel {
             self.font =  UIFont(name: self.font.fontName, size: newValue)
         }
     }
-    
+    public var fontName:String {
+        get {
+            return self.font.fontName
+        }
+        set {
+            self.font =  UIFont(name: newValue, size: self.font.pointSize)
+        }
+    }
     
 }

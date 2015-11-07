@@ -44,7 +44,4 @@ case SanFranciscoDisplay = "SanFranciscoDisplay"
 case Seravek = "Seravek"
 }
 */
-public extension UIFont {
-
-
-}
+public extension UIFont { }

@@ -46,33 +46,34 @@ enum AnchorPosition: StringLiteralType, CGPoint {
         return self.rawValue
     }
 }*/
-extension CGPoint {
+
+public extension CGPoint {
     
     /// Length
-    var length:CGFloat {
+    public var length:CGFloat {
         get {
             return sqrt(self.x * self.x + self.y * self.y)
         }
     }
     
     /// Description
-    var normalized:CGPoint { return self / self.length }
+    public var normalized:CGPoint { return self / self.length }
 
     /// CGPoint to CGAffineTransform
-    var toCGAffineTransform:CGAffineTransform {
+    public var toCGAffineTransform:CGAffineTransform {
         get {
           return CGAffineTransformMakeTranslation(self.x, self.y)
         }
     }
+    /**
+     Init with
+     
+     - parameter value: StringLiteralType / ( stringLiteral, extendedGraphemeClusterLiteral, unicodeScalarLiteral)
+     
+     - returns: CGPoint
+     */
     public init(stringLiteral value: StringLiteralType) {
         self = CGPointFromString(value)
     }
-    
-    public init(extendedGraphemeClusterLiteral value: StringLiteralType) {
-        self = CGPointFromString(value)
-    }
-    
-    public init(unicodeScalarLiteral value: StringLiteralType) {
-        self = CGPointFromString(value)
-    }
+
 }

@@ -22,5 +22,4 @@ public extension NSBundle {
     public class func getPath(name name:String, type:String) -> String? {
         return NSBundle.mainBundle().pathForResource(name, ofType: type)
     }
-    
 }

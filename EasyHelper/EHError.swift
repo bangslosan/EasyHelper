@@ -8,8 +8,19 @@
 
 import Foundation
 
-typealias EasyError = EHError
-public enum EHError: ErrorType {
+public func printLog(message:String, function:String = __FUNCTION__) {
+    #if !NDEBUG
+        NSLog("%@, %@", function, message)
+    #endif
+}
+public func printObject(obj:Any) {
+    #if !NDEBUG
+        print(obj)
+    #endif
+}
+
+
+public enum EHError: ErrorType, CustomStringConvertible {
     case Error(whereIs:String,funcIs:String, errorIs:String)
     case Nil(String)
     case PathForResource(String)
@@ -18,9 +29,6 @@ public enum EHError: ErrorType {
     case JSON(String)
     case NSDictionary(String)
     
-
-}
- extension EasyError: CustomStringConvertible {
     public var description: String {
         switch self {
         case Error(let whereIs,let funcIs, let errorString) : return "[EasyHelper \(whereIs)][\(funcIs)] \(errorString)"
@@ -34,4 +42,5 @@ public enum EHError: ErrorType {
     }
     
     func printError() { printObject("[EasyHelper] \(self.description)") }
+    
 }

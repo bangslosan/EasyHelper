@@ -239,18 +239,25 @@ public extension String {
         return dateFormatter.dateFromString(self)
     }
 }
-// TODO Remettre ce method
 
-extension String {
+/// ############################################################ ///
+///                     Hexadecimal                              ///
+/// ############################################################ ///
+
+// MARK: - Extensions String / Hexadecimal
+public extension String {
+
+    /**
+    Create NSData from hexadecimal string representation
     
-    /// Create NSData from hexadecimal string representation
-    ///
-    /// This takes a hexadecimal representation and creates a NSData object. Note, if the string has any spaces, those are removed. Also if the string started with a '<' or ended with a '>', those are removed, too. This does no validation of the string to ensure it's a valid hexadecimal string
-    ///
-    /// The use of `strtoul` inspired by Martin R at http://stackoverflow.com/a/26284562/1271826
-    ///
-    /// :returns: NSData represented by this hexadecimal string. Returns nil if string contains characters outside the 0-9 and a-f range.
+    This takes a hexadecimal representation and creates a NSData object. Note, if the string has any spaces, those are removed. Also if the string started with a '<' or ended with a '>', those are removed, too. This does no validation of the string to ensure it's a valid hexadecimal string
     
+    The use of `strtoul` inspired by Martin R at http://stackoverflow.com/a/26284562/1271826
+    
+    - throws: Error / Error of NSRegularExpression
+    
+    - returns: NSData represented by this hexadecimal string. Returns nil if string contains characters outside the 0-9 and a-f range.
+    */
     func dataFromHexadecimalString() throws -> NSData? {
         let trimmedString = self.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<> ")).stringByReplacingOccurrencesOfString(" ", withString: "")
         
@@ -275,62 +282,34 @@ extension String {
             
             return data
         } catch {
-            throw EHError.Nil("[EasyHelper][dataFromHexadecimalString] NSRegularExpression error : '\(error)'")
+            throw EHError.Error(whereIs: "extension String",funcIs: "dataFromHexadecimalString",errorIs: "NSRegularExpression error : '\(error)'")
         }
     }
-}
-extension NSData {
-    
-    /// Create hexadecimal string representation of NSData object.
-    ///
-    /// :returns: String representation of this NSData object.
-    
-    func hexadecimalString() -> String {
-        let string = NSMutableString(capacity: length * 2)
-        var byte: UInt8 = 0
-        
-        for i in 0 ..< length {
-            getBytes(&byte, range: NSMakeRange(i, 1))
-            string.appendFormat("%02x", byte)
-        }
-        
-        return string as String
-    }
-}
-/*
-let hexString = "68656c6c 6f2c2077 6f726c64"
-println(hexString.stringFromHexadecimalStringUsingEncoding(NSUTF8StringEncoding))
-Or,
-
-let originalString = "hello, world"
-println(originalString.hexadecimalStringUsingEncoding(NSUTF8StringEncoding))
-*/
-extension String {
-    
-    /// Create NSData from hexadecimal string representation
-    ///
-    /// This takes a hexadecimal representation and creates a String object from taht. Note, if the string has any spaces, those are removed. Also if the string started with a '<' or ended with a '>', those are removed, too.
-    ///
-    /// :param: encoding The NSStringCoding that indicates how the binary data represented by the hex string should be converted to a String.
-    ///
-    /// :returns: String represented by this hexadecimal string. Returns nil if string contains characters outside the 0-9 and a-f range or if a string cannot be created using the provided encoding
-    
+    /**
+     Create NSData from hexadecimal string representation
+     
+     This takes a hexadecimal representation and creates a String object from taht. Note, if the string has any spaces, those are removed. Also if the string started with a '<' or ended with a '>', those are removed, too.
+     
+     - parameter encoding: encoding The NSStringCoding that indicates how the binary data represented by the hex string should be converted to a String.
+     
+     - returns: String represented by this hexadecimal string. Returns nil if string contains characters outside the 0-9 and a-f range or if a string cannot be created using the provided encoding
+     */
     public func stringFromHexadecimalStringUsingEncoding(encoding: NSStringEncoding) -> String? {
         do {
             let data = try dataFromHexadecimalString()
             return NSString(data: data!, encoding: encoding) as? String
         } catch {
-            EHError.Nil("[EasyHelper][stringFromHexadecimalStringUsingEncoding] Error : '\(error)'").printError()
+            EHError.Error(whereIs: "Extension String", funcIs: "stringFromHexadecimalStringUsingEncoding", errorIs: "Error : '\(error)'").printError()
+            return nil
         }
-        return nil
+        
     }
     
-    /// Create hexadecimal string representation of String object.
-    ///
-    /// :param: encoding The NSStringCoding that indicates how the string should be converted to NSData before performing the hexadecimal conversion.
-    ///
-    /// :returns: String representation of this String object.
-    
+    /**
+     Create hexadecimal string representation of String object. By encoding NSUTF8StringEncoding
+     
+     - returns: String represented by this hexadecimal string. Returns nil if string contains characters outside the 0-9 and a-f range or if a string cannot be created using the provided encoding
+     */
     public func hexadecimalStringUsingEncoding() -> String? {
         let data = dataUsingEncoding(NSUTF8StringEncoding)
         return data?.hexadecimalString()

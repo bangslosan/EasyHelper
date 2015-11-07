@@ -10,8 +10,6 @@
 		880C75481BCF9BD1000564DE /* EasyHelperWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 880C75471BCF9BD1000564DE /* EasyHelperWatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		880C754D1BCF9BFD000564DE /* WatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880C75321BCF91ED000564DE /* WatchHelper.swift */; };
 		880C755B1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880C755A1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift */; };
-		880C755F1BD0E2E6000564DE /* HelperSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880C755E1BD0E2E6000564DE /* HelperSound.swift */; };
-		880C75611BD0ECA0000564DE /* EasyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880C75601BD0ECA0000564DE /* EasyTimer.swift */; };
 		8849218B1BBBDE2700EA150A /* EasyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 8849218A1BBBDE2700EA150A /* EasyHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		884921921BBBDE2700EA150A /* EasyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884921871BBBDE2700EA150A /* EasyHelper.framework */; };
 		884921F81BBBDF3700EA150A /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921DB1BBBDF3700EA150A /* ArrayExtensions.swift */; };
@@ -21,11 +19,9 @@
 		884921FC1BBBDF3700EA150A /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921DF1BBBDF3700EA150A /* CGPointExtensions.swift */; };
 		884921FD1BBBDF3700EA150A /* CGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E01BBBDF3700EA150A /* CGRectExtensions.swift */; };
 		884921FE1BBBDF3700EA150A /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E11BBBDF3700EA150A /* CGSizeExtensions.swift */; };
-		884921FF1BBBDF3700EA150A /* EasyDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E21BBBDF3700EA150A /* EasyDebug.swift */; };
 		884922001BBBDF3700EA150A /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E31BBBDF3700EA150A /* DictionaryExtensions.swift */; };
 		884922011BBBDF3700EA150A /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E41BBBDF3700EA150A /* DoubleExtensions.swift */; };
-		884922021BBBDF3700EA150A /* EasyDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E51BBBDF3700EA150A /* EasyDispatch.swift */; };
-		884922031BBBDF3700EA150A /* EasyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E61BBBDF3700EA150A /* EasyError.swift */; };
+		884922031BBBDF3700EA150A /* EHError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E61BBBDF3700EA150A /* EHError.swift */; };
 		884922041BBBDF3700EA150A /* EasyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E71BBBDF3700EA150A /* EasyHelper.swift */; };
 		884922051BBBDF3700EA150A /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E81BBBDF3700EA150A /* UIAlertController.swift */; };
 		884922061BBBDF3700EA150A /* FloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921E91BBBDF3700EA150A /* FloatExtensions.swift */; };
@@ -75,8 +71,6 @@
 		880C75471BCF9BD1000564DE /* EasyHelperWatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyHelperWatch.h; sourceTree = "<group>"; };
 		880C75491BCF9BD1000564DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		880C755A1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSessionDelegateExtensions.swift; sourceTree = "<group>"; };
-		880C755E1BD0E2E6000564DE /* HelperSound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperSound.swift; sourceTree = "<group>"; };
-		880C75601BD0ECA0000564DE /* EasyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyTimer.swift; sourceTree = "<group>"; };
 		884921871BBBDE2700EA150A /* EasyHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8849218A1BBBDE2700EA150A /* EasyHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyHelper.h; sourceTree = "<group>"; };
 		8849218C1BBBDE2700EA150A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,11 +84,9 @@
 		884921DF1BBBDF3700EA150A /* CGPointExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtensions.swift; sourceTree = "<group>"; };
 		884921E01BBBDF3700EA150A /* CGRectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtensions.swift; sourceTree = "<group>"; };
 		884921E11BBBDF3700EA150A /* CGSizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSizeExtensions.swift; sourceTree = "<group>"; };
-		884921E21BBBDF3700EA150A /* EasyDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyDebug.swift; sourceTree = "<group>"; };
 		884921E31BBBDF3700EA150A /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
 		884921E41BBBDF3700EA150A /* DoubleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
-		884921E51BBBDF3700EA150A /* EasyDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyDispatch.swift; sourceTree = "<group>"; };
-		884921E61BBBDF3700EA150A /* EasyError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyError.swift; sourceTree = "<group>"; };
+		884921E61BBBDF3700EA150A /* EHError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EHError.swift; sourceTree = "<group>"; };
 		884921E71BBBDF3700EA150A /* EasyHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyHelper.swift; sourceTree = "<group>"; };
 		884921E81BBBDF3700EA150A /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		884921E91BBBDF3700EA150A /* FloatExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtensions.swift; sourceTree = "<group>"; };
@@ -170,6 +162,14 @@
 				880C75491BCF9BD1000564DE /* Info.plist */,
 			);
 			path = EasyHelperWatch;
+			sourceTree = "<group>";
+		};
+		8829D72A1BEEB4D9003B5251 /* Debug Error */ = {
+			isa = PBXGroup;
+			children = (
+				884921E61BBBDF3700EA150A /* EHError.swift */,
+			);
+			name = "Debug Error";
 			sourceTree = "<group>";
 		};
 		8849217D1BBBDE2700EA150A = {
@@ -309,13 +309,9 @@
 		884922251BBBE72A00EA150A /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				880C75311BCF91D2000564DE /* WatchOS */,
-				884921E21BBBDF3700EA150A /* EasyDebug.swift */,
-				884921E51BBBDF3700EA150A /* EasyDispatch.swift */,
-				884921E61BBBDF3700EA150A /* EasyError.swift */,
 				884921E71BBBDF3700EA150A /* EasyHelper.swift */,
-				880C755E1BD0E2E6000564DE /* HelperSound.swift */,
-				880C75601BD0ECA0000564DE /* EasyTimer.swift */,
+				8829D72A1BEEB4D9003B5251 /* Debug Error */,
+				880C75311BCF91D2000564DE /* WatchOS */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -514,7 +510,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				880C755F1BD0E2E6000564DE /* HelperSound.swift in Sources */,
 				884921F81BBBDF3700EA150A /* ArrayExtensions.swift in Sources */,
 				884922121BBBDF3700EA150A /* UIRectCornerExtensions.swift in Sources */,
 				884921FD1BBBDF3700EA150A /* CGRectExtensions.swift in Sources */,
@@ -522,7 +517,6 @@
 				884922061BBBDF3700EA150A /* FloatExtensions.swift in Sources */,
 				8856891B1BD7A6950030765F /* UINavigationController.swift in Sources */,
 				884922011BBBDF3700EA150A /* DoubleExtensions.swift in Sources */,
-				880C75611BD0ECA0000564DE /* EasyTimer.swift in Sources */,
 				884922001BBBDF3700EA150A /* DictionaryExtensions.swift in Sources */,
 				880C755B1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift in Sources */,
 				88CA19631BC3152800C133EB /* NStringExtensions.swift in Sources */,
@@ -536,7 +530,6 @@
 				88CA195D1BC3102A00C133EB /* UIViewControllerExtensions.swift in Sources */,
 				884922081BBBDF3700EA150A /* MPMoviePlayerController.swift in Sources */,
 				88CA19671BC317AA00C133EB /* UIButton.swift in Sources */,
-				884922021BBBDF3700EA150A /* EasyDispatch.swift in Sources */,
 				884922111BBBDF3700EA150A /* UILabelExtensions.swift in Sources */,
 				8849220E1BBBDF3700EA150A /* UIColorExtensions.swift in Sources */,
 				884922051BBBDF3700EA150A /* UIAlertController.swift in Sources */,
@@ -551,9 +544,8 @@
 				884921FE1BBBDF3700EA150A /* CGSizeExtensions.swift in Sources */,
 				88CA195F1BC3132B00C133EB /* NSDataExtensions.swift in Sources */,
 				88CA19611BC3142A00C133EB /* NSURLConnectionExtensions.swift in Sources */,
-				884922031BBBDF3700EA150A /* EasyError.swift in Sources */,
+				884922031BBBDF3700EA150A /* EHError.swift in Sources */,
 				8849220A1BBBDF3700EA150A /* SetExtensions.swift in Sources */,
-				884921FF1BBBDF3700EA150A /* EasyDebug.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,7 +714,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = EasyHelper/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = redwolfstudio.EasyHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -743,7 +735,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = EasyHelper/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = redwolfstudio.EasyHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
