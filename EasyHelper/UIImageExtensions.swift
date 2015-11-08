@@ -37,7 +37,7 @@ public extension UIImage {
     */
     public class func addTextToImage(image:UIImage, label:UILabel,pointof: CGPoint) -> UIImage {
         
-        if label.text == nil { EHError.Nil("[EasyHelper][addTextToImage] Label haven't text") }
+        if label.text == nil { EHError.Nil(whereIs: "Extensions UIImage",funcIs: "addTextToImage",errorIs: " Label haven't text") }
         let dict:NSDictionary = [
             NSForegroundColorAttributeName:label.textColor,
             NSFontAttributeName : label.font]
@@ -61,10 +61,11 @@ public extension UIImage {
      */
     public static func getScreenshot(opaque:Bool = false) throws ->  UIImage {
         guard let keyWindowV = UIApplication.sharedApplication().keyWindow else {
-            throw EHError.Nil("[EasyHelper][screenShot] Nil object keyWindow")
+            throw EHError.Nil(whereIs: "extension UIImage",funcIs: "getScreenshot",errorIs: "Nil object keyWindow")
         }
         guard let context = UIGraphicsGetCurrentContext() else {
-            throw EHError.Nil("[EasyHelper][screenShot] Nil object UIGraphicsGetCurrentContext")
+
+            throw EHError.Nil(whereIs: "extension UIImage",funcIs: "getScreenshot",errorIs: "Nil object UIGraphicsGetCurrentContext")
         }
         
         let layer = keyWindowV.layer

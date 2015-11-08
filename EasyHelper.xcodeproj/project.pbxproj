@@ -10,6 +10,7 @@
 		880C75481BCF9BD1000564DE /* EasyHelperWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 880C75471BCF9BD1000564DE /* EasyHelperWatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		880C754D1BCF9BFD000564DE /* WatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880C75321BCF91ED000564DE /* WatchHelper.swift */; };
 		880C755B1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880C755A1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift */; };
+		8829D7E11BEEBEE3003B5251 /* TestUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829D7E01BEEBEE3003B5251 /* TestUIFont.swift */; };
 		8849218B1BBBDE2700EA150A /* EasyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 8849218A1BBBDE2700EA150A /* EasyHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		884921921BBBDE2700EA150A /* EasyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884921871BBBDE2700EA150A /* EasyHelper.framework */; };
 		884921F81BBBDF3700EA150A /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884921DB1BBBDF3700EA150A /* ArrayExtensions.swift */; };
@@ -71,6 +72,7 @@
 		880C75471BCF9BD1000564DE /* EasyHelperWatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyHelperWatch.h; sourceTree = "<group>"; };
 		880C75491BCF9BD1000564DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		880C755A1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSessionDelegateExtensions.swift; sourceTree = "<group>"; };
+		8829D7E01BEEBEE3003B5251 /* TestUIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUIFont.swift; sourceTree = "<group>"; };
 		884921871BBBDE2700EA150A /* EasyHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8849218A1BBBDE2700EA150A /* EasyHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyHelper.h; sourceTree = "<group>"; };
 		8849218C1BBBDE2700EA150A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 			name = "Debug Error";
 			sourceTree = "<group>";
 		};
+		8829D7DF1BEEBED8003B5251 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8829D7E01BEEBEE3003B5251 /* TestUIFont.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		8849217D1BBBDE2700EA150A = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +223,7 @@
 		884921951BBBDE2700EA150A /* EasyHelperTests */ = {
 			isa = PBXGroup;
 			children = (
+				8829D7DF1BEEBED8003B5251 /* UI */,
 				886086071BBE6BDE00ABCF58 /* SequenceType */,
 				884922281BBBE78C00EA150A /* Numbers */,
 				884922271BBBE77B00EA150A /* String */,
@@ -559,6 +570,7 @@
 				884922191BBBDF3F00EA150A /* TestEasyDispath.swift in Sources */,
 				8849221A1BBBDF3F00EA150A /* TestNSDateExtensions.swift in Sources */,
 				884922241BBBE43E00EA150A /* TestNumber.swift in Sources */,
+				8829D7E11BEEBEE3003B5251 /* TestUIFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

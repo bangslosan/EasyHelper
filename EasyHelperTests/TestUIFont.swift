@@ -1,15 +1,15 @@
 //
-//  TestEasyDispath.swift
+//  Test.swift
 //  EasyHelper
 //
-//  Created by DaRk-_-D0G on 17/09/2015.
+//  Created by DaRk-_-D0G on 26/09/2015.
 //  Copyright © 2015 DaRk-_-D0G. All rights reserved.
 //
 
 import XCTest
 import EasyHelper
 
-class TestEasyDispath: XCTestCase {
+class TestUIFont: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -21,15 +21,16 @@ class TestEasyDispath: XCTestCase {
         super.tearDown()
     }
     
-    func testBackgroundToMain() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-
+    func testExample() {
+        
+        UIFont.printAllUIFont()
     }
     
-    func testPerformanceBackgroundToMain() {
+    func testPerformanceExample() {
         // This is an example of a performance test case.
-
+        self.measureBlock {
+            // Put the code you want to measure the time of here.
+        }
     }
     
 }

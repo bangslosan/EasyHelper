@@ -37,15 +37,15 @@ extension Dictionary {
     static func loadJSONFromBundle(filename: String) throws ->  Dictionary<String, AnyObject> {
         
         guard let path = NSBundle.mainBundle().pathForResource(filename, ofType: "json")  else {
-            throw EHError.Nil("[EasyHelper][loadJSONFromBundle][->pathForResource] The file could not be located\nFile : '\(filename).json'")
+            throw EHError.Nil(whereIs: "extension Dictionnay",funcIs: "loadJSONFromBundle",errorIs: "[->pathForResource] The file could not be located\nFile : '\(filename).json'")
         }
 
         guard let data = try? NSData(contentsOfFile: path, options:.DataReadingUncached)   else {
-           throw EHError.NSData(whereIs: "EasyHelper extension Dictionary",funcIs: "loadJSONFromBundle",errorIs:"[->NSData] The absolute path of the file not find\nFile : '\(filename)'")
+           throw EHError.NSData(whereIs: "extension Dictionary",funcIs: "loadJSONFromBundle",errorIs:"[->NSData] The absolute path of the file not find\nFile : '\(filename)'")
         }
 
         guard let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? Dictionary<String, AnyObject> else {
-            throw EHError.JSON("[EasyHelper][loadJSONFromBundle][->NSJSONSerialization]Error.InvalidJSON Level file '\(filename)' is not valid JSON")
+            throw EHError.JSON(whereIs: "extension Dictionnay",funcIs: "loadJSONFromBundle",errorIs: "[->NSJSONSerialization]Error.InvalidJSON Level file '\(filename)' is not valid JSON")
         }
         
         return jsonDict
@@ -70,10 +70,10 @@ extension Dictionary {
     static func loadPlistFromBundle(filename: String) throws -> Dictionary<String, AnyObject> {
         
         guard let path = NSBundle.mainBundle().pathForResource(filename, ofType: "plist")  else {
-            throw EHError.Nil("[EasyHelper][loadPlistFromBundle] (pathForResource) The file could not be located\nFile : '\(filename).plist'")
+            throw EHError.Nil(whereIs: "extension Dictionary",funcIs: "loadPlistFromBundle",errorIs: "(pathForResource) The file could not be located\nFile : '\(filename).plist'")
         }
         guard let plistDict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject> else {
-            throw EHError.Nil("[EasyHelper][loadPlistFromBundle] (NSDictionary) There is a file error or if the contents of the file are an invalid representation of a dictionary. File : '\(filename)'.plist")
+           throw EHError.Nil(whereIs: "extension Dictionary",funcIs: "loadPlistFromBundle",errorIs: "(There is a file error or if the contents of the file are an invalid representation of a dictionary. File : '\(filename)'.plist")
         }
         
         return plistDict

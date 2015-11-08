@@ -125,7 +125,7 @@ public extension Array {
     static func loadJSONFromBundle(filename: String, nameJson:String) throws ->  [String : AnyObject] {
         
         guard let path = NSBundle.mainBundle().pathForResource(filename, ofType: "json")  else {
-            throw EHError.Nil("[EasyHelper][loadJSONFromBundle][->pathForResource] The file could not be located\nFile : '\(filename).json'")
+            throw EHError.Nil(whereIs: "extension Array",funcIs: "loadJSONFromBundle",errorIs: "[->pathForResource] The file could not be located\nFile : '\(filename).json'")
         }
         
         guard let data = try? NSData(contentsOfFile: path, options:.DataReadingUncached)   else {
@@ -133,7 +133,7 @@ public extension Array {
         }
         
         guard let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? [String : AnyObject] else {
-            throw EHError.JSON("[EasyHelper][loadJSONFromBundle][->NSJSONSerialization] Invalid JSON\n nameJson '\(nameJson)'\nFile '\(filename)'")
+            throw EHError.JSON(whereIs: "extensions Dictionnay",funcIs: "loadJSONFromBundle",errorIs: "[->NSJSONSerialization]Error.InvalidJSON Level file '\(filename)' is not valid JSON")
         }
         
         return jsonDict
@@ -158,10 +158,10 @@ public extension Array {
     static func loadPlistFromBundle(filename: String) throws -> [String : AnyObject] {
         
         guard let path = NSBundle.mainBundle().pathForResource(filename, ofType: "plist")  else {
-            throw EHError.Nil("[EasyHelper][loadPlistFromBundle] (pathForResource) The file could not be located\nFile : '\(filename).plist'")
+            throw EHError.Nil(whereIs: "extension Array",funcIs: "loadPlistFromBundle",errorIs: "(pathForResource) The file could not be located\nFile : '\(filename).plist'")
         }
         guard let plistDict = NSDictionary(contentsOfFile: path) as? [String : AnyObject] else {
-            throw EHError.Nil("[EasyHelper][loadPlistFromBundle] (NSDictionary) There is a file error or if the contents of the file are an invalid representation of a dictionary. File : '\(filename)'.plist")
+            throw EHError.Nil(whereIs: "extension Array",funcIs: "loadPlistFromBundle",errorIs: "(There is a file error or if the contents of the file are an invalid representation of a dictionary. File : '\(filename)'.plist")
         }
         
         return plistDict

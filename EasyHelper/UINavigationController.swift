@@ -8,8 +8,9 @@
 
 import UIKit
 
+// MARK: - Extensions UINavigationController, by EasyHelper
 public extension UINavigationController {
-    
+    /// Root Controller in Navigation
     public var rootController: UIViewController? {
         get {
              return self.viewControllers.first

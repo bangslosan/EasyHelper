@@ -22,22 +22,22 @@ public func printObject(obj:Any) {
 
 public enum EHError: ErrorType, CustomStringConvertible {
     case Error(whereIs:String,funcIs:String, errorIs:String)
-    case Nil(String)
+    case Nil(whereIs:String,funcIs:String, errorIs:String)
     case PathForResource(String)
     case NSData(whereIs:String,funcIs:String, errorIs:String)
-    case NSURL(String)
-    case JSON(String)
-    case NSDictionary(String)
+    case NSURL(whereIs:String,funcIs:String, errorIs:String)
+    case JSON(whereIs:String,funcIs:String, errorIs:String)
+    case NSDictionary(whereIs:String,funcIs:String, errorIs:String)
     
     public var description: String {
-        switch self {
-        case Error(let whereIs,let funcIs, let errorString) : return "[EasyHelper \(whereIs)][\(funcIs)] \(errorString)"
-        case Nil(let ePrint) : return ePrint
+  switch self {
+        case Error(let whereIs,let funcIs, let errorString) : return "[\(whereIs)][\(funcIs)] \(errorString)"
+        case Nil(let whereIs,let funcIs, let errorString) : return "[\(whereIs)][\(funcIs)] \(errorString)"
         case PathForResource(let ePrint) : return ePrint
-        case NSData(let whereIs,let funcIs, let errorString) : return "[EasyHelper \(whereIs)][\(funcIs)] \(errorString)"
-        case NSURL(let ePrint) : return ePrint
-        case JSON(let ePrint) : return ePrint
-        case NSDictionary(let ePrint) : return ePrint
+        case NSData(let whereIs,let funcIs, let errorString) : return "[\(whereIs)][\(funcIs)] \(errorString)"
+        case NSURL(let whereIs,let funcIs, let errorString) : return "[\(whereIs)][\(funcIs)] \(errorString)"
+        case JSON(let whereIs,let funcIs, let errorString) : return "[\(whereIs)][\(funcIs)] \(errorString)"
+        case NSDictionary(let whereIs,let funcIs, let errorString) : return "[\(whereIs)][\(funcIs)] \(errorString)"
         }
     }
     

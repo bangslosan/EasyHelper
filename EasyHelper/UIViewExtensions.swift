@@ -15,7 +15,7 @@ import UIKit
 /// ############################################################ ///
 // MARK: - Initilizers
 public extension UIView {
-        convenience init (
+        public convenience init (
            
             x: CGFloat,
             y: CGFloat,
@@ -73,6 +73,7 @@ public extension UIView {
             self.frame.size.height = newValue
         }
     }
+    /// Size
     public var size: CGSize {
         get {
             
@@ -82,17 +83,26 @@ public extension UIView {
             self.frame = CGRect (origin: self.frame.origin, size: newValue)
         }
     }
-    var position: CGPoint {
+    /// Position
+    public var position: CGPoint {
         get {
             return self.frame.origin
         } set (value) {
             self.frame = CGRect (origin: value, size: self.frame.size)
         }
     }
-    var applyCenter: CGPoint {
+    /// Position Center
+    public var positionCenter: CGPoint {
         return CGPoint(x: width/2, y: height/2)
     }
-
+    /**
+     Set Anchor position
+     
+     - parameter anchorPosition: AnchorPosition
+     */
+    public func setAnchorPosition (anchorPosition: AnchorPosition) {
+        self.layer.anchorPoint = anchorPosition.rawValue
+    }
     
 }
 /// ############################################################ ///

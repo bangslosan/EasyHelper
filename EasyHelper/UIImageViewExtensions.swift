@@ -109,7 +109,7 @@ public extension UIImageView {
             self.init(frame: frame, imageName: defaultImage, contentMode: contentMode)
             
             guard let nsurl = NSURL (string: url) else {
-                EHError.Nil("[UIImageView][imageWithUrl] URLString is nil").printError()
+                EHError.Nil(whereIs: "UIImageView",funcIs: "imageWithUrl",errorIs: "URLString is nil").printError()
                 return
             }
             

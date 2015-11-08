@@ -8,6 +8,7 @@
 
 import CoreGraphics
 
+// MARK: - Extensions CGRect, EasyHelper
 extension CGRect: Hashable {
 
     /// Add HashValue For CGRect

@@ -16,6 +16,7 @@ func - (left: CGSize, right: CGSize) -> CGSize {
     return CGSize (width: left.width - right.width, height: left.width - right.width)
 }
 
+// MARK: - Extensions CGSize, EasyHelper
 extension CGSize: Hashable {
     /// Add HashValue for CGSize
     public var hashValue: Int {

@@ -20,7 +20,7 @@ extension NSString {
      - returns: Size
      */
     func getSizeWithFont (width: CGFloat = .max, height: CGFloat = .max, font: UIFont) -> CGSize {
-        return boundingRectWithSize(
+        return self.boundingRectWithSize(
             CGSize(width: width, height: height),
             options: .UsesLineFragmentOrigin,
             attributes: [NSFontAttributeName: font],

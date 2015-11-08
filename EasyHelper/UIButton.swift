@@ -8,8 +8,5 @@
 
 import Foundation
 
-public extension UIButton {
-    convenience init (x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
-        self.init(frame: CGRect (x: x, y: y, width: width, height: height))
-    }
-}
+// MARK: - Extensions UIButton
+public extension UIButton { }
