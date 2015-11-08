@@ -50,6 +50,22 @@ public extension NSData {
 // MARK: - NSDate Extensions Hexadecimal
 public extension NSData {
     /**
+     NSData to image, if NSData is image return UIImage
+     
+     - returns: UIImage
+     */
+    func toImage () -> UIImage? {
+        return UIImage(data: self)
+    }
+}
+
+/// ############################################################ ///
+///                     Hexadecimal                              ///
+/// ############################################################ ///
+
+// MARK: - NSDate Extensions Hexadecimal
+public extension NSData {
+    /**
      Create hexadecimal string representation of NSData object.
      
      - returns: String

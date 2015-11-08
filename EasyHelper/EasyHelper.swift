@@ -106,6 +106,9 @@ public class EasyHelper {
           return min(screenWidth, screenHeight)
         }
     }
+    public class var statusBarHeight: CGFloat {
+        return UIApplication.sharedApplication().statusBarFrame.height
+    }
     /// Full access
     public static var isAllowFullAccess : Bool {
         get {
