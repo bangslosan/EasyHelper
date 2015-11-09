@@ -5,7 +5,7 @@
 //  Created by DaRk-_-D0G on 15/10/2015.
 //  Copyright © 2015 DaRk-_-D0G. All rights reserved.
 //
-
+/*
 
 import WatchConnectivity
 
@@ -27,4 +27,4 @@ public extension WCSessionDelegate {
         self.sessions?.activateSession()
     }
     
-}
+}*/
