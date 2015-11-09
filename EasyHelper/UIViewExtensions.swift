@@ -25,6 +25,7 @@ public extension UIView {
         }
         
         convenience init (superView: UIView) {
+
             self.init (frame: CGRect (origin: CGPointZero, size: superView.size))
         }
 }
