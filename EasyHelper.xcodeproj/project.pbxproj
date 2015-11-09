@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		880C75481BCF9BD1000564DE /* EasyHelperWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 880C75471BCF9BD1000564DE /* EasyHelperWatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		880C754D1BCF9BFD000564DE /* WatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880C75321BCF91ED000564DE /* WatchHelper.swift */; };
-		880C755B1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880C755A1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift */; };
 		8829D7E11BEEBEE3003B5251 /* TestUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829D7E01BEEBEE3003B5251 /* TestUIFont.swift */; };
 		8849218B1BBBDE2700EA150A /* EasyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 8849218A1BBBDE2700EA150A /* EasyHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		884921921BBBDE2700EA150A /* EasyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884921871BBBDE2700EA150A /* EasyHelper.framework */; };
@@ -71,7 +70,6 @@
 		880C75451BCF9BD1000564DE /* EasyHelperWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyHelperWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		880C75471BCF9BD1000564DE /* EasyHelperWatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyHelperWatch.h; sourceTree = "<group>"; };
 		880C75491BCF9BD1000564DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		880C755A1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSessionDelegateExtensions.swift; sourceTree = "<group>"; };
 		8829D7E01BEEBEE3003B5251 /* TestUIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUIFont.swift; sourceTree = "<group>"; };
 		884921871BBBDE2700EA150A /* EasyHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8849218A1BBBDE2700EA150A /* EasyHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyHelper.h; sourceTree = "<group>"; };
@@ -148,14 +146,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		880C75311BCF91D2000564DE /* WatchOS */ = {
-			isa = PBXGroup;
-			children = (
-				880C755A1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift */,
-			);
-			name = WatchOS;
-			sourceTree = "<group>";
-		};
 		880C75461BCF9BD1000564DE /* EasyHelperWatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,7 +312,6 @@
 			children = (
 				884921E71BBBDF3700EA150A /* EasyHelper.swift */,
 				8829D72A1BEEB4D9003B5251 /* Debug Error */,
-				880C75311BCF91D2000564DE /* WatchOS */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -529,7 +518,6 @@
 				8856891B1BD7A6950030765F /* UINavigationController.swift in Sources */,
 				884922011BBBDF3700EA150A /* DoubleExtensions.swift in Sources */,
 				884922001BBBDF3700EA150A /* DictionaryExtensions.swift in Sources */,
-				880C755B1BCF9CDE000564DE /* WCSessionDelegateExtensions.swift in Sources */,
 				88CA19631BC3152800C133EB /* NStringExtensions.swift in Sources */,
 				8849220D1BBBDF3700EA150A /* StringExtensions.swift in Sources */,
 				884922041BBBDF3700EA150A /* EasyHelper.swift in Sources */,
