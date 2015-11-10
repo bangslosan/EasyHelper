@@ -172,6 +172,10 @@ public class EasyHelper {
 
     }
     
+    
+    public class func getViewFromNib(name:String) -> UIView {
+        return UINib(nibName: name, bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! UIView
+    }
     //********** A REVOIR ********//
     /// Language use
     public class var languageCode:String {
